@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import TrendingCarousel from './components/TrendingCarousel';
 import ProductGrid from './components/ProductGrid';
-import ProductDetailModal from './components/ProductDetailModal';
+import ProductDetailPage from './components/ProductDetailPage';
 import CartDrawer from './components/CartDrawer';
 import WishlistModal from './components/WishlistModal';
 import CheckoutModal from './components/CheckoutModal';
@@ -99,6 +99,26 @@ export default function App() {
       localStorage.removeItem('tokosepatu_user');
     }
   }, [user]);
+
+  // Sync URL query (?product=id) with product detail page
+  useEffect(() => {
+    const syncProductFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const prodId = params.get('product');
+      if (prodId) {
+        const found = products.find((p) => p.id === parseInt(prodId, 10));
+        if (found) {
+          setSelectedProduct(found);
+          return;
+        }
+      }
+      setSelectedProduct(null);
+    };
+
+    syncProductFromUrl();
+    window.addEventListener('popstate', syncProductFromUrl);
+    return () => window.removeEventListener('popstate', syncProductFromUrl);
+  }, []);
 
   const showToast = (message, type = 'info') => {
     setToast({ message, type });
@@ -259,11 +279,42 @@ export default function App() {
     showToast(`Dihapus dari Favorit`, 'fav');
   };
 
+  // Product Detail Page Navigation Handlers
+  const handleOpenProductDetail = (product) => {
+    setSelectedProduct(product);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const url = new URL(window.location.href);
+    url.searchParams.set('product', product.id);
+    window.history.pushState({ productId: product.id }, '', url.toString());
+  };
+
+  const handleBackToCatalog = () => {
+    setSelectedProduct(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const url = new URL(window.location.href);
+    url.searchParams.delete('product');
+    window.history.pushState({}, '', url.toString());
+  };
+
   const handleCategorySelect = (category) => {
+    setSelectedProduct(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('product');
+    window.history.pushState({}, '', url.toString());
     setActiveCategory(category);
     const el = document.getElementById('products-section');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
+    if (query && selectedProduct) {
+      setSelectedProduct(null);
+      const url = new URL(window.location.href);
+      url.searchParams.delete('product');
+      window.history.pushState({}, '', url.toString());
     }
   };
 
@@ -291,32 +342,49 @@ export default function App() {
         activeCategory={activeCategory}
         onSelectCategory={handleCategorySelect}
         searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
+        onSearchChange={handleSearchChange}
         onOpenTrackLookup={() => setIsTrackLookupOpen(true)}
       />
 
       {/* 3. Promo Announcements Banner Ticker */}
       <PromoBanner onCategorySelect={handleCategorySelect} />
 
-      {/* 4. Hero Section & Trending (Hanya di mode awal / All) */}
-      {!searchQuery && activeCategory === "All" && (
+      {/* Conditional: Dedicated Product Detail Page OR Home & Catalog Grid */}
+      {selectedProduct ? (
+        /* Step 2: Dedicated Product Detail Page (Bukan Modal/Pop-up) */
+        <ProductDetailPage
+          product={selectedProduct}
+          allProducts={products}
+          onBackToCatalog={handleBackToCatalog}
+          onSelectProduct={handleOpenProductDetail}
+          isFavorite={Boolean(favorites.some((f) => f.id === selectedProduct.id))}
+          onToggleFavorite={handleToggleFavorite}
+          onAddToCart={handleAddToCart}
+          onDirectCheckout={handleDirectCheckout}
+        />
+      ) : (
         <>
-          <HeroSection onShopCategory={handleCategorySelect} />
-          <TrendingCarousel onSelectStoryCategory={handleCategorySelect} />
+          {/* 4. Hero Section & Trending (Hanya di mode awal / All) */}
+          {!searchQuery && activeCategory === "All" && (
+            <>
+              <HeroSection onShopCategory={handleCategorySelect} />
+              <TrendingCarousel onSelectStoryCategory={handleCategorySelect} />
+            </>
+          )}
+
+          {/* 5. Discover Product: The Wall / Product Catalog Grid (Step 1) */}
+          <ProductGrid
+            products={products}
+            activeCategory={activeCategory}
+            onSelectCategory={setActiveCategory}
+            searchQuery={searchQuery}
+            favorites={favorites}
+            onToggleFavorite={handleToggleFavorite}
+            onOpenDetail={handleOpenProductDetail}
+            onQuickAdd={handleAddToCart}
+          />
         </>
       )}
-
-      {/* 5. Discover Product: The Wall / Product Catalog Grid (Step 1) */}
-      <ProductGrid
-        products={products}
-        activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
-        searchQuery={searchQuery}
-        favorites={favorites}
-        onToggleFavorite={handleToggleFavorite}
-        onOpenDetail={setSelectedProduct}
-        onQuickAdd={handleAddToCart}
-      />
 
       {/* 6. Membership Banner */}
       {!user && (
@@ -328,18 +396,7 @@ export default function App() {
       {/* 7. Official Footer */}
       <Footer onOpenTrackLookup={() => setIsTrackLookupOpen(true)} />
 
-      {/* --- MODAL DIALOGS FOR COMPLETE E-COMMERCE USER FLOW --- */}
-
-      {/* Step 2: Product Detail Modal (Varian Warna & Ukuran, Stok, Deskripsi) */}
-      <ProductDetailModal
-        product={selectedProduct}
-        isOpen={Boolean(selectedProduct)}
-        onClose={() => setSelectedProduct(null)}
-        isFavorite={Boolean(selectedProduct && favorites.some((f) => f.id === selectedProduct.id))}
-        onToggleFavorite={handleToggleFavorite}
-        onAddToCart={handleAddToCart}
-        onDirectCheckout={handleDirectCheckout}
-      />
+      {/* --- DIALOGS FOR REMAINING E-COMMERCE USER FLOW --- */}
 
       {/* Step 3: Shopping Cart Drawer (Kuantitas, Hapus, Subtotal, Kupon) */}
       <CartDrawer
@@ -350,6 +407,7 @@ export default function App() {
         onRemoveItem={handleRemoveFromCart}
         onClearCart={handleClearCart}
         onProceedToCheckout={handleProceedToCheckout}
+        onOpenDetail={handleOpenProductDetail}
       />
 
       {/* Step 4 & 5: Checkout & Delivery Selection Modal */}
@@ -404,7 +462,7 @@ export default function App() {
         favorites={favorites}
         onRemoveFavorite={handleRemoveFavorite}
         onAddToCart={handleAddToCart}
-        onOpenDetail={setSelectedProduct}
+        onOpenDetail={handleOpenProductDetail}
       />
 
       {/* Sign In / Join Member Modal */}

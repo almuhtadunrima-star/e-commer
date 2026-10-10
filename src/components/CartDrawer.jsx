@@ -9,7 +9,8 @@ export default function CartDrawer({
   onUpdateQuantity,
   onRemoveItem,
   onClearCart,
-  onProceedToCheckout
+  onProceedToCheckout,
+  onOpenDetail
 }) {
   if (!isOpen) return null;
 
@@ -114,7 +115,16 @@ export default function CartDrawer({
                 {items.map((item) => (
                   <div key={`${item.id}-${item.selectedSize}-${item.selectedColor}`} className="pt-4 flex gap-4 text-left">
                     {/* Item Image */}
-                    <div className="w-24 h-24 bg-[#f6f6f6] rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-gray-100">
+                    <div 
+                      onClick={() => {
+                        if (onOpenDetail) {
+                          onClose();
+                          onOpenDetail(item);
+                        }
+                      }}
+                      className="w-24 h-24 bg-[#f6f6f6] rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-gray-100 cursor-pointer hover:border-black transition-all"
+                      title="Lihat Detail Produk"
+                    >
                       <img
                         src={item.selectedImage || item.colors[0]?.image}
                         alt={item.name}
@@ -126,7 +136,18 @@ export default function CartDrawer({
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex justify-between items-start">
-                          <h4 className="text-sm font-bold text-black leading-tight line-clamp-1">{item.name}</h4>
+                          <h4 
+                            onClick={() => {
+                              if (onOpenDetail) {
+                                onClose();
+                                onOpenDetail(item);
+                              }
+                            }}
+                            className="text-sm font-bold text-black leading-tight line-clamp-1 cursor-pointer hover:underline"
+                            title="Lihat Detail Produk"
+                          >
+                            {item.name}
+                          </h4>
                           <span className="text-sm font-extrabold text-black ml-2 whitespace-nowrap">
                             {formatRupiah(item.price * item.quantity)}
                           </span>
