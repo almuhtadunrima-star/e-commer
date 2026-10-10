@@ -1,0 +1,101 @@
+import React, { useState } from 'react';
+import { heroCampaigns } from '../data/products';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+export default function HeroSection({ onShopCategory }) {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const campaign = heroCampaigns[activeSlide];
+
+  const handlePrev = () => {
+    setActiveSlide((prev) => (prev - 1 + heroCampaigns.length) % heroCampaigns.length);
+  };
+
+  const handleNext = () => {
+    setActiveSlide((prev) => (prev + 1) % heroCampaigns.length);
+  };
+
+  return (
+    <section className="relative w-full overflow-hidden bg-black text-white">
+      {/* Hero Image Container */}
+      <div className="relative w-full h-[60vh] sm:h-[75vh] lg:h-[85vh] max-h-[920px]">
+        <img
+          src={campaign.image}
+          alt={campaign.title}
+          className="w-full h-full object-cover object-center transition-all duration-700 ease-in-out scale-100"
+        />
+
+        {/* Subtle Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+        {/* Top-Right Athlete Credit Tag */}
+        {campaign.athlete && (
+          <div className="absolute top-6 right-6 lg:right-12 z-20">
+            <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[11px] font-medium tracking-wide text-white/90 border border-white/10">
+              {campaign.athlete}
+            </span>
+          </div>
+        )}
+
+        {/* Carousel Navigation Arrows */}
+        <div className="absolute bottom-6 right-6 lg:right-12 z-20 flex space-x-2">
+          <button
+            onClick={handlePrev}
+            aria-label="Previous hero campaign"
+            className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-black hover:text-black flex items-center justify-center backdrop-blur-md transition-all text-white hover:bg-white hover:text-black"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={handleNext}
+            aria-label="Next hero campaign"
+            className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-black hover:text-black flex items-center justify-center backdrop-blur-md transition-all text-white hover:bg-white hover:text-black"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Hero Content Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-12 lg:p-16 z-10 max-w-5xl">
+          <p className="text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 text-white/80">
+            {campaign.category}
+          </p>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black font-nike-bold tracking-tight uppercase mb-4 leading-none text-white drop-shadow-md">
+            {campaign.title}
+          </h1>
+          <p className="text-sm sm:text-base lg:text-lg text-white/90 font-medium max-w-2xl mb-6 line-clamp-2 sm:line-clamp-none">
+            {campaign.subtitle}
+          </p>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => onShopCategory(campaign.filterTarget)}
+              className="px-6 py-3 bg-white text-black hover:bg-white/80 rounded-full font-bold text-sm tracking-tight transition-all active:scale-95 shadow-lg"
+            >
+              {campaign.ctaPrimary}
+            </button>
+            <button
+              onClick={() => onShopCategory(campaign.filterTarget)}
+              className="px-6 py-3 bg-white/20 hover:bg-white/30 text-white rounded-full font-bold text-sm tracking-tight backdrop-blur-md transition-all active:scale-95 border border-white/20"
+            >
+              {campaign.ctaSecondary}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Slide Indicators */}
+      <div className="flex justify-center py-2 bg-black gap-1.5">
+        {heroCampaigns.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActiveSlide(idx)}
+            className={`h-1.5 rounded-full transition-all ${
+              activeSlide === idx ? 'w-8 bg-white' : 'w-2 bg-white/40'
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
