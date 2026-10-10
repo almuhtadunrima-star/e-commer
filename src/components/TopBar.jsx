@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { MapPin, HelpCircle, User, LogOut } from 'lucide-react';
+import { MapPin, HelpCircle, User, LogOut, Truck } from 'lucide-react';
 
-export default function TopBar({ user, onOpenAuth, onSignOut }) {
+export default function TopBar({ user, onOpenAuth, onSignOut, onOpenTrackLookup }) {
   const [showHelpMenu, setShowHelpMenu] = useState(false);
 
   return (
-    <div className="bg-[#f5f5f5] text-[11px] font-medium text-[#111111] px-6 lg:px-12 py-1.5 flex justify-between items-center border-b border-[#e5e5e5] select-none">
-      {/* Brand Logos (Jordan & Converse) */}
+    <div className="bg-[#f5f5f5] text-[11px] font-semibold text-[#111111] px-6 lg:px-12 py-1.5 flex justify-between items-center border-b border-[#e5e5e5] select-none">
+      {/* Brand Logos */}
       <div className="flex items-center space-x-6">
         {/* Jordan Jumpman Logo */}
         <a 
           href="#jordan" 
-          title="Jordan"
+          title="Jordan Collection"
           className="opacity-80 hover:opacity-100 transition-opacity flex items-center"
         >
           <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -34,10 +34,19 @@ export default function TopBar({ user, onOpenAuth, onSignOut }) {
       {/* Utility links */}
       <div className="flex items-center space-x-4 text-[#111111]">
         <button 
-          onClick={() => alert("Nike Store Locator: Jakarta, Grand Indonesia, Senayan City, Pondok Indah Mall, Kota Kasablanka")}
+          onClick={onOpenTrackLookup}
+          className="hover:text-black transition-colors flex items-center space-x-1 font-bold text-gray-800"
+        >
+          <Truck className="w-3.5 h-3.5" />
+          <span>Lacak Resi Pesanan</span>
+        </button>
+        <span className="text-gray-300">|</span>
+
+        <button 
+          onClick={() => alert("Gerai Resmi Indonesia: Grand Indonesia (Jakarta), Senayan City, Pondok Indah Mall, Tunjungan Plaza (Surabaya), Paris Van Java (Bandung).")}
           className="hover:text-black/70 transition-colors flex items-center space-x-1"
         >
-          <span>Find a Store</span>
+          <span>Lokasi Gerai</span>
         </button>
         <span className="text-gray-300">|</span>
 
@@ -48,18 +57,18 @@ export default function TopBar({ user, onOpenAuth, onSignOut }) {
             onBlur={() => setTimeout(() => setShowHelpMenu(false), 200)}
             className="hover:text-black/70 transition-colors flex items-center space-x-1"
           >
-            <span>Help</span>
+            <span>Bantuan</span>
           </button>
 
           {showHelpMenu && (
-            <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-[#e5e5e5] rounded-lg shadow-xl p-3 z-50 text-left">
-              <div className="font-bold text-xs pb-2 border-b border-gray-100 text-[#111]">Help & Support</div>
+            <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-[#e5e5e5] rounded-xl shadow-xl p-3 z-50 text-left">
+              <div className="font-bold text-xs pb-2 border-b border-gray-100 text-[#111]">Pusat Bantuan</div>
               <ul className="py-2 space-y-2 text-xs text-gray-700">
-                <li className="hover:text-black cursor-pointer">Order Status</li>
-                <li className="hover:text-black cursor-pointer">Shipping & Delivery</li>
-                <li className="hover:text-black cursor-pointer">Returns & Exchanges</li>
-                <li className="hover:text-black cursor-pointer">Size Charts</li>
-                <li className="hover:text-black cursor-pointer">Contact Us</li>
+                <li className="hover:text-black cursor-pointer" onClick={onOpenTrackLookup}>Status & Lacak Pesanan</li>
+                <li className="hover:text-black cursor-pointer">Ongkos & Estimasi Kirim</li>
+                <li className="hover:text-black cursor-pointer">Panduan Retur & Garansi</li>
+                <li className="hover:text-black cursor-pointer">Tabel Ukuran Sepatu</li>
+                <li className="hover:text-black cursor-pointer">Customer Service WhatsApp</li>
               </ul>
             </div>
           )}
@@ -68,17 +77,17 @@ export default function TopBar({ user, onOpenAuth, onSignOut }) {
 
         {user ? (
           <div className="flex items-center space-x-3">
-            <span className="font-semibold text-black flex items-center gap-1">
+            <span className="font-bold text-black flex items-center gap-1">
               <User className="w-3.5 h-3.5" />
-              Hi, {user.name}
+              Halo, {user.name}
             </span>
             <button 
               onClick={onSignOut}
-              className="text-gray-500 hover:text-red-600 transition-colors flex items-center gap-1"
-              title="Sign Out"
+              className="text-gray-500 hover:text-red-600 transition-colors flex items-center gap-1 font-semibold"
+              title="Keluar"
             >
               <LogOut className="w-3 h-3" />
-              <span>Sign Out</span>
+              <span>Keluar</span>
             </button>
           </div>
         ) : (
@@ -87,14 +96,14 @@ export default function TopBar({ user, onOpenAuth, onSignOut }) {
               onClick={() => onOpenAuth('join')}
               className="hover:text-black/70 transition-colors"
             >
-              Join Us
+              Daftar Member
             </button>
             <span className="text-gray-300">|</span>
             <button 
               onClick={() => onOpenAuth('signin')}
-              className="hover:text-black/70 transition-colors font-semibold"
+              className="hover:text-black/70 transition-colors font-bold text-black"
             >
-              Sign In
+              Masuk
             </button>
           </div>
         )}

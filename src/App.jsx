@@ -8,17 +8,23 @@ import ProductGrid from './components/ProductGrid';
 import ProductDetailModal from './components/ProductDetailModal';
 import CartDrawer from './components/CartDrawer';
 import WishlistModal from './components/WishlistModal';
+import CheckoutModal from './components/CheckoutModal';
+import PaymentModal from './components/PaymentModal';
+import OrderConfirmationModal from './components/OrderConfirmationModal';
+import DeliveryTrackingModal from './components/DeliveryTrackingModal';
+import TrackOrderLookupModal from './components/TrackOrderLookupModal';
 import MembershipBanner from './components/MembershipBanner';
 import Footer from './components/Footer';
 import SignInModal from './components/SignInModal';
 import Toast from './components/Toast';
 import { products } from './data/products';
+import { generateOrderId, generateResi, formatRupiah } from './utils/format';
 
 export default function App() {
-  // Persistence state
+  // Persistence state in localStorage
   const [cart, setCart] = useState(() => {
     try {
-      const saved = localStorage.getItem('nike_cart');
+      const saved = localStorage.getItem('tokosepatu_cart');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -27,7 +33,7 @@ export default function App() {
 
   const [favorites, setFavorites] = useState(() => {
     try {
-      const saved = localStorage.getItem('nike_favorites');
+      const saved = localStorage.getItem('tokosepatu_favorites');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -36,36 +42,61 @@ export default function App() {
 
   const [user, setUser] = useState(() => {
     try {
-      const saved = localStorage.getItem('nike_user');
+      const saved = localStorage.getItem('tokosepatu_user');
       return saved ? JSON.parse(saved) : null;
     } catch {
       return null;
     }
   });
 
-  // UI state
+  const [recentOrders, setRecentOrders] = useState(() => {
+    try {
+      const saved = localStorage.getItem('tokosepatu_orders');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // UI & Flow State
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  
+  // Checkout & Payment & Tracking Modals
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [checkoutData, setCheckoutData] = useState(null);
+  const [checkoutDiscount, setCheckoutDiscount] = useState({ percent: 0, amount: 0 });
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+  const [confirmedOrder, setConfirmedOrder] = useState(null);
+  const [isTrackingOpen, setIsTrackingOpen] = useState(false);
+  const [trackingOrder, setTrackingOrder] = useState(null);
+  const [isTrackLookupOpen, setIsTrackLookupOpen] = useState(false);
+
   const [authModal, setAuthModal] = useState({ isOpen: false, mode: 'signin' });
   const [toast, setToast] = useState(null);
 
   // Sync with LocalStorage
   useEffect(() => {
-    localStorage.setItem('nike_cart', JSON.stringify(cart));
+    localStorage.setItem('tokosepatu_cart', JSON.stringify(cart));
   }, [cart]);
 
   useEffect(() => {
-    localStorage.setItem('nike_favorites', JSON.stringify(favorites));
+    localStorage.setItem('tokosepatu_favorites', JSON.stringify(favorites));
   }, [favorites]);
 
   useEffect(() => {
+    localStorage.setItem('tokosepatu_orders', JSON.stringify(recentOrders));
+  }, [recentOrders]);
+
+  useEffect(() => {
     if (user) {
-      localStorage.setItem('nike_user', JSON.stringify(user));
+      localStorage.setItem('tokosepatu_user', JSON.stringify(user));
     } else {
-      localStorage.removeItem('nike_user');
+      localStorage.removeItem('tokosepatu_user');
     }
   }, [user]);
 
@@ -74,8 +105,9 @@ export default function App() {
     setTimeout(() => setToast(null), 3000);
   };
 
-  // Cart actions
+  // 1 & 2. Cart Actions (Step 3: Shopping Cart)
   const handleAddToCart = (productToAdd) => {
+    const qtyToAdd = productToAdd.quantity || 1;
     setCart((prevCart) => {
       const existingIdx = prevCart.findIndex(
         (item) =>
@@ -86,14 +118,14 @@ export default function App() {
 
       if (existingIdx > -1) {
         const newCart = [...prevCart];
-        newCart[existingIdx].quantity += 1;
+        newCart[existingIdx].quantity += qtyToAdd;
         return newCart;
       } else {
-        return [...prevCart, { ...productToAdd, quantity: 1 }];
+        return [...prevCart, { ...productToAdd, quantity: qtyToAdd }];
       }
     });
 
-    showToast(`Added ${productToAdd.name} (US ${productToAdd.selectedSize}) to Bag`, 'bag');
+    showToast(`Ditambahkan ke Keranjang: ${productToAdd.name} (${productToAdd.selectedSize})`, 'bag');
   };
 
   const handleUpdateCartQuantity = (targetItem, newQty) => {
@@ -119,22 +151,104 @@ export default function App() {
           )
       )
     );
-    showToast(`Removed from Bag`, 'info');
+    showToast(`Produk dihapus dari keranjang`, 'info');
   };
 
   const handleClearCart = () => {
     setCart([]);
   };
 
-  // Favorites actions
+  // Direct Checkout (Beli Sekarang dari Modal Produk)
+  const handleDirectCheckout = (productItem) => {
+    const item = {
+      ...productItem,
+      quantity: productItem.quantity || 1
+    };
+    // Add to cart and directly launch checkout modal
+    setCart([item]);
+    setCheckoutDiscount({ percent: 0, amount: 0 });
+    setIsCheckoutOpen(true);
+  };
+
+  // Step 3 -> Step 4: Lanjut dari Keranjang ke Checkout
+  const handleProceedToCheckout = ({ appliedDiscountPercent, discountAmount }) => {
+    if (cart.length === 0) {
+      showToast("Keranjang Anda masih kosong", "info");
+      return;
+    }
+    setCheckoutDiscount({
+      percent: appliedDiscountPercent,
+      amount: discountAmount
+    });
+    setIsCartOpen(false);
+    setIsCheckoutOpen(true);
+  };
+
+  // Step 4 & 5 -> Step 6: Checkout Form Selesai -> Buka Simulasi Pembayaran
+  const handleProceedToPayment = (completedCheckoutData) => {
+    setCheckoutData(completedCheckoutData);
+    setIsCheckoutOpen(false);
+    setIsPaymentOpen(true);
+  };
+
+  // Step 6 -> Step 7: Pembayaran Berhasil Disimulasikan -> Buat Order & Tampilkan Konfirmasi
+  const handlePaymentSuccess = (paidOrderData) => {
+    const newOrderId = generateOrderId();
+    const newResi = generateResi(paidOrderData.courier?.name || 'JNE');
+
+    const finalizedOrder = {
+      ...paidOrderData,
+      orderId: newOrderId,
+      resiNumber: newResi,
+      currentStep: 3, // Mulai di step "Pesanan Diproses"
+      statusTimeline: [
+        { title: "Pesanan Dibuat", time: "Baru saja", done: true },
+        { title: "Pembayaran Berhasil", time: "Baru saja", done: true },
+        { title: "Pesanan Diproses", time: "Sedang berlangsung", done: true },
+        { title: "Diserahkan ke Kurir", time: "Menunggu pickup", done: false },
+        { title: "Dalam Pengiriman", time: "Estimasi 1-2 hari", done: false },
+        { title: "Pesanan Sampai", time: "Menunggu", done: false }
+      ]
+    };
+
+    // Simpan ke riwayat pesanan & kosongkan cart
+    setConfirmedOrder(finalizedOrder);
+    setRecentOrders((prev) => [finalizedOrder, ...prev]);
+    setCart([]);
+    setIsPaymentOpen(false);
+    setIsConfirmationOpen(true);
+    showToast(`Pembayaran Sukses! No. Pesanan: ${newOrderId}`, 'info');
+  };
+
+  // Step 7 -> Step 8: Dari Konfirmasi Pesanan Buka Pelacakan Pengiriman
+  const handleOpenTrackingFromConfirmation = (order) => {
+    setTrackingOrder(order);
+    setIsConfirmationOpen(false);
+    setIsTrackingOpen(true);
+  };
+
+  // Update Status Pengiriman Kurir (Simulasi Percepat Pengiriman)
+  const handleUpdateOrderStatus = (orderId, newStep) => {
+    setRecentOrders((prev) =>
+      prev.map((ord) =>
+        ord.orderId === orderId ? { ...ord, currentStep: newStep } : ord
+      )
+    );
+    if (trackingOrder && trackingOrder.orderId === orderId) {
+      setTrackingOrder((prev) => ({ ...prev, currentStep: newStep }));
+    }
+    showToast(`Status Kurir diperbarui ke Tahap ${newStep}!`, 'info');
+  };
+
+  // Favorites Actions
   const handleToggleFavorite = (product) => {
     setFavorites((prev) => {
       const exists = prev.some((p) => p.id === product.id);
       if (exists) {
-        showToast(`Removed ${product.name} from Favorites`, 'fav');
+        showToast(`Dihapus dari Favorit: ${product.name}`, 'fav');
         return prev.filter((p) => p.id !== product.id);
       } else {
-        showToast(`Saved ${product.name} to Favorites`, 'fav');
+        showToast(`Disimpan ke Favorit: ${product.name}`, 'fav');
         return [...prev, product];
       }
     });
@@ -142,12 +256,11 @@ export default function App() {
 
   const handleRemoveFavorite = (product) => {
     setFavorites((prev) => prev.filter((p) => p.id !== product.id));
-    showToast(`Removed from Favorites`, 'fav');
+    showToast(`Dihapus dari Favorit`, 'fav');
   };
 
   const handleCategorySelect = (category) => {
     setActiveCategory(category);
-    // Smooth scroll to product grid
     const el = document.getElementById('products-section');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -158,17 +271,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col text-[#111111]">
-      {/* Top utility Bar */}
+      {/* 1. Top Utility Bar */}
       <TopBar
         user={user}
         onOpenAuth={(mode) => setAuthModal({ isOpen: true, mode })}
         onSignOut={() => {
           setUser(null);
-          showToast('Signed out of Nike Member account');
+          showToast('Anda telah keluar dari akun');
         }}
+        onOpenTrackLookup={() => setIsTrackLookupOpen(true)}
       />
 
-      {/* Main Nike Navigation */}
+      {/* 2. Main Navigation Bar */}
       <Navbar
         cartCount={totalCartItems}
         wishlistCount={favorites.length}
@@ -178,22 +292,21 @@ export default function App() {
         onSelectCategory={handleCategorySelect}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        onOpenTrackLookup={() => setIsTrackLookupOpen(true)}
       />
 
-      {/* Announcements ticker banner */}
+      {/* 3. Promo Announcements Banner Ticker */}
       <PromoBanner onCategorySelect={handleCategorySelect} />
 
-      {/* Hero Campaign (only on All or when not searching) */}
+      {/* 4. Hero Section & Trending (Hanya di mode awal / All) */}
       {!searchQuery && activeCategory === "All" && (
-        <HeroSection onShopCategory={handleCategorySelect} />
+        <>
+          <HeroSection onShopCategory={handleCategorySelect} />
+          <TrendingCarousel onSelectStoryCategory={handleCategorySelect} />
+        </>
       )}
 
-      {/* Trending Stories Carousel */}
-      {!searchQuery && activeCategory === "All" && (
-        <TrendingCarousel onSelectStoryCategory={handleCategorySelect} />
-      )}
-
-      {/* Product Wall Catalog */}
+      {/* 5. Discover Product: The Wall / Product Catalog Grid (Step 1) */}
       <ProductGrid
         products={products}
         activeCategory={activeCategory}
@@ -205,17 +318,19 @@ export default function App() {
         onQuickAdd={handleAddToCart}
       />
 
-      {/* Nike Membership Callout */}
+      {/* 6. Membership Banner */}
       {!user && (
         <MembershipBanner
           onOpenAuth={(mode) => setAuthModal({ isOpen: true, mode })}
         />
       )}
 
-      {/* Official Nike Footer */}
-      <Footer />
+      {/* 7. Official Footer */}
+      <Footer onOpenTrackLookup={() => setIsTrackLookupOpen(true)} />
 
-      {/* Modals & Slide-overs */}
+      {/* --- MODAL DIALOGS FOR COMPLETE E-COMMERCE USER FLOW --- */}
+
+      {/* Step 2: Product Detail Modal (Varian Warna & Ukuran, Stok, Deskripsi) */}
       <ProductDetailModal
         product={selectedProduct}
         isOpen={Boolean(selectedProduct)}
@@ -223,8 +338,10 @@ export default function App() {
         isFavorite={Boolean(selectedProduct && favorites.some((f) => f.id === selectedProduct.id))}
         onToggleFavorite={handleToggleFavorite}
         onAddToCart={handleAddToCart}
+        onDirectCheckout={handleDirectCheckout}
       />
 
+      {/* Step 3: Shopping Cart Drawer (Kuantitas, Hapus, Subtotal, Kupon) */}
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -232,8 +349,55 @@ export default function App() {
         onUpdateQuantity={handleUpdateCartQuantity}
         onRemoveItem={handleRemoveFromCart}
         onClearCart={handleClearCart}
+        onProceedToCheckout={handleProceedToCheckout}
       />
 
+      {/* Step 4 & 5: Checkout & Delivery Selection Modal */}
+      <CheckoutModal
+        isOpen={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+        cartItems={cart}
+        discountAmount={checkoutDiscount.amount}
+        discountPercent={checkoutDiscount.percent}
+        onProceedToPayment={handleProceedToPayment}
+      />
+
+      {/* Step 6: Payment Simulation Modal (QRIS, BCA VA, Mandiri VA, COD, E-Wallet) */}
+      <PaymentModal
+        isOpen={isPaymentOpen}
+        onClose={() => setIsPaymentOpen(false)}
+        checkoutData={checkoutData}
+        onPaymentSuccess={handlePaymentSuccess}
+      />
+
+      {/* Step 7: Order Confirmation Modal (Order ID, Invoice, Alamat, Kurir) */}
+      <OrderConfirmationModal
+        isOpen={isConfirmationOpen}
+        onClose={() => setIsConfirmationOpen(false)}
+        order={confirmedOrder}
+        onOpenTracking={handleOpenTrackingFromConfirmation}
+      />
+
+      {/* Step 8: Delivery Tracking Modal (6 Tahapan Alur, No Resi, Kurir, Simulasi Cepat) */}
+      <DeliveryTrackingModal
+        isOpen={isTrackingOpen}
+        onClose={() => setIsTrackingOpen(false)}
+        order={trackingOrder}
+        onUpdateOrderStatus={handleUpdateOrderStatus}
+      />
+
+      {/* Quick Track Order Lookup Modal */}
+      <TrackOrderLookupModal
+        isOpen={isTrackLookupOpen}
+        onClose={() => setIsTrackLookupOpen(false)}
+        recentOrders={recentOrders}
+        onSelectOrderToTrack={(ord) => {
+          setTrackingOrder(ord);
+          setIsTrackingOpen(true);
+        }}
+      />
+
+      {/* Wishlist Favorites Modal */}
       <WishlistModal
         isOpen={isWishlistOpen}
         onClose={() => setIsWishlistOpen(false)}
@@ -243,17 +407,18 @@ export default function App() {
         onOpenDetail={setSelectedProduct}
       />
 
+      {/* Sign In / Join Member Modal */}
       <SignInModal
         isOpen={authModal.isOpen}
         initialMode={authModal.mode}
         onClose={() => setAuthModal({ isOpen: false, mode: 'signin' })}
         onSignInSuccess={(u) => {
           setUser(u);
-          showToast(`Welcome back, ${u.name}!`);
+          showToast(`Selamat datang kembali, ${u.name}!`);
         }}
       />
 
-      {/* Floating Toast Notification */}
+      {/* Toast Pop-up Notification */}
       <Toast
         message={toast?.message}
         type={toast?.type}

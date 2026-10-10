@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Search, Heart, ShoppingBag, Menu, X } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Search, Heart, ShoppingBag, Menu, X, Truck } from 'lucide-react';
 
 export default function Navbar({
   cartCount,
@@ -10,40 +10,38 @@ export default function Navbar({
   onSelectCategory,
   searchQuery,
   onSearchChange,
-  onSelectProduct
+  onOpenTrackLookup
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
-  const [hoverCategory, setHoverCategory] = useState(null);
   const searchInputRef = useRef(null);
 
   const navItems = [
-    { label: "New & Featured", category: "All", badge: null },
-    { label: "Men", category: "Men", badge: null },
-    { label: "Women", category: "Women", badge: null },
-    { label: "Kids", category: "Kids", badge: null },
+    { label: "Semua Produk", category: "All", badge: null },
+    { label: "Pria", category: "Pria", badge: null },
+    { label: "Wanita", category: "Wanita", badge: null },
     { label: "Jordan", category: "Jordan", badge: null },
-    { label: "Sale", category: "Sale", badge: "Extra 20%" },
+    { label: "Promo Diskon", category: "Sale", badge: "Hemat" },
   ];
 
   const popularSearches = [
     "Air Force 1", "Air Jordan 1", "Air Max", "Vomero 5", 
-    "Pegasus 41", "Metcon", "Running Shoes", "Basketball", "Dunk Low"
+    "Pegasus 41", "Metcon 10", "Running", "Basketball"
   ];
 
   return (
     <>
-      <nav className="bg-white sticky top-0 z-40 transition-shadow border-b border-[#f0f0f0]">
+      <nav className="bg-white sticky top-0 z-40 transition-shadow border-b border-[#f0f0f0] select-none">
         <div className="max-w-[1920px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-          {/* Nike Swoosh Logo */}
-          <div className="flex items-center">
+          {/* Logo Nike & Brand Identity */}
+          <div className="flex items-center space-x-3">
             <button 
               onClick={() => onSelectCategory("All")}
-              className="group focus:outline-none"
-              title="Nike Home"
+              className="group focus:outline-none flex items-center gap-2"
+              title="Nike Official Store"
             >
               <svg 
-                className="h-14 w-16 fill-[#111111] group-hover:opacity-75 transition-opacity"
+                className="h-12 w-16 fill-[#111111] group-hover:opacity-75 transition-opacity"
                 viewBox="0 0 24 24"
               >
                 <path d="M21.707 5.293c-2.478 2.05-6.398 4.965-10.742 7.747-3.05 1.954-5.698 3.523-7.534 4.542-.716.398-1.472.778-2.187 1.092l-.128.055a.75.75 0 01-.989-.988c.328-.737.728-1.517 1.144-2.257 1.054-1.875 2.673-4.577 4.673-7.689 2.846-4.429 5.823-8.432 7.915-10.871a.75.75 0 011.08.026c.394.462.674.997.808 1.554.237.99-.04 2.112-.767 3.267 1.583-.984 3.738-2.217 6.137-3.414.288-.144.629-.024.773.264a.75.75 0 01-.183.672z" />
@@ -57,39 +55,46 @@ export default function Navbar({
               <button
                 key={item.label}
                 onClick={() => onSelectCategory(item.category)}
-                onMouseEnter={() => setHoverCategory(item.label)}
-                onMouseLeave={() => setHoverCategory(null)}
-                className={`text-[15px] font-semibold tracking-tight py-5 relative transition-colors ${
-                  activeCategory === item.category ? 'text-black font-bold' : 'text-[#111111] hover:text-[#707072]'
+                className={`text-[14px] font-bold tracking-tight py-5 relative transition-colors ${
+                  activeCategory === item.category ? 'text-black' : 'text-[#444444] hover:text-black'
                 }`}
               >
                 {item.label}
                 {item.badge && (
-                  <span className="ml-1.5 px-1.5 py-0.5 text-[10px] bg-red-600 text-white rounded font-bold uppercase">
+                  <span className="ml-1.5 px-1.5 py-0.5 text-[9px] bg-red-600 text-white rounded font-extrabold uppercase">
                     {item.badge}
                   </span>
                 )}
                 {activeCategory === item.category && (
-                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-black rounded-t"></span>
                 )}
               </button>
             ))}
+
+            {/* Tombol Navigasi Lacak Pesanan Langsung */}
+            <button
+              onClick={onOpenTrackLookup}
+              className="text-[13px] font-bold text-gray-700 hover:text-black flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+            >
+              <Truck className="w-4 h-4 text-black" />
+              <span>Lacak Pesanan</span>
+            </button>
           </div>
 
           {/* Right Actions: Search & Icons */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
-            {/* Search Input Bar */}
+          <div className="flex items-center space-x-2.5 sm:space-x-4">
+            {/* Search Input Bar (Desktop) */}
             <div className="relative hidden sm:block">
-              <div className="flex items-center bg-[#f5f5f5] hover:bg-[#ebebeb] transition-colors rounded-full px-4 py-2 w-44 md:w-56 focus-within:w-72 focus-within:bg-white focus-within:ring-1 focus-within:ring-black">
+              <div className="flex items-center bg-[#f5f5f5] hover:bg-[#ebebeb] transition-colors rounded-full px-4 py-2 w-48 md:w-56 focus-within:w-72 focus-within:bg-white focus-within:ring-1 focus-within:ring-black">
                 <Search className="w-4 h-4 text-gray-500 mr-2 flex-shrink-0" />
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Search"
+                  placeholder="Cari sepatu, seri..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
                   onFocus={() => setSearchFocused(true)}
-                  className="bg-transparent text-sm w-full outline-none placeholder-gray-500 font-medium"
+                  className="bg-transparent text-xs sm:text-sm w-full outline-none placeholder-gray-500 font-semibold"
                 />
                 {searchQuery && (
                   <button 
@@ -101,19 +106,19 @@ export default function Navbar({
                 )}
               </div>
 
-              {/* Quick Search Dropdown / Recommendations */}
+              {/* Quick Search Dropdown */}
               {searchFocused && (
                 <div 
                   className="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 text-left"
-                  onMouseDown={(e) => e.preventDefault()} // prevent input blur on click
+                  onMouseDown={(e) => e.preventDefault()}
                 >
                   <div className="flex justify-between items-center mb-3">
-                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Popular Terms</span>
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Pencarian Populer</span>
                     <button 
                       onClick={() => setSearchFocused(false)}
                       className="text-gray-400 hover:text-black text-xs font-medium"
                     >
-                      Close
+                      Tutup
                     </button>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -124,7 +129,7 @@ export default function Navbar({
                           onSearchChange(term);
                           setSearchFocused(false);
                         }}
-                        className="text-xs px-3 py-1.5 bg-[#f5f5f5] hover:bg-black hover:text-white rounded-full font-medium transition-all"
+                        className="text-xs px-3 py-1.5 bg-[#f5f5f5] hover:bg-black hover:text-white rounded-full font-semibold transition-all"
                       >
                         {term}
                       </button>
@@ -134,23 +139,20 @@ export default function Navbar({
               )}
             </div>
 
-            {/* Mobile Search Button */}
+            {/* Mobile Lacak Pesanan Button */}
             <button
-              onClick={() => {
-                const query = prompt("Search Nike products:");
-                if (query !== null) onSearchChange(query);
-              }}
-              className="sm:hidden p-2 hover:bg-gray-100 rounded-full transition-colors text-black"
-              title="Search"
+              onClick={onOpenTrackLookup}
+              className="lg:hidden p-2 hover:bg-gray-100 rounded-full transition-colors text-black"
+              title="Lacak Pesanan"
             >
-              <Search className="w-5 h-5" />
+              <Truck className="w-5 h-5" />
             </button>
 
-            {/* Wishlist / Favorites Button */}
+            {/* Wishlist / Favorit Button */}
             <button
               onClick={onOpenWishlist}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors relative text-black"
-              title="Favorites"
+              title="Favorit"
             >
               <Heart className="w-5 h-5" />
               {wishlistCount > 0 && (
@@ -160,11 +162,11 @@ export default function Navbar({
               )}
             </button>
 
-            {/* Bag / Shopping Cart Button */}
+            {/* Shopping Bag Button */}
             <button
               onClick={onOpenCart}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors relative text-black"
-              title="Shopping Bag"
+              title="Keranjang Belanja"
             >
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
@@ -174,11 +176,11 @@ export default function Navbar({
               )}
             </button>
 
-            {/* Mobile Menu Toggle Button */}
+            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(true)}
               className="lg:hidden p-2 hover:bg-gray-100 rounded-full transition-colors text-black"
-              title="Open Navigation Menu"
+              title="Buka Menu"
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -189,17 +191,14 @@ export default function Navbar({
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          {/* Overlay */}
           <div 
             className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          {/* Drawer content */}
           <div className="fixed top-0 right-0 bottom-0 w-[300px] sm:w-[350px] bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
             <div>
-              {/* Close Button */}
-              <div className="flex justify-end mb-6">
+              <div className="flex justify-end mb-4">
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-2 hover:bg-gray-100 rounded-full text-black"
@@ -214,16 +213,16 @@ export default function Navbar({
                   <Search className="w-4 h-4 text-gray-500 mr-2" />
                   <input
                     type="text"
-                    placeholder="Search Nike"
+                    placeholder="Cari sepatu..."
                     value={searchQuery}
                     onChange={(e) => onSearchChange(e.target.value)}
-                    className="bg-transparent text-sm w-full outline-none"
+                    className="bg-transparent text-xs w-full outline-none font-semibold"
                   />
                 </div>
               </div>
 
-              {/* Mobile Navigation Links */}
-              <div className="space-y-4">
+              {/* Mobile Category Links */}
+              <div className="space-y-3">
                 {navItems.map((item) => (
                   <button
                     key={item.label}
@@ -231,8 +230,8 @@ export default function Navbar({
                       onSelectCategory(item.category);
                       setMobileMenuOpen(false);
                     }}
-                    className={`block w-full text-left text-xl font-bold py-2 border-b border-gray-100 ${
-                      activeCategory === item.category ? 'text-black' : 'text-gray-700 hover:text-black'
+                    className={`block w-full text-left text-lg font-bold py-2 border-b border-gray-100 ${
+                      activeCategory === item.category ? 'text-black' : 'text-gray-600 hover:text-black'
                     }`}
                   >
                     {item.label}
@@ -240,34 +239,43 @@ export default function Navbar({
                 ))}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-gray-100 space-y-3">
+              <div className="mt-6 pt-4 border-t border-gray-100 space-y-3">
+                <button 
+                  onClick={() => {
+                    onOpenTrackLookup();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center space-x-3 text-sm font-bold text-gray-800 hover:text-black"
+                >
+                  <Truck className="w-4 h-4" />
+                  <span>Lacak Pesanan (Cek Resi)</span>
+                </button>
                 <button 
                   onClick={() => {
                     onOpenWishlist();
                     setMobileMenuOpen(false);
                   }}
-                  className="flex items-center space-x-3 text-base font-semibold text-gray-800 hover:text-black"
+                  className="flex items-center space-x-3 text-sm font-bold text-gray-800 hover:text-black"
                 >
-                  <Heart className="w-5 h-5" />
-                  <span>Favorites ({wishlistCount})</span>
+                  <Heart className="w-4 h-4" />
+                  <span>Favorit ({wishlistCount})</span>
                 </button>
                 <button 
                   onClick={() => {
                     onOpenCart();
                     setMobileMenuOpen(false);
                   }}
-                  className="flex items-center space-x-3 text-base font-semibold text-gray-800 hover:text-black"
+                  className="flex items-center space-x-3 text-sm font-bold text-gray-800 hover:text-black"
                 >
-                  <ShoppingBag className="w-5 h-5" />
-                  <span>Bag ({cartCount})</span>
+                  <ShoppingBag className="w-4 h-4" />
+                  <span>Keranjang ({cartCount})</span>
                 </button>
               </div>
             </div>
 
-            {/* Mobile Footer info */}
-            <div className="pt-6 border-t border-gray-100">
+            <div className="pt-6 border-t border-gray-100 text-left">
               <p className="text-xs text-gray-500 font-medium">
-                Become a Nike Member for the best products, inspiration and stories in sport.
+                Nikmati Gratis Ongkir & Garansi 100% Produk Original.
               </p>
             </div>
           </div>
