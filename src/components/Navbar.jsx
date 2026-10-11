@@ -33,8 +33,8 @@ export default function Navbar({
 
   return (
     <>
-      <nav className="glass-ios-header sticky top-0 z-40 transition-shadow select-none">
-        <div className="max-w-[1920px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+      <nav className="glass-ios-header sticky top-0 z-40 transition-shadow select-none w-full max-w-full">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 h-16 flex items-center justify-between">
           {/* Logo MA STORE (Nama Saja Sesuai Permintaan) */}
           <div className="flex items-center flex-shrink-0">
             <button 
@@ -42,7 +42,7 @@ export default function Navbar({
               className="group focus:outline-none flex items-center py-1 select-none"
               title="MA STORE"
             >
-              <span className="font-black text-2xl sm:text-3xl tracking-tight text-black uppercase group-hover:opacity-75 transition-opacity">
+              <span className="font-black text-xl sm:text-2xl md:text-3xl tracking-tight text-black uppercase group-hover:opacity-75 transition-opacity">
                 MA STORE
               </span>
             </button>

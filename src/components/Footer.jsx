@@ -33,10 +33,10 @@ export default function Footer({ onOpenTrackLookup }) {
   };
 
   return (
-    <footer className="relative glass-ios-dark text-white pt-16 pb-12 select-none border-t border-white/10 mt-16">
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-12">
+    <footer className="relative glass-ios-dark text-white pt-12 sm:pt-16 pb-12 select-none border-t border-white/10 mt-16 w-full max-w-full overflow-hidden">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Value Proposition Badges */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 border-b border-white/10 text-left">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pb-10 sm:pb-12 border-b border-white/10 text-left">
           <div className="flex items-center space-x-3.5">
             <Truck className="w-6 h-6 text-amber-400 flex-shrink-0" />
             <div>

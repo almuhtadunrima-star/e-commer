@@ -67,11 +67,11 @@ export default function ProductGrid({
   }, [products, activeCategory, selectedSport, selectedGender, priceFilter, inStockOnly, sortBy, searchQuery]);
 
   return (
-    <section id="products-section" className="max-w-[1920px] mx-auto px-6 lg:px-12 py-10">
+    <section id="products-section" className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-10 overflow-hidden">
       {/* Header Katalog: Judul, Jumlah Produk, Tombol Filter, Sort */}
       <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-gray-100 gap-4">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-[#111111]">
+          <h2 className="text-xl sm:text-3xl font-black tracking-tight text-[#111111]">
             {searchQuery 
               ? `Hasil Pencarian: "${searchQuery}"` 
               : activeCategory === "All" 
@@ -80,16 +80,16 @@ export default function ProductGrid({
               ? "Koleksi Hoodie & Apparel"
               : `Koleksi ${activeCategory}`}
           </h2>
-          <span className="text-sm text-[#707072] font-medium">
+          <span className="text-xs sm:text-sm text-[#707072] font-medium">
             Menampilkan {filteredProducts.length} produk pilihan
           </span>
         </div>
 
         {/* Controls: Filter Toggle & Sort */}
-        <div className="flex items-center space-x-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center space-x-2 px-4 py-2 glass-ios-pill hover:bg-white rounded-full text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-xs"
+            className="flex items-center space-x-2 px-3 sm:px-4 py-2 glass-ios-pill hover:bg-white rounded-full text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-xs"
           >
             <SlidersHorizontal className="w-4 h-4" />
             <span>{showFilters ? 'Sembunyikan Filter' : 'Tampilkan Filter'}</span>
@@ -114,7 +114,7 @@ export default function ProductGrid({
       </div>
 
       {/* Main Container with Sidebar + Product Grid */}
-      <div className="flex pt-6 gap-8">
+      <div className="flex pt-6 gap-6 lg:gap-8 w-full min-w-0">
         {/* Filter Sidebar (Desktop) */}
         {showFilters && (
           <aside className="w-64 flex-shrink-0 hidden md:block space-y-7 select-none text-left glass-ios p-6 rounded-3xl border border-slate-300/70 shadow-lg h-fit">
@@ -242,16 +242,16 @@ export default function ProductGrid({
         )}
 
         {/* Product Cards Grid */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0 w-full overflow-hidden">
           {/* Mobile Category Horizontal Pills */}
-          <div className="flex md:hidden overflow-x-auto no-scrollbar space-x-2 mb-6 pb-2">
+          <div className="flex md:hidden overflow-x-auto no-scrollbar space-x-2 mb-6 pb-2 w-full">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedSport(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+                className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-bold whitespace-nowrap transition-colors flex-shrink-0 ${
                   selectedSport === cat
-                    ? 'bg-black text-white'
+                    ? 'bg-black text-white shadow-sm'
                     : 'bg-[#f5f5f5] text-black hover:bg-gray-200'
                 }`}
               >
@@ -283,7 +283,7 @@ export default function ProductGrid({
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
               {filteredProducts.map((product) => (
                 <ProductCard
                   key={product.id}

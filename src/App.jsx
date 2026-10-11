@@ -321,16 +321,16 @@ export default function App() {
   const totalCartItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#edf1f7] relative flex flex-col text-slate-900 selection:bg-black selection:text-white">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#edf1f7] relative flex flex-col text-slate-900 selection:bg-black selection:text-white">
       {/* iOS Liquid Glass Ambient Glow Orbs */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-300/20 rounded-full blur-[100px]" />
-        <div className="absolute top-1/4 -right-32 w-[450px] h-[450px] bg-purple-300/20 rounded-full blur-[120px]" />
-        <div className="absolute top-2/3 -left-32 w-96 h-96 bg-emerald-200/20 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-20 right-1/4 w-[500px] h-[500px] bg-sky-200/20 rounded-full blur-[120px]" />
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden w-full h-full">
+        <div className="absolute -top-32 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-blue-300/20 rounded-full blur-[80px] sm:blur-[100px]" />
+        <div className="absolute top-1/4 -right-32 w-72 sm:w-[450px] h-72 sm:h-[450px] bg-purple-300/20 rounded-full blur-[90px] sm:blur-[120px]" />
+        <div className="absolute top-2/3 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-emerald-200/20 rounded-full blur-[80px] sm:blur-[100px]" />
+        <div className="absolute -bottom-20 right-1/4 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-sky-200/20 rounded-full blur-[90px] sm:blur-[120px]" />
       </div>
 
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div className="relative z-10 flex flex-col min-h-screen w-full max-w-full overflow-x-hidden">
         {/* 1. Top Utility Bar */}
       <TopBar
         user={user}

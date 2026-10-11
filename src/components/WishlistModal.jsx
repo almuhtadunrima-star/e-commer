@@ -19,8 +19,8 @@ export default function WishlistModal({
         onClick={onClose}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md sm:max-w-lg glass-ios border-l border-white/80 shadow-2xl flex flex-col justify-between">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+        <div className="w-screen max-w-full sm:max-w-md lg:max-w-lg glass-ios border-l border-white/80 shadow-2xl flex flex-col justify-between">
           {/* Header */}
           <div className="p-6 border-b border-white/60 bg-white/40 backdrop-blur-md flex items-center justify-between">
             <h2 className="text-xl font-black text-black">

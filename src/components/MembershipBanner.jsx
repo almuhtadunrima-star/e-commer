@@ -21,19 +21,19 @@ export default function MembershipBanner({ onOpenAuth }) {
   ];
 
   return (
-    <section className="max-w-[1920px] mx-auto px-6 lg:px-12 my-12">
-      <div className="glass-ios-dark rounded-3xl p-8 sm:p-14 border border-white/20 shadow-2xl relative overflow-hidden text-center">
+    <section className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 my-8 sm:my-12 overflow-hidden">
+      <div className="glass-ios-dark rounded-3xl p-6 sm:p-14 border border-white/20 shadow-2xl relative overflow-hidden text-center">
         <span className="text-xs font-bold tracking-widest uppercase text-gray-300 mb-2 block">
           MA Store Membership
         </span>
-        <h2 className="text-3xl sm:text-5xl font-black font-nike-bold tracking-tight uppercase mb-4 text-white">
+        <h2 className="text-2xl sm:text-5xl font-black font-nike-bold tracking-tight uppercase mb-4 text-white">
           BECOME AN MA STORE MEMBER
         </h2>
-        <p className="text-sm sm:text-base text-gray-300 max-w-xl mx-auto mb-8 font-medium">
+        <p className="text-xs sm:text-base text-gray-300 max-w-xl mx-auto mb-8 font-medium">
           Daftar gratis. Bergabunglah dengan komunitas eksklusif dan dapatkan penawaran terbaik dari MA Store langsung ke Anda.
         </p>
 
-        <div className="flex justify-center gap-4 mb-14">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-10 sm:mb-14">
           <button
             onClick={() => onOpenAuth('join')}
             className="px-8 py-3.5 bg-white text-black hover:bg-white/90 rounded-full font-black text-sm tracking-tight transition-all active:scale-95 shadow-xl"
