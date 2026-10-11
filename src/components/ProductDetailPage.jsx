@@ -39,10 +39,10 @@ export default function ProductDetailPage({
 
   const activeColor = product.colors[selectedColorIdx] || product.colors[0];
 
-  // Related products from same or other categories
-  const relatedProducts = allProducts
-    .filter((p) => p.id !== product.id)
-    .slice(0, 4);
+  // Related products prioritizing same category
+  const sameCategoryProducts = allProducts.filter((p) => p.id !== product.id && p.category === product.category);
+  const otherProducts = allProducts.filter((p) => p.id !== product.id && p.category !== product.category);
+  const relatedProducts = [...sameCategoryProducts, ...otherProducts].slice(0, 4);
 
   const handleAdd = () => {
     onAddToCart({
@@ -524,7 +524,9 @@ export default function ProductDetailPage({
                   Kamu Mungkin Juga Menyukai
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1">
-                  Koleksi sepatu rekomendasi terbaik dengan performa serupa
+                  {product.category === 'Hoodie' 
+                    ? 'Koleksi pakaian & hoodie rekomendasi terbaik dengan kualitas premium' 
+                    : 'Koleksi sepatu rekomendasi terbaik dengan performa serupa'}
                 </p>
               </div>
             </div>
@@ -574,7 +576,7 @@ export default function ProductDetailPage({
               <div className="flex items-center gap-2">
                 <Ruler className="w-5 h-5 text-black" />
                 <h3 className="text-base sm:text-lg font-black text-black">
-                  Tabel Panduan Ukuran Sepatu
+                  {product.category === 'Hoodie' ? 'Tabel Panduan Ukuran Hoodie & Apparel' : 'Tabel Panduan Ukuran Sepatu'}
                 </h3>
               </div>
               <button
@@ -586,58 +588,105 @@ export default function ProductDetailPage({
             </div>
 
             <p className="text-xs text-gray-600 mb-4 leading-relaxed">
-              Ukur panjang telapak kaki Anda dari tumit hingga ujung jari terpanjang, lalu sesuaikan dengan tabel berikut:
+              {product.category === 'Hoodie'
+                ? 'Pilih ukuran pakaian sesuai dengan lebar dada dan kenyamanan siluet fitting Anda:'
+                : 'Ukur panjang telapak kaki Anda dari tumit hingga ujung jari terpanjang, lalu sesuaikan dengan tabel berikut:'}
             </p>
 
             <div className="overflow-hidden rounded-xl border border-gray-200 mb-6">
-              <table className="w-full text-xs text-left">
-                <thead className="bg-gray-100 text-gray-700 font-black">
-                  <tr>
-                    <th className="py-2.5 px-3">EU Size</th>
-                    <th className="py-2.5 px-3">US Size</th>
-                    <th className="py-2.5 px-3">UK Size</th>
-                    <th className="py-2.5 px-3">Panjang Kaki (cm)</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-2 px-3 font-black">EU 40</td>
-                    <td className="py-2 px-3">US 7</td>
-                    <td className="py-2 px-3">UK 6</td>
-                    <td className="py-2 px-3 font-semibold text-gray-700">25.0 cm</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-2 px-3 font-black">EU 41</td>
-                    <td className="py-2 px-3">US 8</td>
-                    <td className="py-2 px-3">UK 7</td>
-                    <td className="py-2 px-3 font-semibold text-gray-700">26.0 cm</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50 bg-black/5">
-                    <td className="py-2 px-3 font-black text-black">EU 42 (Paling Populer)</td>
-                    <td className="py-2 px-3">US 8.5</td>
-                    <td className="py-2 px-3">UK 7.5</td>
-                    <td className="py-2 px-3 font-bold text-black">26.5 cm</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-2 px-3 font-black">EU 43</td>
-                    <td className="py-2 px-3">US 9.5</td>
-                    <td className="py-2 px-3">UK 8.5</td>
-                    <td className="py-2 px-3 font-semibold text-gray-700">27.5 cm</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-2 px-3 font-black">EU 44</td>
-                    <td className="py-2 px-3">US 10</td>
-                    <td className="py-2 px-3">UK 9</td>
-                    <td className="py-2 px-3 font-semibold text-gray-700">28.0 cm</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="py-2 px-3 font-black">EU 45</td>
-                    <td className="py-2 px-3">US 11</td>
-                    <td className="py-2 px-3">UK 10</td>
-                    <td className="py-2 px-3 font-semibold text-gray-700">29.0 cm</td>
-                  </tr>
-                </tbody>
-              </table>
+              {product.category === 'Hoodie' ? (
+                <table className="w-full text-xs text-left">
+                  <thead className="bg-gray-100 text-gray-700 font-black">
+                    <tr>
+                      <th className="py-2.5 px-3">Size</th>
+                      <th className="py-2.5 px-3">Lebar Dada (cm)</th>
+                      <th className="py-2.5 px-3">Panjang Badan (cm)</th>
+                      <th className="py-2.5 px-3">Panjang Lengan (cm)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">S</td>
+                      <td className="py-2 px-3">52 cm</td>
+                      <td className="py-2 px-3">68 cm</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">62 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">M</td>
+                      <td className="py-2 px-3">55 cm</td>
+                      <td className="py-2 px-3">70 cm</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">63 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50 bg-black/5">
+                      <td className="py-2 px-3 font-black text-black">L (Paling Populer)</td>
+                      <td className="py-2 px-3 font-bold text-black">58 cm</td>
+                      <td className="py-2 px-3 font-bold text-black">72 cm</td>
+                      <td className="py-2 px-3 font-bold text-black">64 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">XL</td>
+                      <td className="py-2 px-3">61 cm</td>
+                      <td className="py-2 px-3">74 cm</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">65 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">XXL</td>
+                      <td className="py-2 px-3">64 cm</td>
+                      <td className="py-2 px-3">76 cm</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">66 cm</td>
+                    </tr>
+                  </tbody>
+                </table>
+              ) : (
+                <table className="w-full text-xs text-left">
+                  <thead className="bg-gray-100 text-gray-700 font-black">
+                    <tr>
+                      <th className="py-2.5 px-3">EU Size</th>
+                      <th className="py-2.5 px-3">US Size</th>
+                      <th className="py-2.5 px-3">UK Size</th>
+                      <th className="py-2.5 px-3">Panjang Kaki (cm)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">EU 40</td>
+                      <td className="py-2 px-3">US 7</td>
+                      <td className="py-2 px-3">UK 6</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">25.0 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">EU 41</td>
+                      <td className="py-2 px-3">US 8</td>
+                      <td className="py-2 px-3">UK 7</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">26.0 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50 bg-black/5">
+                      <td className="py-2 px-3 font-black text-black">EU 42 (Paling Populer)</td>
+                      <td className="py-2 px-3">US 8.5</td>
+                      <td className="py-2 px-3">UK 7.5</td>
+                      <td className="py-2 px-3 font-bold text-black">26.5 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">EU 43</td>
+                      <td className="py-2 px-3">US 9.5</td>
+                      <td className="py-2 px-3">UK 8.5</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">27.5 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">EU 44</td>
+                      <td className="py-2 px-3">US 10</td>
+                      <td className="py-2 px-3">UK 9</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">28.0 cm</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="py-2 px-3 font-black">EU 45</td>
+                      <td className="py-2 px-3">US 11</td>
+                      <td className="py-2 px-3">UK 10</td>
+                      <td className="py-2 px-3 font-semibold text-gray-700">29.0 cm</td>
+                    </tr>
+                  </tbody>
+                </table>
+              )}
             </div>
 
             <button

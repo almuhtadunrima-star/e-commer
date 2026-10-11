@@ -18,6 +18,7 @@ export default function Navbar({
 
   const navItems = [
     { label: "Semua Produk", category: "All", badge: null },
+    { label: "Hoodie & Apparel", category: "Hoodie", badge: "Baru" },
     { label: "Pria", category: "Pria", badge: null },
     { label: "Wanita", category: "Wanita", badge: null },
     { label: "Jordan", category: "Jordan", badge: null },
@@ -25,8 +26,8 @@ export default function Navbar({
   ];
 
   const popularSearches = [
-    "MOVEO Air Force 1", "MOVEO Jordan", "MOVEO Air Max", "MOVEO Vomero 5", 
-    "MOVEO Pegasus", "MOVEO Metcon", "Running", "Basketball"
+    "Hoodie MOVEO", "Crewneck Fleece", "MOVEO Air Force 1", "MOVEO Jordan", 
+    "MOVEO Air Max", "MOVEO Pegasus", "Running", "Training"
   ];
 
   return (

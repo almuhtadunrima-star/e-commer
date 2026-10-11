@@ -22,7 +22,7 @@ export const products = [
     ],
     colors: [
       { name: "Triple White", hex: "#FFFFFF", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6a9d4880-6497-4988-af76-4e642478e4e4/AIR+FORCE+1+%2707.png" },
-      { name: "Triple Black", hex: "#111111", image: "/shoes/OIP.webp" },
+      { name: "Triple Black", hex: "#111111", image: "https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/fc4622c4-2769-4665-aa6e-42c974a7705e/AIR+FORCE+1+%2707.png" },
       { name: "Wolf Grey", hex: "#9E9E9E", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/cb44dbd6-9619-40b5-8dd7-ee292ca7398a/AIR+FORCE+1+%2707.png" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 42.5", "EU 43", "EU 44", "EU 45"]
@@ -122,7 +122,7 @@ export const products = [
       "Lidah sepatu dan bantalan kerah yang empuk mengurangi tekanan tali"
     ],
     colors: [
-      { name: "Obsidian Black / Special Edition", hex: "#111111", image: "/shoes/OIP.webp" }
+      { name: "Racer Blue / Speed Orange", hex: "#1D50DF", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/71f19357-2769-48fc-a8d1-5dd4e4fc2848/NIKE+PEGASUS+PLUS+2.png" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44", "EU 45"]
   },
@@ -222,7 +222,7 @@ export const products = [
       "Upper jaring tebal yang tahan gesekan dan goresan"
     ],
     colors: [
-      { name: "Stealth Black Edition", hex: "#111111", image: "/shoes/OIP.webp" }
+      { name: "White / Laser Orange", hex: "#FFFFFF", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6f9ce7db-f2ec-45ff-a25b-d32878e78cec/M+NIKE+METCON+10.png" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
@@ -247,7 +247,7 @@ export const products = [
       "Busa lunak di lapisan dalam untuk kenyamanan maksimal"
     ],
     colors: [
-      { name: "Triple Onyx / Special Edition", hex: "#1B1B1B", image: "/shoes/OIP.webp" }
+      { name: "Platinum / Black", hex: "#F3F4F6", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c8143ea5-a843-4aae-9b5e-2e2154a7ad24/NIKE+FREE+METCON+7.png" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
@@ -298,6 +298,109 @@ export const products = [
       { name: "Anthracite Smoke", hex: "#4A4A4A", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7ce2c1e9-b023-4a25-8c69-54becefff369/AIR+FORCE+1+GTX+VIBRAM.png" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
+  },
+  {
+    id: "moveo-club-fleece-pullover-hoodie",
+    name: "MOVEO Club Fleece Pullover Hoodie",
+    subtitle: "Hoodie Kasual & Olahraga Pria",
+    category: "Hoodie",
+    gender: "Pria",
+    price: 849000,
+    originalPrice: 1099000,
+    stock: 24,
+    weight: 600,
+    rating: 4.9,
+    reviewsCount: 840,
+    badge: "Terlaris",
+    description: "Hoodie fleece klasik dari MOVEO yang memadukan kenyamanan bahan katun fleece brushed-back premium dengan estetika modest streetwear modern. Dilengkapi saku kanguru lapang dan tudung serut bertali tebal.",
+    details: [
+      "Bahan katun fleece premium bertekstur lembut dan hangat di kulit",
+      "Tudung lapis ganda dengan tali serut kokoh untuk proteksi cuaca dingin",
+      "Manset dan hem bergaris rajut rib tebal elastis agar tidak mudah melar",
+      "Saku kanguru di bagian depan untuk kenyamanan tangan dan barang esensial",
+      "Bordir emblem logo M MOVEO eksklusif di dada"
+    ],
+    colors: [
+      { name: "Obsidian Black", hex: "#111111", image: "/shoes/OIP.webp" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: "moveo-tech-fleece-crewneck",
+    name: "MOVEO Tech Fleece Oversized Crewneck",
+    subtitle: "Sweatshirt Modest Streetwear Unisex",
+    category: "Hoodie",
+    gender: "Unisex",
+    price: 899000,
+    originalPrice: 1199000,
+    stock: 16,
+    weight: 550,
+    rating: 5.0,
+    reviewsCount: 620,
+    badge: "Rilis Terbaru",
+    description: "Sweatshirt crewneck berpotongan longgar santun (oversized fit) bergaya modern urban modest. Menghadirkan insulasi termal premium tanpa beban tebal berlebih, sangat serasi dipadukan dengan celana jogger atau cargo.",
+    details: [
+      "Bahan smooth fleece premium dua sisi yang sejuk di dalam dan lembut di luar",
+      "Kerah bundar crewneck rajutan rib anti-melar yang nyaman di leher",
+      "Potongan santai loose fit yang longgar, sopan, dan modis",
+      "Detail jahitan tepi ganda yang kuat dan awet untuk pemakaian harian",
+      "Aksen emblem MOVEO minimalis berlapis silikon di dada"
+    ],
+    colors: [
+      { name: "Pitch Black", hex: "#181818", image: "/shoes/OIP.webp" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: "moveo-therma-fit-athletic-pullover",
+    name: "MOVEO Therma-FIT Athletic Pullover",
+    subtitle: "Sweatshirt Latihan Gym & Running Pria",
+    category: "Hoodie",
+    gender: "Pria",
+    price: 949000,
+    originalPrice: null,
+    stock: 12,
+    weight: 580,
+    rating: 4.8,
+    reviewsCount: 345,
+    badge: "Gym Edition",
+    description: "Didesain untuk sesi pemanasan sebelum angkat beban, latihan outdoor, atau pendinginan setelah olahraga intensif. Teknologi kain Therma-FIT mempertahankan kehangatan alami tubuh sembari melepas uap keringat.",
+    details: [
+      "Teknologi Therma-FIT untuk isolasi temperatur tubuh optimal",
+      "Material breathable stretch 4-arah untuk keleluasaan bergerak saat gym",
+      "Finishing kain lembut anti-gesekan dan cepat kering",
+      "Saku samping dengan ritsleting tersembunyi untuk smartphone atau kunci"
+    ],
+    colors: [
+      { name: "Stealth Black", hex: "#0D0D0D", image: "/shoes/OIP.webp" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: "moveo-modest-activewear-long-hoodie",
+    name: "MOVEO Modest Activewear Long Hoodie",
+    subtitle: "Hoodie Panjang Lari & Fitness Muslimah",
+    category: "Hoodie",
+    gender: "Wanita",
+    price: 799000,
+    originalPrice: 999000,
+    stock: 20,
+    weight: 520,
+    rating: 4.9,
+    reviewsCount: 910,
+    badge: "Diskon 20%",
+    description: "Hoodie panjang wanita dengan siluet tunik modest yang dirancang untuk pelari dan fitness enthusiast muslimah. Menutup bagian pinggul dan paha, tidak ketat, berbahan sejuk, dan sangat pas dipadukan dengan hijab olahraga.",
+    details: [
+      "Siluet modest tunik panjang yang sopan dan bebas gerak",
+      "Bahan kain Dri-FIT cepat kering, ringan, dan tidak menerawang",
+      "Tudung hoodie longgar yang muat dengan cepolan hijab olahraga",
+      "Lubang jempol (thumbhole) di manset untuk menjaga lengan tetap tertutup saat berolahraga",
+      "Belahan samping (side slits) untuk kenyamanan langkah saat lari"
+    ],
+    colors: [
+      { name: "Midnight Black", hex: "#151515", image: "/shoes/OIP.webp" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"]
   }
 ];
 
@@ -447,10 +550,10 @@ export const featuredStories = [
   {
     id: "story-2",
     tag: "Urban Muslim",
-    title: "Streetwear Modest Pria",
-    subtitle: "Koleksi streetwear kasual santun dengan siluet futuristik untuk aktivitas aktif harian.",
+    title: "Streetwear & Hoodie Modest",
+    subtitle: "Koleksi hoodie dan streetwear kasual santun dengan siluet futuristik untuk aktivitas aktif harian.",
     image: "/stories/story-muslim-streetwear.jpg",
-    category: "Lifestyle"
+    category: "Hoodie"
   },
   {
     id: "story-3",

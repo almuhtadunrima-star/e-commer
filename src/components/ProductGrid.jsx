@@ -20,13 +20,14 @@ export default function ProductGrid({
   const [sortBy, setSortBy] = useState("featured");
   const [showFilters, setShowFilters] = useState(true);
 
-  const categories = ["All", "Lifestyle", "Running", "Basketball", "Training", "Jordan"];
+  const categories = ["All", "Hoodie", "Lifestyle", "Running", "Basketball", "Training", "Jordan"];
 
   // Filter & sort logic
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
       // Navbar category
       if (activeCategory === "Jordan" && p.category !== "Jordan") return false;
+      if (activeCategory === "Hoodie" && p.category !== "Hoodie") return false;
       if (activeCategory === "Sale" && !p.originalPrice) return false;
       if (activeCategory === "Pria" && p.gender !== "Pria" && p.gender !== "Unisex") return false;
       if (activeCategory === "Wanita" && p.gender !== "Wanita" && p.gender !== "Unisex") return false;
@@ -75,6 +76,8 @@ export default function ProductGrid({
               ? `Hasil Pencarian: "${searchQuery}"` 
               : activeCategory === "All" 
               ? "Koleksi Sepatu & Perlengkapan" 
+              : activeCategory === "Hoodie"
+              ? "Koleksi Hoodie & Apparel"
               : `Koleksi ${activeCategory}`}
           </h2>
           <span className="text-sm text-[#707072] font-medium">
@@ -131,7 +134,7 @@ export default function ProductGrid({
                         : 'text-gray-700 hover:bg-gray-200'
                     }`}
                   >
-                    {cat === "All" ? "Semua Kategori" : cat}
+                    {cat === "All" ? "Semua Kategori" : cat === "Hoodie" ? "Hoodie & Apparel" : cat}
                   </button>
                 ))}
               </div>
