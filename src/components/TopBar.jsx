@@ -7,13 +7,12 @@ export default function TopBar({ user, onOpenAuth, onSignOut, onOpenTrackLookup 
   return (
     <div className="bg-[#f5f5f5] text-[11px] font-semibold text-[#111111] px-6 lg:px-12 py-1.5 flex justify-between items-center border-b border-[#e5e5e5] select-none">
       {/* Brand Badge */}
-      <div className="flex items-center space-x-2.5">
-        <img src="/logo.png" alt="MA Store" className="h-4 w-auto object-contain rounded" />
-        <span className="font-extrabold text-[10px] tracking-wider uppercase text-black">
-          MA STORE INDONESIA
+      <div className="flex items-center space-x-2">
+        <span className="font-extrabold text-[11px] tracking-wider uppercase text-black">
+          MA STORE
         </span>
         <span className="text-gray-300">|</span>
-        <span className="text-[10px] text-gray-500 font-semibold hidden sm:inline">Toko Resmi Terverifikasi</span>
+        <span className="text-[10px] text-gray-500 font-semibold hidden sm:inline">Official Store Indonesia</span>
       </div>
 
       {/* Utility links */}

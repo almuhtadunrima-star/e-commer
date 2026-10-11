@@ -17,12 +17,13 @@ export default function Navbar({
   const searchInputRef = useRef(null);
 
   const navItems = [
-    { label: "Semua Produk", category: "All", badge: null },
-    { label: "Hoodie & Apparel", category: "Hoodie", badge: "Baru" },
+    { label: "Semua", category: "All", badge: null },
+    { label: "Hoodie", category: "Hoodie", badge: null },
+    { label: "Training", category: "Training", badge: null },
     { label: "Pria", category: "Pria", badge: null },
     { label: "Wanita", category: "Wanita", badge: null },
     { label: "Jordan", category: "Jordan", badge: null },
-    { label: "Promo Diskon", category: "Sale", badge: "Hemat" },
+    { label: "Sale", category: "Sale", badge: "Hemat" },
   ];
 
   const popularSearches = [
@@ -34,37 +35,27 @@ export default function Navbar({
     <>
       <nav className="bg-white sticky top-0 z-40 transition-shadow border-b border-[#f0f0f0] select-none">
         <div className="max-w-[1920px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-          {/* Logo MA Store & Brand Identity */}
-          <div className="flex items-center space-x-3">
+          {/* Logo MA STORE (Nama Saja Sesuai Permintaan) */}
+          <div className="flex items-center flex-shrink-0">
             <button 
               onClick={() => onSelectCategory("All")}
-              className="group focus:outline-none flex items-center gap-2.5 py-1"
-              title="MA Store Official Store"
+              className="group focus:outline-none flex items-center py-1 select-none"
+              title="MA STORE"
             >
-              <img 
-                src="/logo.png" 
-                alt="MA Store" 
-                className="h-10 sm:h-11 w-auto object-contain rounded-xl filter drop-shadow-sm transition-transform group-hover:scale-105" 
-              />
-              <div className="flex flex-col text-left">
-                <span className="font-black text-lg sm:text-xl tracking-tight leading-none text-black uppercase">
-                  MA STORE
-                </span>
-                <span className="text-[9px] font-extrabold tracking-widest text-gray-400 uppercase">
-                  Official Store
-                </span>
-              </div>
+              <span className="font-black text-2xl sm:text-3xl tracking-tight text-black uppercase group-hover:opacity-75 transition-opacity">
+                MA STORE
+              </span>
             </button>
           </div>
 
           {/* Central Category Navigation (Desktop) */}
-          <div className="hidden lg:flex items-center space-x-7">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => onSelectCategory(item.category)}
                 className={`text-[14px] font-bold tracking-tight py-5 relative transition-colors ${
-                  activeCategory === item.category ? 'text-black' : 'text-[#444444] hover:text-black'
+                  activeCategory === item.category ? 'text-black' : 'text-[#555555] hover:text-black'
                 }`}
               >
                 {item.label}
@@ -78,15 +69,6 @@ export default function Navbar({
                 )}
               </button>
             ))}
-
-            {/* Tombol Navigasi Lacak Pesanan Langsung */}
-            <button
-              onClick={onOpenTrackLookup}
-              className="text-[13px] font-bold text-gray-700 hover:text-black flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-            >
-              <Truck className="w-4 h-4 text-black" />
-              <span>Lacak Pesanan</span>
-            </button>
           </div>
 
           {/* Right Actions: Search & Icons */}

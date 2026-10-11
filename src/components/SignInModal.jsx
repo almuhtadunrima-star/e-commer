@@ -45,9 +45,11 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
             <X className="w-5 h-5" />
           </button>
 
-          {/* MA Store Logo */}
+          {/* MA Store Brand Name */}
           <div className="flex justify-center mb-3">
-            <img src="/logo.png" alt="MA Store" className="h-16 w-auto object-contain rounded-2xl shadow-md" />
+            <span className="font-black text-3xl tracking-tight text-black uppercase">
+              MA STORE
+            </span>
           </div>
 
           <h3 className="text-xl sm:text-2xl font-black text-black uppercase tracking-tight mb-2">
