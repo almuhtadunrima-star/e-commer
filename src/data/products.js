@@ -438,27 +438,27 @@ export const heroCampaigns = [
 export const featuredStories = [
   {
     id: "story-1",
-    tag: "Tren Populer",
-    title: "Air Max Dn8",
-    subtitle: "Rasakan bantalan udara dinamis generasi terbaru.",
-    image: "https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/745ba2c6-88b5-49d7-a712-e7ee7c0e03e2/nike-just-do-it.jpg",
-    category: "Lifestyle"
-  },
-  {
-    id: "story-2",
-    tag: "Running",
-    title: "Pegasus Premium",
-    subtitle: "Pantulan pegas paling bertenaga yang pernah dirancang.",
-    image: "https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/e69ac655-b05b-4142-b161-bb8885cb56dc/nike-just-do-it.jpg",
+    tag: "Muslimah Active",
+    title: "Modest Runner Series",
+    subtitle: "Performa lari maksimal dengan paduan hijab aerodinamis dan sepatu lari berdaya pantul tinggi.",
+    image: "/stories/story-muslimah-runner.jpg",
     category: "Running"
   },
   {
+    id: "story-2",
+    tag: "Urban Muslim",
+    title: "Streetwear Modest Pria",
+    subtitle: "Koleksi streetwear kasual santun dengan siluet futuristik untuk aktivitas aktif harian.",
+    image: "/stories/story-muslim-streetwear.jpg",
+    category: "Lifestyle"
+  },
+  {
     id: "story-3",
-    tag: "Jordan Heritage",
-    title: "Jordan Retro Series",
-    subtitle: "Warisan juara abadi didefinisikan kembali untuk gaya jalanan modern.",
-    image: "https://static.nike.com/a/images/f_auto,cs_srgb/w_1920,c_limit/83488957-ff11-4399-817c-c0d92292e763/nike-just-do-it.png",
-    category: "Jordan"
+    tag: "Modest Training",
+    title: "Performance & Gym Gear",
+    subtitle: "Dukungan kelenturan dan pergerakan bebas untuk latihan fisik intensif dan kebugaran.",
+    image: "/stories/story-muslim-training.jpg",
+    category: "Training"
   }
 ];
 
