@@ -22,7 +22,7 @@ export const products = [
     ],
     colors: [
       { name: "Triple White", hex: "#FFFFFF", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6a9d4880-6497-4988-af76-4e642478e4e4/AIR+FORCE+1+%2707.png" },
-      { name: "Triple Black", hex: "#111111", image: "https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/fc4622c4-2769-4665-aa6e-42c974a7705e/AIR+FORCE+1+%2707.png" },
+      { name: "Triple Black", hex: "#111111", image: "/shoes/OIP.webp" },
       { name: "Wolf Grey", hex: "#9E9E9E", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/cb44dbd6-9619-40b5-8dd7-ee292ca7398a/AIR+FORCE+1+%2707.png" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 42.5", "EU 43", "EU 44", "EU 45"]
@@ -122,7 +122,7 @@ export const products = [
       "Lidah sepatu dan bantalan kerah yang empuk mengurangi tekanan tali"
     ],
     colors: [
-      { name: "Racer Blue / Speed Orange", hex: "#1D50DF", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/71f19357-2769-48fc-a8d1-5dd4e4fc2848/NIKE+PEGASUS+PLUS+2.png" }
+      { name: "Obsidian Black / Special Edition", hex: "#111111", image: "/shoes/OIP.webp" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44", "EU 45"]
   },
@@ -222,7 +222,7 @@ export const products = [
       "Upper jaring tebal yang tahan gesekan dan goresan"
     ],
     colors: [
-      { name: "White / Laser Orange", hex: "#FFFFFF", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6f9ce7db-f2ec-45ff-a25b-d32878e78cec/M+NIKE+METCON+10.png" }
+      { name: "Stealth Black Edition", hex: "#111111", image: "/shoes/OIP.webp" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
@@ -247,7 +247,7 @@ export const products = [
       "Busa lunak di lapisan dalam untuk kenyamanan maksimal"
     ],
     colors: [
-      { name: "Platinum / Black", hex: "#F3F4F6", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/c8143ea5-a843-4aae-9b5e-2e2154a7ad24/NIKE+FREE+METCON+7.png" }
+      { name: "Triple Onyx / Special Edition", hex: "#1B1B1B", image: "/shoes/OIP.webp" }
     ],
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
