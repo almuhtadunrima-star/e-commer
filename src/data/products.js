@@ -399,14 +399,14 @@ export const products = [
       "Bordir emblem logo M MOVEO eksklusif di dada"
     ],
     colors: [
-      { name: "Obsidian Black", hex: "#111111", image: "/shoes/OIP.webp" }
+      { name: "Obsidian Black", hex: "#111111", image: "/hoodies/moveo-club-fleece.png" }
     ],
     sizes: ["S", "M", "L", "XL", "XXL"]
   },
   {
-    id: "moveo-tech-fleece-crewneck",
-    name: "MOVEO Tech Fleece Oversized Crewneck",
-    subtitle: "Sweatshirt Modest Streetwear Unisex",
+    id: "moveo-tech-fleece-windrunner-hoodie",
+    name: "MOVEO Tech Fleece Windrunner Full-Zip",
+    subtitle: "Jaket Hoodie Full-Zip Modest Streetwear Unisex",
     category: "Hoodie",
     gender: "Unisex",
     price: 899000,
@@ -416,23 +416,23 @@ export const products = [
     rating: 5.0,
     reviewsCount: 620,
     badge: "Rilis Terbaru",
-    description: "Sweatshirt crewneck berpotongan longgar santun (oversized fit) bergaya modern urban modest. Menghadirkan insulasi termal premium tanpa beban tebal berlebih, sangat serasi dipadukan dengan celana jogger atau cargo.",
+    description: "Jaket hoodie full-zip modern berteknologi Tech Fleece dengan siluet chevron ikonik. Menghadirkan insulasi termal ringan tanpa kesan kaku, dilengkapi saku ritsleting lengan dan tudung terstruktur ergonomis.",
     details: [
       "Bahan smooth fleece premium dua sisi yang sejuk di dalam dan lembut di luar",
-      "Kerah bundar crewneck rajutan rib anti-melar yang nyaman di leher",
-      "Potongan santai loose fit yang longgar, sopan, dan modis",
-      "Detail jahitan tepi ganda yang kuat dan awet untuk pemakaian harian",
-      "Aksen emblem MOVEO minimalis berlapis silikon di dada"
+      "Ritsleting dua arah full-zip memudahkan penyesuaian gaya dan ventilasi",
+      "Saku ritsleting ekstra di bagian lengan kiri untuk barang esensial kecil",
+      "Potongan chevron sporty di bagian dada berkarakter modern streetwear",
+      "Aksen emblem MOVEO minimalis reflektif di dada"
     ],
     colors: [
-      { name: "Pitch Black", hex: "#181818", image: "/shoes/OIP.webp" }
+      { name: "Pitch Black", hex: "#181818", image: "/hoodies/moveo-tech-fleece-zip.png" }
     ],
     sizes: ["S", "M", "L", "XL", "XXL"]
   },
   {
     id: "moveo-therma-fit-athletic-pullover",
     name: "MOVEO Therma-FIT Athletic Pullover",
-    subtitle: "Sweatshirt Latihan Gym & Running Pria",
+    subtitle: "Hoodie Latihan Gym & Running Pria",
     category: "Hoodie",
     gender: "Pria",
     price: 949000,
@@ -446,11 +446,11 @@ export const products = [
     details: [
       "Teknologi Therma-FIT untuk isolasi temperatur tubuh optimal",
       "Material breathable stretch 4-arah untuk keleluasaan bergerak saat gym",
-      "Finishing kain lembut anti-gesekan dan cepat kering",
-      "Saku samping dengan ritsleting tersembunyi untuk smartphone atau kunci"
+      "Grafis artistik eksklusif Mamba/Athlete di dada dengan finishing sablon timbul",
+      "Saku kanguru ergonomis dengan tepi bertulang kuat"
     ],
     colors: [
-      { name: "Stealth Black", hex: "#0D0D0D", image: "/shoes/OIP.webp" }
+      { name: "Charcoal Heather", hex: "#2B2B2B", image: "/hoodies/moveo-therma-gym.png" }
     ],
     sizes: ["S", "M", "L", "XL", "XXL"]
   },
@@ -476,7 +476,7 @@ export const products = [
       "Belahan samping (side slits) untuk kenyamanan langkah saat lari"
     ],
     colors: [
-      { name: "Midnight Black", hex: "#151515", image: "/shoes/OIP.webp" }
+      { name: "Midnight Black", hex: "#151515", image: "/hoodies/moveo-modest-long.png" }
     ],
     sizes: ["S", "M", "L", "XL", "XXL"]
   }

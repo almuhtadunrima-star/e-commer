@@ -389,29 +389,36 @@ export default function ProductDetailPage({
                   <span>Beli Sekarang (Langsung Checkout)</span>
                 </button>
 
-                {/* 2. Tambah ke Keranjang */}
-                <button
-                  onClick={handleAdd}
-                  className="w-full py-4 border-2 border-black bg-white hover:bg-gray-50 text-black rounded-full font-black text-sm tracking-wide transition-all active:scale-[0.99] flex items-center justify-center space-x-2"
-                >
-                  {addedSuccess ? (
-                    <>
-                      <Check className="w-4 h-4 text-green-600" />
-                      <span className="text-green-700">Berhasil Masuk Keranjang!</span>
-                    </>
-                  ) : (
-                    <span>Tambah ke Keranjang Belanja</span>
-                  )}
-                </button>
+                {/* 2. Tambah ke Keranjang & Wishlist Compact */}
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={handleAdd}
+                    className="flex-1 py-3.5 border-2 border-black bg-white hover:bg-black hover:text-white text-black rounded-full font-black text-xs sm:text-sm tracking-wide transition-all active:scale-[0.99] flex items-center justify-center space-x-2 shadow-sm"
+                  >
+                    {addedSuccess ? (
+                      <>
+                        <Check className="w-4 h-4 text-green-600" />
+                        <span className="text-green-700">Berhasil Masuk Keranjang!</span>
+                      </>
+                    ) : (
+                      <span>Tambah ke Keranjang Belanja</span>
+                    )}
+                  </button>
 
-                {/* 3. Simpan ke Favorit */}
-                <button
-                  onClick={() => onToggleFavorite(product)}
-                  className="w-full py-3.5 border border-gray-200 hover:border-black rounded-full font-bold text-xs text-gray-700 transition-all flex items-center justify-center space-x-2 bg-white"
-                >
-                  <Heart className={`w-4 h-4 ${isFavorite ? 'fill-red-600 text-red-600' : ''}`} />
-                  <span>{isFavorite ? 'Sudah Ada di Favorit (Hapus)' : 'Simpan ke Wishlist Favorit'}</span>
-                </button>
+                  {/* 3. Wishlist Compact Icon Button */}
+                  <button
+                    onClick={() => onToggleFavorite(product)}
+                    className={`w-12 h-12 flex-shrink-0 border rounded-full transition-all flex items-center justify-center shadow-xs active:scale-95 group ${
+                      isFavorite
+                        ? 'border-red-300 bg-red-50 text-red-600'
+                        : 'border-gray-300 bg-white hover:border-black text-gray-700'
+                    }`}
+                    title={isFavorite ? 'Hapus dari Wishlist Favorit' : 'Simpan ke Wishlist Favorit'}
+                    aria-label="Wishlist"
+                  >
+                    <Heart className={`w-4 h-4 transition-transform group-hover:scale-110 ${isFavorite ? 'fill-red-600 text-red-600' : ''}`} />
+                  </button>
+                </div>
               </div>
 
               {/* Deskripsi & Ringkasan */}
