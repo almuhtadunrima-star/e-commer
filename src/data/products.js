@@ -252,6 +252,84 @@ export const products = [
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
   {
+    id: "moveo-pro-shield-track-jacket",
+    name: "MOVEO Pro Shield Training Track Jacket",
+    subtitle: "Jaket Training & Running Pria",
+    category: "Training",
+    gender: "Pria",
+    price: 749000,
+    originalPrice: 949000,
+    stock: 15,
+    weight: 450,
+    rating: 4.9,
+    reviewsCount: 430,
+    badge: "Diskon 21%",
+    description: "Jaket latihan atletik MOVEO dengan konstruksi two-tone colorblock hitam dan abu-abu serta aksen garis piping putih elegan. Dibuat dari kain tenun microfiber tahan angin ringan dengan tali serut bungee toggle di bagian pinggang untuk kenyamanan optimal saat pemanasan atau lari.",
+    details: [
+      "Material woven microfiber premium ringan, tahan hembusan angin (windproof) dan cepat kering",
+      "Aksen garis piping putih stylish dengan aksen visibilitas olahraga malam",
+      "Kerah tegang (mock neck) protektif dengan ritsleting penuh kokoh dan lancar",
+      "Dua saku tangan beritsleting untuk menyimpan kunci, dompet, atau smartphone",
+      "Bungee toggle di bagian hem bawah untuk menyesuaikan fitting pinggang"
+    ],
+    colors: [
+      { name: "Black / Grey / White Piping", hex: "#222222", image: "/jackets/moveo-training-track-jacket.jpg" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: "moveo-aerospeed-performance-windbreaker",
+    name: "MOVEO AeroSpeed Performance Windbreaker",
+    subtitle: "Jaket Angin Training & Gym Unisex",
+    category: "Training",
+    gender: "Unisex",
+    price: 829000,
+    originalPrice: 1049000,
+    stock: 18,
+    weight: 400,
+    rating: 4.9,
+    reviewsCount: 520,
+    badge: "Terlaris",
+    description: "Windbreaker performa tinggi yang sangat ringan dan fleksibel. Mengusung panel kontras abu-abu aerodinamis dan lapisan anti-angin serta tahan gerimis ringan. Ideal untuk sesi kardio intensif, gym indoor, hingga aktivitas lari luar ruangan.",
+    details: [
+      "Bahan ultralight ripstop tahan gesekan dan hembusan angin dingin",
+      "Lapisan pelindung ritsleting (storm flap) dengan kancing snap pengaman",
+      "Panel samping bersirkulasi udara mencegah rasa gerah saat berlatih intensif",
+      "Ujung pergelangan tangan elastis yang rapat menahan angin",
+      "Siluet atletis ergonomis yang memberikan keleluasaan gerak penuh"
+    ],
+    colors: [
+      { name: "Stealth Black / Aero Grey", hex: "#181818", image: "/jackets/moveo-windbreaker-performance.webp" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: "moveo-all-weather-hooded-parka",
+    name: "MOVEO All-Weather Hooded Training Parka",
+    subtitle: "Jaket Parka Training Outdoor Tahan Cuaca",
+    category: "Training",
+    gender: "Pria",
+    price: 999000,
+    originalPrice: 1299000,
+    stock: 12,
+    weight: 680,
+    rating: 5.0,
+    reviewsCount: 388,
+    badge: "Waterproof",
+    description: "Jaket parka latihan outdoor cuaca ekstrem dengan tudung serut bertutup penuh, saku vertikal beritsleting di dada, dan konstruksi kain tahan air (water-resistant). Melindungi tubuh dari terpaan hujan ringan dan angin kencang saat berolahraga di luar ruangan.",
+    details: [
+      "Kain membran luar tahan air dan tahan angin (weatherproof protection)",
+      "Tudung kepala berkontur dengan sistem penarik tali ganda (dual hood toggles)",
+      "Saku dada vertikal bersegel ritsleting tahan air untuk gadget berharga",
+      "Pergelangan tangan dengan velcro strap yang dapat disesuaikan",
+      "Kerah tinggi dengan pelindung dagu berlapisan lembut"
+    ],
+    colors: [
+      { name: "Deep Navy / Storm Grey", hex: "#0F172A", image: "/jackets/moveo-allweather-hooded-parka.webp" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
     id: "moveo-kd19-basketball",
     name: "MOVEO KD19",
     subtitle: "Sepatu Basket All-Around",

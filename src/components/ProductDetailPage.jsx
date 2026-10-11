@@ -38,6 +38,7 @@ export default function ProductDetailPage({
   if (!product) return null;
 
   const activeColor = product.colors[selectedColorIdx] || product.colors[0];
+  const isApparel = product.category === 'Hoodie' || product.sizes[0] === 'S' || product.subtitle?.toLowerCase().includes('jaket');
 
   // Related products prioritizing same category
   const sameCategoryProducts = allProducts.filter((p) => p.id !== product.id && p.category === product.category);
@@ -524,8 +525,8 @@ export default function ProductDetailPage({
                   Kamu Mungkin Juga Menyukai
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1">
-                  {product.category === 'Hoodie' 
-                    ? 'Koleksi pakaian & hoodie rekomendasi terbaik dengan kualitas premium' 
+                  {isApparel 
+                    ? 'Koleksi pakaian & jaket training rekomendasi terbaik dengan kualitas premium' 
                     : 'Koleksi sepatu rekomendasi terbaik dengan performa serupa'}
                 </p>
               </div>
@@ -576,7 +577,7 @@ export default function ProductDetailPage({
               <div className="flex items-center gap-2">
                 <Ruler className="w-5 h-5 text-black" />
                 <h3 className="text-base sm:text-lg font-black text-black">
-                  {product.category === 'Hoodie' ? 'Tabel Panduan Ukuran Hoodie & Apparel' : 'Tabel Panduan Ukuran Sepatu'}
+                  {isApparel ? 'Tabel Panduan Ukuran Jaket & Pakaian' : 'Tabel Panduan Ukuran Sepatu'}
                 </h3>
               </div>
               <button
@@ -588,13 +589,13 @@ export default function ProductDetailPage({
             </div>
 
             <p className="text-xs text-gray-600 mb-4 leading-relaxed">
-              {product.category === 'Hoodie'
+              {isApparel
                 ? 'Pilih ukuran pakaian sesuai dengan lebar dada dan kenyamanan siluet fitting Anda:'
                 : 'Ukur panjang telapak kaki Anda dari tumit hingga ujung jari terpanjang, lalu sesuaikan dengan tabel berikut:'}
             </p>
 
             <div className="overflow-hidden rounded-xl border border-gray-200 mb-6">
-              {product.category === 'Hoodie' ? (
+              {isApparel ? (
                 <table className="w-full text-xs text-left">
                   <thead className="bg-gray-100 text-gray-700 font-black">
                     <tr>

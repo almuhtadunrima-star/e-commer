@@ -26,7 +26,7 @@ export default function Navbar({
   ];
 
   const popularSearches = [
-    "Hoodie MOVEO", "Crewneck Fleece", "MOVEO Air Force 1", "MOVEO Jordan", 
+    "Jaket Training", "Hoodie MOVEO", "Crewneck Fleece", "MOVEO Air Force 1", "MOVEO Jordan", 
     "MOVEO Air Max", "MOVEO Pegasus", "Running", "Training"
   ];
 
