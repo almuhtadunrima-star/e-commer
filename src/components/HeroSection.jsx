@@ -21,7 +21,7 @@ export default function HeroSection({ onShopCategory }) {
         <img
           src={campaign.image}
           alt={campaign.title}
-          className="w-full h-full object-cover object-center transition-all duration-700 ease-in-out scale-100"
+          className="w-full h-full object-cover object-[center_25%] transition-all duration-700 ease-in-out scale-100"
         />
 
         {/* Subtle Dark Gradient Overlay */}

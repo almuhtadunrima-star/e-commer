@@ -593,26 +593,37 @@ export const paymentMethods = [
 // Banner Kampanye Hero
 export const heroCampaigns = [
   {
-    id: "nfl-fully-invested",
-    title: "FULLY INVESTED",
-    subtitle: "Digerakkan oleh tekad, dirayakan oleh prestasi. Kenakan perlengkapan olahraga berstandar juara dunia sekarang juga.",
-    category: "Koleksi Atlet Profesional",
-    ctaPrimary: "Belanja Sekarang",
-    ctaSecondary: "Lihat Cerita",
-    filterTarget: "Lifestyle",
-    image: "https://static.nike.com/a/images/f_auto,cs_srgb/w_1920,c_limit/9122c246-4980-46bd-b9c5-c9fc4ba643be/nike-just-do-it.jpg",
-    athlete: "Jayden Reed, Wide Receiver"
+    id: "modest-urban-performance",
+    title: "MODEST. BOLD. UNSTOPPABLE.",
+    subtitle: "Koleksi busana atletik santun dan inovasi sepatu performa tinggi MOVEO. Didesain untuk kenyamanan ibadah, mobilitas dinamis, dan prestasi atlet muslim.",
+    category: "Modest Athletic Performance",
+    ctaPrimary: "Eksplorasi Koleksi",
+    ctaSecondary: "Lihat Hoodie & Jaket",
+    filterTarget: "Hoodie",
+    image: "/hero/hero-muslim-streetwear.jpg",
+    athlete: "Koleksi Atlet Muslim MA Store"
   },
   {
-    id: "moveo-hybrid-rn",
-    title: "TRAIN EVERYTHING",
-    subtitle: "Latihan tanpa batas. Dari lari jalanan hingga angkat beban di gym, dapatkan sepatu serbaguna terbaik.",
-    category: "Training & Gym",
-    ctaPrimary: "Lihat Sepatu Training",
-    ctaSecondary: "Eksplorasi Fitur",
+    id: "muslimah-modest-runner",
+    title: "POWER IN MODESTY",
+    subtitle: "Mendukung pelari dan wanita aktif muslimah dengan hijab olahraga aerodinamis serta sepatu lari MOVEO berdaya pantul maksimal.",
+    category: "Muslimah Active Series",
+    ctaPrimary: "Lihat Sepatu Lari",
+    ctaSecondary: "Koleksi Modest",
+    filterTarget: "Running",
+    image: "/hero/hero-muslimah-runner.jpg",
+    athlete: "Kampanye Muslimah Berdaya"
+  },
+  {
+    id: "muslim-performance-training",
+    title: "DISIPLIN & PRESTASI",
+    subtitle: "Dari latihan fisik intensif, pemanasan kardio, hingga sesi gym harian. Kenakan perlengkapan jaket dan sepatu training MOVEO berstandar profesional.",
+    category: "Training & Fitness Modest",
+    ctaPrimary: "Lihat Jaket & Sepatu",
+    ctaSecondary: "Koleksi Training",
     filterTarget: "Training",
-    image: "https://static.nike.com/a/images/f_auto,cs_srgb/w_1920,c_limit/21a1e26a-93e0-4609-aa3b-fa72259ce075/nike-just-do-it.jpg",
-    athlete: "Inovasi Performa MOVEO"
+    image: "/hero/hero-muslim-training.jpg",
+    athlete: "Inovasi Training MOVEO"
   }
 ];
 
