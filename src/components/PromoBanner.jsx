@@ -21,7 +21,7 @@ export default function PromoBanner({ onCategorySelect }) {
   };
 
   return (
-    <div className="bg-white/50 backdrop-blur-xl text-[#111111] py-2 px-4 text-center border-b border-white/50 relative flex items-center justify-center select-none shadow-sm">
+    <div className="bg-[#dae1ec]/85 backdrop-blur-xl text-slate-900 py-2.5 px-4 text-center border-b border-slate-300/70 relative flex items-center justify-center select-none shadow-xs">
       <button 
         onClick={handlePrev}
         aria-label="Previous announcement"

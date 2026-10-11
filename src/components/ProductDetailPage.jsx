@@ -422,21 +422,21 @@ export default function ProductDetailPage({
               </div>
 
               {/* Deskripsi & Ringkasan */}
-              <div className="pt-4 border-t border-gray-100">
-                <h3 className="text-xs font-black uppercase tracking-wider text-black mb-2">
+              <div className="pt-4 border-t border-slate-300/60">
+                <h3 className="text-xs font-black uppercase tracking-wider text-slate-900 mb-2">
                   Tentang Produk
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
                   {product.description}
                 </p>
               </div>
 
               {/* Spesifikasi & Fitur */}
               <div>
-                <h3 className="text-xs font-black uppercase tracking-wider text-black mb-2.5">
+                <h3 className="text-xs font-black uppercase tracking-wider text-slate-900 mb-2.5">
                   Spesifikasi & Keunggulan
                 </h3>
-                <ul className="text-xs text-gray-600 space-y-2">
+                <ul className="text-xs text-slate-800 space-y-2 font-medium">
                   {product.details?.map((detail, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-black mt-1.5 flex-shrink-0"></span>
@@ -447,14 +447,14 @@ export default function ProductDetailPage({
               </div>
 
               {/* Kurir & Ekspedisi Tersedia */}
-              <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 text-xs text-gray-600 space-y-2">
-                <div className="flex items-center gap-2 font-bold text-black">
+              <div className="p-4 glass-ios-card rounded-2xl text-xs space-y-2">
+                <div className="flex items-center gap-2 font-black text-slate-900">
                   <Truck className="w-4 h-4" />
                   <span>Simulasi Kurir Pengiriman:</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {['JNE Regular', 'SiCepat BEST', 'J&T Express', 'AnterAja', 'GoSend Instant'].map((courier) => (
-                    <span key={courier} className="px-2.5 py-1 bg-white rounded-lg border border-gray-200 text-[11px] font-bold text-gray-700">
+                    <span key={courier} className="px-2.5 py-1 glass-ios-pill rounded-lg text-[11px] font-bold text-slate-800 shadow-xs">
                       {courier}
                     </span>
                   ))}
@@ -467,7 +467,7 @@ export default function ProductDetailPage({
         </div>
 
         {/* 3. Section Ulasan Pembeli (Customer Reviews) */}
-        <div className="mt-16 bg-white rounded-3xl border border-gray-200 p-6 sm:p-10 shadow-sm">
+        <div className="mt-16 glass-ios rounded-3xl border border-slate-300/70 p-6 sm:p-10 shadow-md">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-gray-200 gap-4">
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-black">

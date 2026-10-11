@@ -5,7 +5,7 @@ export default function TopBar({ user, onOpenAuth, onSignOut, onOpenTrackLookup 
   const [showHelpMenu, setShowHelpMenu] = useState(false);
 
   return (
-    <div className="bg-white/40 backdrop-blur-xl text-[11px] font-semibold text-[#111111] px-6 lg:px-12 py-1.5 flex justify-between items-center border-b border-white/50 select-none">
+    <div className="bg-[#e2e8f1]/80 backdrop-blur-xl text-[11px] font-bold text-slate-800 px-6 lg:px-12 py-1.5 flex justify-between items-center border-b border-slate-300/70 select-none">
       {/* Brand Badge */}
       <div className="flex items-center space-x-2">
         <span className="font-black text-[11px] tracking-wider uppercase text-black">

@@ -321,7 +321,7 @@ export default function App() {
   const totalCartItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] relative flex flex-col text-[#111111] selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-[#edf1f7] relative flex flex-col text-slate-900 selection:bg-black selection:text-white">
       {/* iOS Liquid Glass Ambient Glow Orbs */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-300/20 rounded-full blur-[100px]" />

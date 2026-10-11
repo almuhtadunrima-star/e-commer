@@ -32,7 +32,7 @@ export default function ProductCard({
       onClick={() => onOpenDetail(product)}
     >
       {/* Image Container */}
-      <div className="relative aspect-square w-full bg-gradient-to-b from-gray-100/70 to-gray-50/40 backdrop-blur-md rounded-xl overflow-hidden mb-3 border border-white/50">
+      <div className="relative aspect-square w-full bg-gradient-to-b from-slate-200/60 to-slate-100/40 backdrop-blur-md rounded-xl overflow-hidden mb-3 border border-slate-300/60">
         {/* Product Image */}
         <img
           src={currentColor.image}
@@ -63,7 +63,7 @@ export default function ProductCard({
             )}
           </div>
           {product.stock <= 5 && (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full glass-ios-pill text-amber-900 border border-amber-200/60 shadow-xs">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full glass-ios-pill text-amber-950 border border-amber-300/80 shadow-xs">
               Sisa {product.stock} pcs!
             </span>
           )}
@@ -80,7 +80,7 @@ export default function ProductCard({
         >
           <Heart
             className={`w-4 h-4 transition-colors ${
-              isFavorite ? 'fill-red-600 text-red-600' : 'text-gray-600 hover:text-black'
+              isFavorite ? 'fill-red-600 text-red-600' : 'text-slate-700 hover:text-black'
             }`}
           />
         </button>
@@ -111,12 +111,12 @@ export default function ProductCard({
               className={`w-4 h-4 rounded-full border transition-all ${
                 selectedColorIndex === idx
                   ? 'ring-2 ring-black border-white scale-110'
-                  : 'border-gray-300 hover:border-black'
+                  : 'border-slate-400 hover:border-black'
               }`}
               style={{ backgroundColor: col.hex }}
             />
           ))}
-          <span className="text-[11px] text-[#707072] ml-1 font-medium">
+          <span className="text-[11px] text-slate-600 ml-1 font-bold">
             {product.colors.length} Pilihan Warna
           </span>
         </div>
@@ -128,31 +128,31 @@ export default function ProductCard({
           <div className="flex items-center justify-between text-xs font-semibold mb-1">
             <div className="flex items-center space-x-1 text-amber-500">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span>{product.rating}</span>
-              <span className="text-gray-400 font-normal">({product.reviewsCount})</span>
+              <span className="font-bold text-slate-800">{product.rating}</span>
+              <span className="text-slate-500 font-medium">({product.reviewsCount})</span>
             </div>
-            <span className="text-[10px] font-black tracking-wider text-gray-500 uppercase flex items-center gap-1">
+            <span className="text-[10px] font-black tracking-wider text-slate-600 uppercase flex items-center gap-1">
               <span className="w-3.5 h-3.5 rounded bg-black text-white text-[8px] flex items-center justify-center font-black">M</span>
               MOVEO
             </span>
           </div>
 
-          <h3 className="text-sm sm:text-base font-bold text-[#111111] group-hover:text-black line-clamp-1 leading-snug">
+          <h3 className="text-sm sm:text-base font-black text-slate-900 group-hover:text-black line-clamp-1 leading-snug">
             {product.name}
           </h3>
 
-          <p className="text-xs text-[#707072] font-medium line-clamp-1">
+          <p className="text-xs text-slate-600 font-semibold line-clamp-1">
             {product.subtitle}
           </p>
         </div>
 
         {/* Pricing in Rupiah */}
         <div className="pt-2 flex items-baseline space-x-2">
-          <span className="text-sm sm:text-base font-extrabold text-[#111111]">
+          <span className="text-sm sm:text-base font-black text-slate-950">
             {formatRupiah(product.price)}
           </span>
           {product.originalPrice && (
-            <span className="text-xs text-[#707072] line-through font-normal">
+            <span className="text-xs text-slate-500 line-through font-medium">
               {formatRupiah(product.originalPrice)}
             </span>
           )}

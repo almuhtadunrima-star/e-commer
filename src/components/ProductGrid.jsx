@@ -117,10 +117,10 @@ export default function ProductGrid({
       <div className="flex pt-6 gap-8">
         {/* Filter Sidebar (Desktop) */}
         {showFilters && (
-          <aside className="w-64 flex-shrink-0 hidden md:block space-y-7 select-none text-left glass-ios p-6 rounded-3xl border border-white/70 shadow-lg h-fit">
+          <aside className="w-64 flex-shrink-0 hidden md:block space-y-7 select-none text-left glass-ios p-6 rounded-3xl border border-slate-300/70 shadow-lg h-fit">
             {/* Category / Sport Filter */}
             <div>
-              <h3 className="text-xs font-black text-black uppercase tracking-wider mb-3">
+              <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-3">
                 Kategori Produk
               </h3>
               <div className="space-y-1.5">
@@ -131,7 +131,7 @@ export default function ProductGrid({
                     className={`block w-full text-left text-xs sm:text-sm py-2 px-3.5 rounded-xl font-bold transition-all ${
                       selectedSport === cat
                         ? 'glass-ios-dark text-white shadow-md'
-                        : 'text-gray-700 hover:bg-white/80'
+                        : 'text-slate-800 hover:bg-slate-200/70'
                     }`}
                   >
                     {cat === "All" ? "Semua Kategori" : cat === "Hoodie" ? "Hoodie & Apparel" : cat}
@@ -141,11 +141,11 @@ export default function ProductGrid({
             </div>
 
             {/* Gender Filter */}
-            <div className="pt-4 border-t border-gray-200">
-              <h3 className="text-xs font-black text-black uppercase tracking-wider mb-3">
+            <div className="pt-4 border-t border-slate-300/60">
+              <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-3">
                 Gender
               </h3>
-              <div className="space-y-2 text-xs sm:text-sm font-semibold text-gray-700">
+              <div className="space-y-2 text-xs sm:text-sm font-bold text-slate-800">
                 {["All", "Pria", "Wanita", "Unisex"].map((g) => (
                   <label key={g} className="flex items-center space-x-2.5 cursor-pointer hover:text-black">
                     <input
