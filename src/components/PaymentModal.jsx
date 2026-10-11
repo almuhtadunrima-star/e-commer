@@ -60,13 +60,13 @@ export default function PaymentModal({
 
       <div className="min-h-full flex items-center justify-center p-3 sm:p-6 lg:p-8">
         <div 
-          className="relative bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
+          className="relative glass-ios border border-white/80 w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-white">
+          <div className="px-6 py-5 border-b border-white/60 flex items-center justify-between bg-white/40 backdrop-blur-md">
             <div className="flex items-center space-x-3 text-left">
-              <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black text-sm">
+              <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black text-sm shadow-sm">
                 6
               </span>
               <div>
@@ -77,7 +77,7 @@ export default function PaymentModal({
 
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full text-black transition-colors"
+              className="p-2 glass-ios-pill hover:bg-white/80 rounded-full text-black transition-all"
             >
               <X className="w-5 h-5" />
             </button>
@@ -85,7 +85,7 @@ export default function PaymentModal({
 
           <div className="p-6 sm:p-8 space-y-6 max-h-[82vh] overflow-y-auto text-left">
             {/* Total Pembayaran & Batas Waktu */}
-            <div className="bg-black text-white p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="glass-ios-dark p-6 rounded-3xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-xl border border-white/20">
               <div>
                 <span className="text-xs text-gray-400 uppercase tracking-widest font-bold">Total yang Harus Dibayar</span>
                 <h3 className="text-3xl font-black text-white mt-1">
@@ -93,7 +93,7 @@ export default function PaymentModal({
                 </h3>
               </div>
 
-              <div className="bg-white/10 px-4 py-2.5 rounded-xl border border-white/20 flex items-center space-x-2.5">
+              <div className="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/20 flex items-center space-x-2.5">
                 <Clock className="w-4 h-4 text-amber-400" />
                 <div className="text-xs">
                   <span className="text-gray-300 block">Sisa Waktu Pembayaran</span>
@@ -109,37 +109,40 @@ export default function PaymentModal({
               </h4>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-6">
-                {paymentMethods.map((pm) => (
-                  <button
-                    key={pm.id}
-                    type="button"
-                    onClick={() => setSelectedMethodId(pm.id)}
-                    className={`p-3 rounded-xl border-2 text-left transition-all ${
-                      selectedMethodId === pm.id
-                        ? 'border-black bg-gray-50 ring-1 ring-black'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xl">{pm.icon}</span>
-                      {selectedMethodId === pm.id && (
-                        <CheckCircle2 className="w-4 h-4 text-black" />
-                      )}
-                    </div>
-                    <span className="text-xs font-bold text-black block leading-snug">{pm.name}</span>
-                    <span className="text-[10px] text-gray-500 font-medium">{pm.category}</span>
-                  </button>
-                ))}
+                {paymentMethods.map((pm) => {
+                  const isSelected = selectedMethodId === pm.id;
+                  return (
+                    <button
+                      key={pm.id}
+                      type="button"
+                      onClick={() => setSelectedMethodId(pm.id)}
+                      className={`p-3.5 rounded-2xl border transition-all text-left ${
+                        isSelected
+                          ? 'border-black bg-black text-white shadow-lg'
+                          : 'glass-ios-card border-white/75 hover:border-white text-gray-900 shadow-sm'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xl">{pm.icon}</span>
+                        {isSelected && (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        )}
+                      </div>
+                      <span className={`text-xs font-bold block leading-snug ${isSelected ? 'text-white' : 'text-black'}`}>{pm.name}</span>
+                      <span className={`text-[10px] font-medium ${isSelected ? 'text-gray-300' : 'text-gray-500'}`}>{pm.category}</span>
+                    </button>
+                  );
+                })}
               </div>
 
               {/* Rincian Instruksi Pembayaran Sesuai Metode */}
-              <div className="bg-[#f9f9f9] border border-gray-200 rounded-2xl p-6">
+              <div className="glass-ios-card border border-white/80 rounded-3xl p-6 shadow-sm">
                 {selectedMethod.id === 'qris' && (
                   <div className="flex flex-col items-center text-center space-y-4">
                     <span className="text-xs font-extrabold text-black uppercase tracking-wider">
                       Scan QRIS Menggunakan Aplikasi Mobile Banking / E-Wallet Anda
                     </span>
-                    <div className="bg-white p-3 rounded-2xl shadow-md border border-gray-200">
+                    <div className="bg-white/80 backdrop-blur-md p-4 rounded-3xl shadow-md border border-white/80">
                       <img
                         src={selectedMethod.details.qrCodeImage}
                         alt="QRIS Barcode"
@@ -156,26 +159,26 @@ export default function PaymentModal({
 
                 {selectedMethod.id.includes('va') && (
                   <div className="space-y-4">
-                    <div className="flex justify-between items-center pb-3 border-b border-gray-200">
+                    <div className="flex justify-between items-center pb-3 border-b border-white/60">
                       <div>
                         <span className="text-xs text-gray-500 block">Bank Penerbit Virtual Account</span>
                         <h5 className="text-sm font-extrabold text-black">{selectedMethod.details.bankName}</h5>
                       </div>
-                      <span className="text-xs font-bold bg-green-100 text-green-800 px-2.5 py-1 rounded-full">
+                      <span className="text-xs font-bold bg-green-100/80 text-green-800 border border-emerald-300 px-3 py-1 rounded-full shadow-xs">
                         Otomatis Terverifikasi
                       </span>
                     </div>
 
                     <div>
                       <span className="text-xs text-gray-500 block mb-1">Nomor Virtual Account</span>
-                      <div className="flex items-center justify-between bg-white px-4 py-3 rounded-xl border border-gray-300">
+                      <div className="flex items-center justify-between bg-white/70 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/80 shadow-xs">
                         <span className="font-mono text-base font-black tracking-wider text-black">
                           {selectedMethod.details.accountNumber}
                         </span>
                         <button
                           type="button"
                           onClick={() => handleCopy(selectedMethod.details.accountNumber)}
-                          className="px-3 py-1.5 bg-black text-white hover:bg-gray-800 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors"
+                          className="px-3.5 py-1.5 glass-ios-dark rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all"
                         >
                           <Copy className="w-3.5 h-3.5" />
                           <span>{copiedText ? 'Tersalin!' : 'Salin'}</span>
@@ -217,8 +220,8 @@ export default function PaymentModal({
             </div>
 
             {/* Tombol Simulasi Pembayaran Sesuai Flow Assignment */}
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <div className="bg-amber-50 border border-amber-200 p-3 rounded-xl flex items-start gap-2 text-xs text-amber-900">
+            <div className="space-y-3 pt-4 border-t border-white/60">
+              <div className="bg-amber-500/10 backdrop-blur-md border border-amber-500/20 p-3.5 rounded-2xl flex items-start gap-2.5 text-xs text-amber-950">
                 <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
                 <span>
                   <strong>Mode Simulasi:</strong> Klik tombol di bawah ini untuk mensimulasikan sistem pembayaran berhasil tanpa gateway sungguhan, lalu langsung melihat halaman Konfirmasi Pesanan & Pelacakan Pengiriman.
@@ -229,7 +232,7 @@ export default function PaymentModal({
                 type="button"
                 disabled={isSimulating}
                 onClick={handleSimulatePayment}
-                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-400 text-white rounded-full font-black text-sm tracking-tight transition-all active:scale-[0.99] flex items-center justify-center space-x-2 shadow-xl"
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-400 text-white rounded-full font-black text-sm tracking-tight transition-all active:scale-[0.99] flex items-center justify-center space-x-2 shadow-xl hover:shadow-2xl"
               >
                 {isSimulating ? (
                   <div className="flex items-center space-x-2">

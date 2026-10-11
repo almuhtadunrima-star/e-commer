@@ -34,13 +34,13 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
 
       <div className="min-h-full flex items-center justify-center p-4">
         <div 
-          className="relative bg-white w-full max-w-md rounded-3xl shadow-2xl p-8 sm:p-10 z-10 text-center animate-in fade-in zoom-in-95 duration-200"
+          className="relative glass-ios border border-white/80 w-full max-w-md rounded-3xl shadow-2xl p-8 sm:p-10 z-10 text-center animate-in fade-in zoom-in-95 duration-200"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-full hover:bg-gray-100 text-black transition-colors"
+            className="absolute top-5 right-5 p-2 rounded-full glass-ios-pill hover:bg-white/80 text-black transition-all"
           >
             <X className="w-5 h-5" />
           </button>
@@ -62,7 +62,7 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
           </p>
 
           {error && (
-            <div className="mb-4 text-xs font-semibold text-red-600 bg-red-50 p-2.5 rounded-lg text-left">
+            <div className="mb-4 text-xs font-semibold text-red-600 bg-red-50/70 border border-red-200 p-2.5 rounded-xl text-left">
               {error}
             </div>
           )}
@@ -75,7 +75,7 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
                   placeholder="First and Last Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 text-sm outline-none focus:border-black transition-colors"
+                  className="w-full px-4 py-3 rounded-2xl border border-white/80 glass-ios-input text-sm outline-none focus:border-black transition-all font-semibold"
                 />
               </div>
             )}
@@ -86,7 +86,7 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-sm outline-none focus:border-black transition-colors"
+                className="w-full px-4 py-3 rounded-2xl border border-white/80 glass-ios-input text-sm outline-none focus:border-black transition-all font-semibold"
               />
             </div>
 
@@ -96,7 +96,7 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-sm outline-none focus:border-black transition-colors"
+                className="w-full px-4 py-3 rounded-2xl border border-white/80 glass-ios-input text-sm outline-none focus:border-black transition-all font-semibold"
               />
             </div>
 
@@ -116,7 +116,7 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
 
             <button
               type="submit"
-              className="w-full py-3.5 bg-black text-white hover:bg-gray-800 rounded-full font-bold text-sm tracking-tight transition-all active:scale-95 shadow-md"
+              className="w-full py-4 bg-black text-white hover:bg-neutral-800 rounded-full font-black text-sm tracking-tight transition-all active:scale-95 shadow-xl hover:shadow-2xl"
             >
               {mode === 'signin' ? 'Sign In' : 'Join Us'}
             </button>

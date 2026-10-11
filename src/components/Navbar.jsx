@@ -33,7 +33,7 @@ export default function Navbar({
 
   return (
     <>
-      <nav className="bg-white sticky top-0 z-40 transition-shadow border-b border-[#f0f0f0] select-none">
+      <nav className="glass-ios-header sticky top-0 z-40 transition-shadow select-none">
         <div className="max-w-[1920px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
           {/* Logo MA STORE (Nama Saja Sesuai Permintaan) */}
           <div className="flex items-center flex-shrink-0">
@@ -60,22 +60,22 @@ export default function Navbar({
               >
                 {item.label}
                 {item.badge && (
-                  <span className="ml-1.5 px-1.5 py-0.5 text-[9px] bg-red-600 text-white rounded font-extrabold uppercase">
+                  <span className="ml-1.5 px-1.5 py-0.5 text-[9px] bg-red-600 text-white rounded font-extrabold uppercase shadow-sm">
                     {item.badge}
                   </span>
                 )}
                 {activeCategory === item.category && (
-                  <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-black rounded-t"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-black rounded-t shadow-sm"></span>
                 )}
               </button>
             ))}
           </div>
 
           {/* Right Actions: Search & Icons */}
-          <div className="flex items-center space-x-2.5 sm:space-x-4">
+          <div className="flex items-center space-x-2.5 sm:space-x-3">
             {/* Search Input Bar (Desktop) */}
             <div className="relative hidden sm:block">
-              <div className="flex items-center bg-[#f5f5f5] hover:bg-[#ebebeb] transition-colors rounded-full px-4 py-2 w-48 md:w-56 focus-within:w-72 focus-within:bg-white focus-within:ring-1 focus-within:ring-black">
+              <div className="flex items-center glass-ios-input hover:bg-white/80 transition-all rounded-full px-4 py-2 w-48 md:w-56 focus-within:w-72 focus-within:bg-white/95 focus-within:ring-2 focus-within:ring-black/20 focus-within:shadow-md">
                 <Search className="w-4 h-4 text-gray-500 mr-2 flex-shrink-0" />
                 <input
                   ref={searchInputRef}
@@ -99,7 +99,7 @@ export default function Navbar({
               {/* Quick Search Dropdown */}
               {searchFocused && (
                 <div 
-                  className="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 text-left"
+                  className="absolute right-0 top-full mt-2 w-80 glass-ios-card rounded-2xl shadow-2xl p-5 z-50 text-left"
                   onMouseDown={(e) => e.preventDefault()}
                 >
                   <div className="flex justify-between items-center mb-3">
@@ -119,7 +119,7 @@ export default function Navbar({
                           onSearchChange(term);
                           setSearchFocused(false);
                         }}
-                        className="text-xs px-3 py-1.5 bg-[#f5f5f5] hover:bg-black hover:text-white rounded-full font-semibold transition-all"
+                        className="text-xs px-3 py-1.5 glass-ios-pill hover:bg-black hover:text-white rounded-full font-semibold transition-all"
                       >
                         {term}
                       </button>
@@ -186,12 +186,12 @@ export default function Navbar({
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          <div className="fixed top-0 right-0 bottom-0 w-[300px] sm:w-[350px] bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
+          <div className="fixed top-0 right-0 bottom-0 w-[300px] sm:w-[350px] glass-ios border-l border-white/60 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
             <div>
               <div className="flex justify-end mb-4">
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full text-black"
+                  className="p-2 hover:bg-white/80 rounded-full text-black transition-colors"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -199,7 +199,7 @@ export default function Navbar({
 
               {/* Mobile Search */}
               <div className="mb-6">
-                <div className="flex items-center bg-[#f5f5f5] rounded-full px-4 py-2.5">
+                <div className="flex items-center glass-ios-input rounded-full px-4 py-2.5">
                   <Search className="w-4 h-4 text-gray-500 mr-2" />
                   <input
                     type="text"

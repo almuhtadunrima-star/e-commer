@@ -89,7 +89,7 @@ export default function ProductGrid({
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 hover:border-black rounded-full text-xs sm:text-sm font-bold transition-all active:scale-95 bg-white"
+            className="flex items-center space-x-2 px-4 py-2 glass-ios-pill hover:bg-white rounded-full text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-xs"
           >
             <SlidersHorizontal className="w-4 h-4" />
             <span>{showFilters ? 'Sembunyikan Filter' : 'Tampilkan Filter'}</span>
@@ -100,7 +100,7 @@ export default function ProductGrid({
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="appearance-none bg-white border border-gray-300 hover:border-black pl-4 pr-10 py-2 rounded-full text-xs sm:text-sm font-bold outline-none cursor-pointer transition-colors"
+              className="appearance-none glass-ios-pill hover:bg-white pl-4 pr-10 py-2 rounded-full text-xs sm:text-sm font-bold outline-none cursor-pointer transition-colors shadow-xs"
             >
               <option value="featured">Urutkan: Terpopuler</option>
               <option value="price-low">Harga: Termurah ke Termahal</option>
@@ -117,7 +117,7 @@ export default function ProductGrid({
       <div className="flex pt-6 gap-8">
         {/* Filter Sidebar (Desktop) */}
         {showFilters && (
-          <aside className="w-64 flex-shrink-0 hidden md:block space-y-7 select-none text-left bg-[#fafafa] p-5 rounded-2xl border border-gray-100 h-fit">
+          <aside className="w-64 flex-shrink-0 hidden md:block space-y-7 select-none text-left glass-ios p-6 rounded-3xl border border-white/70 shadow-lg h-fit">
             {/* Category / Sport Filter */}
             <div>
               <h3 className="text-xs font-black text-black uppercase tracking-wider mb-3">
@@ -128,10 +128,10 @@ export default function ProductGrid({
                   <button
                     key={cat}
                     onClick={() => setSelectedSport(cat)}
-                    className={`block w-full text-left text-xs sm:text-sm py-1.5 px-3 rounded-lg font-semibold transition-all ${
+                    className={`block w-full text-left text-xs sm:text-sm py-2 px-3.5 rounded-xl font-bold transition-all ${
                       selectedSport === cat
-                        ? 'bg-black text-white'
-                        : 'text-gray-700 hover:bg-gray-200'
+                        ? 'glass-ios-dark text-white shadow-md'
+                        : 'text-gray-700 hover:bg-white/80'
                     }`}
                   >
                     {cat === "All" ? "Semua Kategori" : cat === "Hoodie" ? "Hoodie & Apparel" : cat}

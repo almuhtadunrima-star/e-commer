@@ -21,9 +21,9 @@ export default function MembershipBanner({ onOpenAuth }) {
   ];
 
   return (
-    <section className="bg-[#111111] text-white py-16 px-6 lg:px-12 my-12">
-      <div className="max-w-[1920px] mx-auto text-center">
-        <span className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
+    <section className="max-w-[1920px] mx-auto px-6 lg:px-12 my-12">
+      <div className="glass-ios-dark rounded-3xl p-8 sm:p-14 border border-white/20 shadow-2xl relative overflow-hidden text-center">
+        <span className="text-xs font-bold tracking-widest uppercase text-gray-300 mb-2 block">
           MA Store Membership
         </span>
         <h2 className="text-3xl sm:text-5xl font-black font-nike-bold tracking-tight uppercase mb-4 text-white">
@@ -36,13 +36,13 @@ export default function MembershipBanner({ onOpenAuth }) {
         <div className="flex justify-center gap-4 mb-14">
           <button
             onClick={() => onOpenAuth('join')}
-            className="px-8 py-3.5 bg-white text-black hover:bg-gray-200 rounded-full font-bold text-sm tracking-tight transition-all active:scale-95 shadow-xl"
+            className="px-8 py-3.5 bg-white text-black hover:bg-white/90 rounded-full font-black text-sm tracking-tight transition-all active:scale-95 shadow-xl"
           >
             Join Us
           </button>
           <button
             onClick={() => onOpenAuth('signin')}
-            className="px-8 py-3.5 border border-white/40 hover:border-white text-white rounded-full font-bold text-sm tracking-tight transition-all active:scale-95"
+            className="px-8 py-3.5 glass-ios-pill border border-white/40 hover:bg-white/20 text-white rounded-full font-black text-sm tracking-tight transition-all active:scale-95 shadow-lg"
           >
             Sign In
           </button>
@@ -55,13 +55,13 @@ export default function MembershipBanner({ onOpenAuth }) {
             return (
               <div 
                 key={idx}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors"
+                className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all shadow-lg hover:-translate-y-1"
               >
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-2xl glass-ios-pill flex items-center justify-center mb-4 border border-white/30 text-white shadow-sm">
                   <Icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-base font-bold text-white mb-2">{b.title}</h3>
-                <p className="text-xs text-gray-400 leading-relaxed font-normal">{b.desc}</p>
+                <p className="text-xs text-gray-300 leading-relaxed font-normal">{b.desc}</p>
               </div>
             );
           })}

@@ -20,15 +20,15 @@ export default function WishlistModal({
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md sm:max-w-lg bg-white shadow-2xl flex flex-col justify-between">
+        <div className="w-screen max-w-md sm:max-w-lg glass-ios border-l border-white/80 shadow-2xl flex flex-col justify-between">
           {/* Header */}
-          <div className="p-6 border-b border-gray-100 flex items-center justify-between">
+          <div className="p-6 border-b border-white/60 bg-white/40 backdrop-blur-md flex items-center justify-between">
             <h2 className="text-xl font-black text-black">
               Favorit Saya ({favorites.length})
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full text-black transition-colors"
+              className="p-2 glass-ios-pill hover:bg-white/80 rounded-full text-black transition-all"
             >
               <X className="w-5 h-5" />
             </button>
@@ -42,13 +42,13 @@ export default function WishlistModal({
                 <p className="text-xs text-gray-500">Klik ikon hati pada produk untuk menyimpannya di sini.</p>
                 <button
                   onClick={onClose}
-                  className="px-6 py-2.5 bg-black text-white text-xs font-bold rounded-full hover:bg-gray-800 transition-colors shadow-md"
+                  className="px-6 py-2.5 bg-black text-white text-xs font-bold rounded-full hover:bg-neutral-800 transition-all shadow-md active:scale-95"
                 >
                   Jelajahi Produk
                 </button>
               </div>
             ) : (
-              <div className="divide-y divide-gray-100 space-y-4">
+              <div className="divide-y divide-white/60 space-y-4">
                 {favorites.map((product) => (
                   <div key={product.id} className="pt-4 flex gap-4 text-left">
                     <div 
@@ -56,7 +56,7 @@ export default function WishlistModal({
                         onClose();
                         onOpenDetail(product);
                       }}
-                      className="w-20 h-20 bg-[#f6f6f6] rounded-xl p-2 flex-shrink-0 cursor-pointer flex items-center justify-center border border-gray-100"
+                      className="w-20 h-20 bg-white/50 backdrop-blur-md rounded-2xl p-2 flex-shrink-0 cursor-pointer flex items-center justify-center border border-white/80 shadow-xs"
                     >
                       <img
                         src={product.colors[0]?.image}
@@ -95,7 +95,7 @@ export default function WishlistModal({
                               quantity: 1
                             });
                           }}
-                          className="px-3.5 py-1.5 bg-black hover:bg-gray-800 text-white rounded-full text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
+                          className="px-3.5 py-1.5 glass-ios-dark text-white rounded-full text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
                         >
                           <ShoppingBag className="w-3.5 h-3.5" />
                           <span>Pindah ke Keranjang</span>

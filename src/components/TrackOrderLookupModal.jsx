@@ -43,17 +43,17 @@ export default function TrackOrderLookupModal({
 
       <div className="min-h-full flex items-center justify-center p-4">
         <div 
-          className="relative bg-white w-full max-w-xl rounded-3xl shadow-2xl p-6 sm:p-8 z-10 text-left animate-in fade-in zoom-in-95 duration-200"
+          className="relative glass-ios border border-white/80 w-full max-w-xl rounded-3xl shadow-2xl p-6 sm:p-8 z-10 text-left animate-in fade-in zoom-in-95 duration-200"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex justify-between items-center pb-4 border-b border-gray-100">
+          <div className="flex justify-between items-center pb-4 border-b border-white/60">
             <div className="flex items-center space-x-2.5">
               <Truck className="w-5 h-5 text-black" />
               <h3 className="text-lg font-black text-black">Lacak Status Pesanan</h3>
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full text-black transition-colors"
+              className="p-2 glass-ios-pill hover:bg-white/80 rounded-full text-black transition-all"
             >
               <X className="w-5 h-5" />
             </button>
@@ -73,11 +73,11 @@ export default function TrackOrderLookupModal({
                   setSearchQuery(e.target.value);
                   setErrorMsg('');
                 }}
-                className="flex-1 px-4 py-3 rounded-xl border border-gray-300 text-sm outline-none focus:border-black font-semibold"
+                className="flex-1 px-4 py-3 rounded-2xl border border-white/80 glass-ios-input text-sm outline-none focus:border-black font-semibold"
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 shadow-md"
+                className="px-6 py-3 glass-ios-dark rounded-2xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-md active:scale-95"
               >
                 <Search className="w-4 h-4" />
                 <span>Cari</span>
@@ -93,8 +93,8 @@ export default function TrackOrderLookupModal({
             </h4>
 
             {recentOrders.length === 0 ? (
-              <div className="py-8 text-center text-xs text-gray-400 bg-gray-50 rounded-2xl border border-gray-100">
-                <Package className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+              <div className="py-8 text-center text-xs text-gray-500 glass-ios-card rounded-2xl border border-white/70">
+                <Package className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                 <p>Belum ada riwayat pesanan aktif.</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">Selesaikan satu pesanan untuk melihat pelacakan otomatis di sini.</p>
               </div>
@@ -107,12 +107,12 @@ export default function TrackOrderLookupModal({
                       onSelectOrderToTrack(ord);
                       onClose();
                     }}
-                    className="p-3.5 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200 cursor-pointer transition-all flex items-center justify-between"
+                    className="p-3.5 glass-ios-card hover:bg-white/70 rounded-2xl border border-white/80 cursor-pointer transition-all flex items-center justify-between shadow-xs"
                   >
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-mono font-bold text-xs text-black">{ord.orderId}</span>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100/80 text-emerald-800 border border-emerald-300">
                           {ord.courier?.name}
                         </span>
                       </div>

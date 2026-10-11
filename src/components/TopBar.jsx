@@ -5,10 +5,10 @@ export default function TopBar({ user, onOpenAuth, onSignOut, onOpenTrackLookup 
   const [showHelpMenu, setShowHelpMenu] = useState(false);
 
   return (
-    <div className="bg-[#f5f5f5] text-[11px] font-semibold text-[#111111] px-6 lg:px-12 py-1.5 flex justify-between items-center border-b border-[#e5e5e5] select-none">
+    <div className="bg-white/40 backdrop-blur-xl text-[11px] font-semibold text-[#111111] px-6 lg:px-12 py-1.5 flex justify-between items-center border-b border-white/50 select-none">
       {/* Brand Badge */}
       <div className="flex items-center space-x-2">
-        <span className="font-extrabold text-[11px] tracking-wider uppercase text-black">
+        <span className="font-black text-[11px] tracking-wider uppercase text-black">
           MA STORE
         </span>
         <span className="text-gray-300">|</span>
@@ -45,7 +45,7 @@ export default function TopBar({ user, onOpenAuth, onSignOut, onOpenTrackLookup 
           </button>
 
           {showHelpMenu && (
-            <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-[#e5e5e5] rounded-xl shadow-xl p-3 z-50 text-left">
+            <div className="absolute right-0 top-full mt-2 w-48 glass-ios-card rounded-2xl p-3 z-50 text-left">
               <div className="font-bold text-xs pb-2 border-b border-gray-100 text-[#111]">Pusat Bantuan</div>
               <ul className="py-2 space-y-2 text-xs text-gray-700">
                 <li className="hover:text-black cursor-pointer" onClick={onOpenTrackLookup}>Status & Lacak Pesanan</li>

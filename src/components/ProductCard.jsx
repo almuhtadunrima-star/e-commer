@@ -28,11 +28,11 @@ export default function ProductCard({
 
   return (
     <div 
-      className="group flex flex-col cursor-pointer text-left select-none bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 p-3 border border-gray-100"
+      className="group flex flex-col cursor-pointer text-left select-none glass-ios-card rounded-2xl overflow-hidden p-3 transition-all duration-300 relative"
       onClick={() => onOpenDetail(product)}
     >
       {/* Image Container */}
-      <div className="relative aspect-square w-full bg-[#f6f6f6] rounded-lg overflow-hidden mb-3">
+      <div className="relative aspect-square w-full bg-gradient-to-b from-gray-100/70 to-gray-50/40 backdrop-blur-md rounded-xl overflow-hidden mb-3 border border-white/50">
         {/* Product Image */}
         <img
           src={currentColor.image}
@@ -45,7 +45,7 @@ export default function ProductCard({
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 items-start">
           <div className="flex items-center gap-1.5">
             <span 
-              className="w-6 h-6 rounded-md bg-black text-white font-black text-xs flex items-center justify-center shadow-md border border-white/40 tracking-tight"
+              className="w-6 h-6 rounded-lg glass-ios-dark text-white font-black text-xs flex items-center justify-center shadow-md tracking-tight border border-white/20"
               title="MOVEO Brand Logo"
             >
               M
@@ -55,7 +55,7 @@ export default function ProductCard({
                 product.badge.includes('Diskon')
                   ? 'bg-red-600 text-white'
                   : product.badge === 'Terlaris'
-                  ? 'bg-black text-white'
+                  ? 'glass-ios-dark text-white'
                   : 'bg-amber-500 text-white'
               }`}>
                 {product.badge}
@@ -63,7 +63,7 @@ export default function ProductCard({
             )}
           </div>
           {product.stock <= 5 && (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-800 border border-orange-200">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full glass-ios-pill text-amber-900 border border-amber-200/60 shadow-xs">
               Sisa {product.stock} pcs!
             </span>
           )}
@@ -76,7 +76,7 @@ export default function ProductCard({
             onToggleFavorite(product);
           }}
           aria-label="Tambah ke Favorit"
-          className="absolute top-3 right-3 p-2 bg-white/90 hover:bg-white rounded-full transition-all text-black shadow-md z-10 active:scale-90"
+          className="absolute top-3 right-3 p-2 glass-ios-pill hover:bg-white rounded-full transition-all text-black shadow-sm z-10 active:scale-90"
         >
           <Heart
             className={`w-4 h-4 transition-colors ${
@@ -90,7 +90,7 @@ export default function ProductCard({
           <button
             onClick={handleQuickAdd}
             title="Tambah Cepat ke Keranjang"
-            className="p-2.5 bg-black text-white hover:bg-gray-800 rounded-full shadow-lg transition-transform active:scale-90 flex items-center justify-center"
+            className="p-2.5 glass-ios-dark text-white hover:bg-black rounded-full shadow-lg transition-transform active:scale-90 flex items-center justify-center border border-white/20"
           >
             {justAdded ? <Check className="w-4 h-4 text-green-400" /> : <Plus className="w-4 h-4" />}
           </button>

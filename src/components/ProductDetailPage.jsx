@@ -165,7 +165,7 @@ export default function ProductDetailPage({
             <div className="sticky top-32 space-y-5">
               
               {/* Gambar Utama Besar */}
-              <div className="relative aspect-square w-full bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-sm flex items-center justify-center p-8 group">
+              <div className="relative aspect-square w-full glass-ios rounded-3xl border border-white/80 overflow-hidden shadow-md flex items-center justify-center p-8 group">
                 <img
                   src={activeColor.image}
                   alt={product.name}
@@ -176,18 +176,18 @@ export default function ProductDetailPage({
                 <div className="absolute top-5 left-5 flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <span 
-                      className="w-9 h-9 rounded-xl bg-black text-white font-black text-base flex items-center justify-center shadow-xl border border-white/40 tracking-tighter"
+                      className="w-9 h-9 rounded-xl glass-ios-dark text-white font-black text-base flex items-center justify-center shadow-xl border border-white/30 tracking-tighter"
                       title="MOVEO Brand Logo"
                     >
                       M
                     </span>
                     {product.badge && (
-                      <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-black text-white shadow-md">
+                      <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full glass-ios-dark text-white shadow-md border border-white/20">
                         {product.badge}
                       </span>
                     )}
                   </div>
-                  <span className="text-xs font-bold text-green-800 bg-green-100/90 backdrop-blur-sm px-3 py-1 rounded-full border border-green-300 shadow-sm flex items-center gap-1.5 w-fit">
+                  <span className="text-xs font-bold text-green-900 bg-green-100/80 backdrop-blur-md px-3 py-1 rounded-full border border-green-300/60 shadow-xs flex items-center gap-1.5 w-fit">
                     <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></span>
                     Ready Stock ({product.stock} unit)
                   </span>
@@ -196,7 +196,7 @@ export default function ProductDetailPage({
                 {/* Favorite Button on Image */}
                 <button
                   onClick={() => onToggleFavorite(product)}
-                  className="absolute top-5 right-5 p-3 rounded-full bg-white/90 hover:bg-white shadow-lg text-black transition-all active:scale-90"
+                  className="absolute top-5 right-5 p-3 rounded-full glass-ios-pill hover:bg-white shadow-md text-black transition-all active:scale-90"
                   aria-label="Simpan ke Favorit"
                 >
                   <Heart className={`w-5 h-5 ${isFavorite ? 'fill-red-600 text-red-600' : 'text-gray-700'}`} />
@@ -204,7 +204,7 @@ export default function ProductDetailPage({
               </div>
 
               {/* Selector Thumbnail Warna */}
-              <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+              <div className="glass-ios p-5 rounded-2xl border border-white/70 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-black uppercase tracking-wider text-gray-500">
                     Varian Warna: <strong className="text-black">{activeColor.name}</strong>
@@ -269,18 +269,18 @@ export default function ProductDetailPage({
 
           {/* KOLOM KANAN: Detail Informasi, Ukuran & Aksi Pembelian (5 Kolom) */}
           <div className="lg:col-span-5">
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm space-y-6">
+            <div className="glass-ios p-6 sm:p-8 rounded-3xl border border-white/80 shadow-md space-y-6">
               
               {/* Header Info */}
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="text-xs font-black tracking-wider uppercase text-gray-500 flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-md bg-black text-white font-black text-[11px] flex items-center justify-center shadow-sm">M</span>
+                    <span className="w-5 h-5 rounded-md glass-ios-dark text-white font-black text-[11px] flex items-center justify-center shadow-sm border border-white/20">M</span>
                     <span>MOVEO • {product.category} • {product.gender}</span>
                   </span>
                   
                   {/* Rating Badge */}
-                  <div className="flex items-center space-x-1.5 text-xs font-extrabold text-amber-500 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                  <div className="flex items-center space-x-1.5 text-xs font-extrabold text-amber-500 glass-ios-pill px-2.5 py-1 rounded-full border border-amber-200/50 shadow-xs">
                     <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     <span>{product.rating}</span>
                     <span className="text-gray-400 font-normal">({product.reviewsCount} Ulasan)</span>
@@ -296,7 +296,7 @@ export default function ProductDetailPage({
               </div>
 
               {/* Harga & Penawaran Diskon */}
-              <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 flex items-baseline justify-between">
+              <div className="p-4 glass-ios-pill rounded-2xl border border-white/80 flex items-baseline justify-between shadow-xs">
                 <div>
                   <span className="text-xs font-bold text-gray-500 block mb-0.5">Harga Resmi:</span>
                   <div className="flex items-baseline space-x-3">
@@ -340,8 +340,8 @@ export default function ProductDetailPage({
                       onClick={() => setSelectedSize(size)}
                       className={`py-3 rounded-xl text-xs sm:text-sm font-black border transition-all ${
                         selectedSize === size
-                          ? 'border-black bg-black text-white shadow-md scale-[1.02]'
-                          : 'border-gray-200 hover:border-black text-[#111] bg-white hover:bg-gray-50'
+                          ? 'glass-ios-dark text-white shadow-md scale-[1.02] border-white/30'
+                          : 'glass-ios-pill hover:bg-white text-[#111]'
                       }`}
                     >
                       {size}
@@ -571,9 +571,9 @@ export default function ProductDetailPage({
 
       {/* Modal Panduan Ukuran (Size Guide) */}
       {showSizeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative text-left">
-            <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-in fade-in">
+          <div className="glass-ios border border-white/80 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative text-left">
+            <div className="flex items-center justify-between pb-4 border-b border-white/50 mb-4">
               <div className="flex items-center gap-2">
                 <Ruler className="w-5 h-5 text-black" />
                 <h3 className="text-base sm:text-lg font-black text-black">
@@ -582,7 +582,7 @@ export default function ProductDetailPage({
               </div>
               <button
                 onClick={() => setShowSizeModal(false)}
-                className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold"
+                className="w-8 h-8 rounded-full glass-ios-pill hover:bg-white/80 flex items-center justify-center font-bold text-gray-700"
               >
                 ✕
               </button>
@@ -594,10 +594,10 @@ export default function ProductDetailPage({
                 : 'Ukur panjang telapak kaki Anda dari tumit hingga ujung jari terpanjang, lalu sesuaikan dengan tabel berikut:'}
             </p>
 
-            <div className="overflow-hidden rounded-xl border border-gray-200 mb-6">
+            <div className="overflow-hidden rounded-2xl border border-white/60 bg-white/40 backdrop-blur-md mb-6 shadow-sm">
               {isApparel ? (
                 <table className="w-full text-xs text-left">
-                  <thead className="bg-gray-100 text-gray-700 font-black">
+                  <thead className="bg-white/60 text-gray-800 font-black border-b border-white/50">
                     <tr>
                       <th className="py-2.5 px-3">Size</th>
                       <th className="py-2.5 px-3">Lebar Dada (cm)</th>

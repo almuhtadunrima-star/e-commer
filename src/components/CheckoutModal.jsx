@@ -82,13 +82,13 @@ export default function CheckoutModal({
 
       <div className="min-h-full flex items-center justify-center p-3 sm:p-6 lg:p-8">
         <div 
-          className="relative bg-white w-full max-w-5xl rounded-3xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
+          className="relative glass-ios border border-white/80 w-full max-w-5xl rounded-3xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-white sticky top-0 z-20">
+          <div className="px-6 py-5 border-b border-white/60 flex items-center justify-between bg-white/40 backdrop-blur-md sticky top-0 z-20">
             <div className="flex items-center space-x-3">
-              <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black text-sm">
+              <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black text-sm shadow-sm">
                 4
               </span>
               <div>
@@ -99,7 +99,7 @@ export default function CheckoutModal({
 
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full text-black transition-colors"
+              className="p-2 glass-ios-pill hover:bg-white/80 rounded-full text-black transition-all"
             >
               <X className="w-5 h-5" />
             </button>
@@ -108,7 +108,7 @@ export default function CheckoutModal({
           {/* Form + Ringkasan Pesanan (Grid Layout) */}
           <form onSubmit={validateAndProceed} className="grid grid-cols-1 lg:grid-cols-12 max-h-[82vh] overflow-y-auto text-left">
             {/* Bagian Kiri: Data Pengiriman & Opsi Kurir (7 Kolom) */}
-            <div className="lg:col-span-7 p-6 sm:p-8 space-y-8 bg-white border-r border-gray-100">
+            <div className="lg:col-span-7 p-6 sm:p-8 space-y-8 bg-transparent border-r border-white/60">
               {/* Bagian 1: Data Penerima */}
               <div>
                 <h3 className="text-sm font-black uppercase tracking-wider text-black flex items-center gap-2 mb-4">
@@ -125,8 +125,8 @@ export default function CheckoutModal({
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="Contoh: Ahmad Fauzi"
-                      className={`w-full px-4 py-2.5 rounded-xl border text-xs sm:text-sm outline-none transition-colors ${
-                        formErrors.fullName ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-black'
+                      className={`w-full px-4 py-2.5 rounded-2xl border text-xs sm:text-sm outline-none transition-all ${
+                        formErrors.fullName ? 'border-red-500 bg-red-50/50' : 'border-white/80 glass-ios-input focus:border-black'
                       }`}
                     />
                     {formErrors.fullName && <p className="text-[11px] text-red-500 mt-1 font-semibold">{formErrors.fullName}</p>}
@@ -140,8 +140,8 @@ export default function CheckoutModal({
                       value={formData.phoneNumber}
                       onChange={handleInputChange}
                       placeholder="0812xxxxxxxx"
-                      className={`w-full px-4 py-2.5 rounded-xl border text-xs sm:text-sm outline-none transition-colors ${
-                        formErrors.phoneNumber ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-black'
+                      className={`w-full px-4 py-2.5 rounded-2xl border text-xs sm:text-sm outline-none transition-all ${
+                        formErrors.phoneNumber ? 'border-red-500 bg-red-50/50' : 'border-white/80 glass-ios-input focus:border-black'
                       }`}
                     />
                     {formErrors.phoneNumber && <p className="text-[11px] text-red-500 mt-1 font-semibold">{formErrors.phoneNumber}</p>}
@@ -164,7 +164,7 @@ export default function CheckoutModal({
                         name="cityRegion"
                         value={formData.cityRegion}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm outline-none focus:border-black font-semibold bg-white cursor-pointer"
+                        className="w-full px-4 py-2.5 rounded-2xl border border-white/80 glass-ios-input text-xs sm:text-sm outline-none focus:border-black font-semibold cursor-pointer"
                       >
                         <option value="DKI Jakarta, Jakarta Selatan">DKI Jakarta - Jakarta Selatan</option>
                         <option value="DKI Jakarta, Jakarta Pusat">DKI Jakarta - Jakarta Pusat</option>
@@ -186,8 +186,8 @@ export default function CheckoutModal({
                         value={formData.postalCode}
                         onChange={handleInputChange}
                         placeholder="12190"
-                        className={`w-full px-4 py-2.5 rounded-xl border text-xs sm:text-sm outline-none transition-colors ${
-                          formErrors.postalCode ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-black'
+                        className={`w-full px-4 py-2.5 rounded-2xl border text-xs sm:text-sm outline-none transition-all ${
+                          formErrors.postalCode ? 'border-red-500 bg-red-50/50' : 'border-white/80 glass-ios-input focus:border-black'
                         }`}
                       />
                       {formErrors.postalCode && <p className="text-[11px] text-red-500 mt-1 font-semibold">{formErrors.postalCode}</p>}
@@ -202,8 +202,8 @@ export default function CheckoutModal({
                       value={formData.fullAddress}
                       onChange={handleInputChange}
                       placeholder="Nama jalan, gedung, blok, nomor rumah, nomor unit"
-                      className={`w-full px-4 py-2.5 rounded-xl border text-xs sm:text-sm outline-none transition-colors resize-none ${
-                        formErrors.fullAddress ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-black'
+                      className={`w-full px-4 py-2.5 rounded-2xl border text-xs sm:text-sm outline-none transition-all resize-none ${
+                        formErrors.fullAddress ? 'border-red-500 bg-red-50/50' : 'border-white/80 glass-ios-input focus:border-black'
                       }`}
                     />
                     {formErrors.fullAddress && <p className="text-[11px] text-red-500 mt-1 font-semibold">{formErrors.fullAddress}</p>}
@@ -217,7 +217,7 @@ export default function CheckoutModal({
                       value={formData.orderNotes}
                       onChange={handleInputChange}
                       placeholder="Contoh: Titip ke satpam cluster bila rumah kosong"
-                      className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm outline-none focus:border-black"
+                      className="w-full px-4 py-2.5 rounded-2xl border border-white/80 glass-ios-input text-xs sm:text-sm outline-none focus:border-black"
                     />
                   </div>
                 </div>
@@ -231,7 +231,7 @@ export default function CheckoutModal({
                     3. Pilih Layanan Pengiriman (Kurir)
                   </h3>
                   {isFreeShippingEligible && (
-                    <span className="text-[11px] font-bold text-green-700 bg-green-100 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] font-bold text-green-700 glass-ios-pill border border-emerald-300 px-3 py-1 rounded-full shadow-xs">
                       Promo Bebas Ongkir Aktif
                     </span>
                   )}
@@ -246,23 +246,25 @@ export default function CheckoutModal({
                       <div
                         key={courier.id}
                         onClick={() => setSelectedCourierId(courier.id)}
-                        className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between ${
+                        className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                           isSelected
-                            ? 'border-black bg-gray-50/80 ring-1 ring-black shadow-sm'
-                            : 'border-gray-200 hover:border-gray-300 bg-white'
+                            ? 'border-black bg-black text-white shadow-lg'
+                            : 'glass-ios-card border-white/75 hover:border-white text-gray-900 shadow-sm'
                         }`}
                       >
                         <div className="flex items-center space-x-3.5">
                           <span className="text-2xl">{courier.icon}</span>
                           <div>
                             <div className="flex items-center gap-2">
-                              <h4 className="text-sm font-extrabold text-black">{courier.name}</h4>
-                              <span className="text-[10px] font-bold uppercase bg-gray-200 text-gray-700 px-2 py-0.5 rounded">
+                              <h4 className={`text-sm font-extrabold ${isSelected ? 'text-white' : 'text-black'}`}>{courier.name}</h4>
+                              <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${
+                                isSelected ? 'bg-white/20 text-white' : 'bg-black/5 text-gray-700'
+                              }`}>
                                 {courier.service}
                               </span>
                             </div>
-                            <p className="text-xs text-gray-500 mt-0.5 font-medium">
-                              Estimasi Tiba: <strong className="text-gray-800">{courier.etd}</strong>
+                            <p className={`text-xs mt-0.5 font-medium ${isSelected ? 'text-gray-300' : 'text-gray-500'}`}>
+                              Estimasi Tiba: <strong className={isSelected ? 'text-white' : 'text-gray-800'}>{courier.etd}</strong>
                             </p>
                           </div>
                         </div>
@@ -270,13 +272,13 @@ export default function CheckoutModal({
                         <div className="text-right">
                           {isFreeShippingEligible ? (
                             <div className="space-y-0.5">
-                              <span className="text-sm font-black text-green-700">GRATIS</span>
-                              <p className="text-[10px] line-through text-gray-400 font-semibold">
+                              <span className={`text-sm font-black ${isSelected ? 'text-emerald-300' : 'text-green-700'}`}>GRATIS</span>
+                              <p className={`text-[10px] line-through font-semibold ${isSelected ? 'text-gray-400' : 'text-gray-400'}`}>
                                 {formatRupiah(courier.cost)}
                               </p>
                             </div>
                           ) : (
-                            <span className="text-sm font-extrabold text-black">
+                            <span className={`text-sm font-extrabold ${isSelected ? 'text-white' : 'text-black'}`}>
                               {formatRupiah(courier.cost)}
                             </span>
                           )}
@@ -289,17 +291,17 @@ export default function CheckoutModal({
             </div>
 
             {/* Bagian Kanan: Ringkasan Produk & Total (5 Kolom) */}
-            <div className="lg:col-span-5 p-6 sm:p-8 bg-[#f9f9f9] flex flex-col justify-between">
+            <div className="lg:col-span-5 p-6 sm:p-8 bg-white/30 backdrop-blur-md flex flex-col justify-between border-t lg:border-t-0 border-white/60">
               <div>
                 <h3 className="text-sm font-black uppercase tracking-wider text-black mb-4">
                   Ringkasan Pesanan ({cartItems.length} Produk)
                 </h3>
 
                 {/* Daftar Produk Singkat */}
-                <div className="space-y-3 max-h-56 overflow-y-auto pr-1 mb-6 divide-y divide-gray-200">
+                <div className="space-y-3 max-h-56 overflow-y-auto pr-1 mb-6 divide-y divide-white/60">
                   {cartItems.map((item) => (
                     <div key={`${item.id}-${item.selectedSize}-${item.selectedColor}`} className="pt-3 flex gap-3">
-                      <div className="w-14 h-14 bg-white rounded-lg p-1 border border-gray-200 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-14 h-14 bg-white/50 backdrop-blur-md rounded-xl p-1 border border-white/80 flex-shrink-0 flex items-center justify-center shadow-xs">
                         <img
                           src={item.selectedImage || item.colors[0]?.image}
                           alt={item.name}
@@ -320,7 +322,7 @@ export default function CheckoutModal({
                 </div>
 
                 {/* Perhitungan Biaya Real-time */}
-                <div className="bg-white p-4 rounded-2xl border border-gray-200 space-y-2 text-xs text-gray-600 mb-6">
+                <div className="glass-ios-card p-4 rounded-2xl border border-white/80 space-y-2 text-xs text-gray-600 mb-6 shadow-sm">
                   <div className="flex justify-between">
                     <span>Subtotal Produk</span>
                     <span className="font-bold text-black">{formatRupiah(subtotal)}</span>
@@ -344,7 +346,7 @@ export default function CheckoutModal({
                     </span>
                   </div>
 
-                  <div className="flex justify-between pt-3 border-t border-gray-200 text-sm sm:text-base font-black text-black">
+                  <div className="flex justify-between pt-3 border-t border-white/60 text-sm sm:text-base font-black text-black">
                     <span>Total Pembayaran</span>
                     <span className="text-black">{formatRupiah(grandTotal)}</span>
                   </div>
@@ -352,10 +354,10 @@ export default function CheckoutModal({
               </div>
 
               {/* Tombol Lanjut ke Simulasi Pembayaran (Step 6) */}
-              <div className="space-y-3 pt-4 border-t border-gray-200">
+              <div className="space-y-3 pt-4 border-t border-white/60">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-black text-white hover:bg-gray-800 rounded-full font-black text-sm tracking-tight transition-all active:scale-[0.99] flex items-center justify-center space-x-2 shadow-xl"
+                  className="w-full py-4 bg-black text-white hover:bg-neutral-800 rounded-full font-black text-sm tracking-tight transition-all active:scale-[0.99] flex items-center justify-center space-x-2 shadow-xl hover:shadow-2xl"
                 >
                   <span>Lanjut ke Metode Pembayaran</span>
                   <ArrowRight className="w-4 h-4" />

@@ -81,13 +81,13 @@ export default function DeliveryTrackingModal({
 
       <div className="min-h-full flex items-center justify-center p-3 sm:p-6 lg:p-8">
         <div 
-          className="relative bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200 text-left"
+          className="relative glass-ios border border-white/80 w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200 text-left"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-white sticky top-0 z-20">
+          <div className="px-6 py-5 border-b border-white/60 flex items-center justify-between bg-white/40 backdrop-blur-md sticky top-0 z-20">
             <div className="flex items-center space-x-3">
-              <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black text-sm">
+              <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-black text-sm shadow-sm">
                 8
               </span>
               <div>
@@ -98,7 +98,7 @@ export default function DeliveryTrackingModal({
 
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full text-black transition-colors"
+              className="p-2 glass-ios-pill hover:bg-white/80 rounded-full text-black transition-all"
             >
               <X className="w-5 h-5" />
             </button>
@@ -106,17 +106,17 @@ export default function DeliveryTrackingModal({
 
           <div className="p-6 sm:p-8 space-y-6 max-h-[82vh] overflow-y-auto">
             {/* Banner Nomor Resi & Kurir */}
-            <div className="bg-[#111111] text-white p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="glass-ios-dark text-white p-6 rounded-3xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-xl border border-white/20">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-xl">{order.courier?.icon || '🚚'}</span>
-                  <span className="text-xs uppercase font-extrabold tracking-widest text-gray-400">
+                  <span className="text-xs uppercase font-extrabold tracking-widest text-gray-300">
                     {order.courier?.name || 'JNE Regular'} ({order.courier?.service || 'Reguler'})
                   </span>
                 </div>
                 <div className="flex items-center space-x-3 mt-2">
                   <span className="text-xs text-gray-300">Nomor Resi:</span>
-                  <span className="font-mono text-base sm:text-lg font-black tracking-wider text-amber-400">
+                  <span className="font-mono text-base sm:text-lg font-black tracking-wider text-amber-300">
                     {order.resiNumber}
                   </span>
                   <button
@@ -126,12 +126,12 @@ export default function DeliveryTrackingModal({
                   >
                     <Copy className="w-3.5 h-3.5" />
                   </button>
-                  {copiedResi && <span className="text-[11px] text-green-400 font-bold">Tersalin!</span>}
+                  {copiedResi && <span className="text-[11px] text-green-300 font-bold">Tersalin!</span>}
                 </div>
               </div>
 
-              <div className="bg-white/10 px-4 py-2 rounded-xl border border-white/20 text-right">
-                <span className="text-[11px] text-gray-400 block">Estimasi Sampai:</span>
+              <div className="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/20 text-right">
+                <span className="text-[11px] text-gray-300 block">Estimasi Sampai:</span>
                 <span className="text-xs sm:text-sm font-bold text-white">{order.courier?.etd || '2 - 3 Hari Kerja'}</span>
               </div>
             </div>
@@ -142,13 +142,13 @@ export default function DeliveryTrackingModal({
                 <h3 className="text-xs font-black uppercase tracking-wider text-black">
                   Progres Perjalanan Pesanan
                 </h3>
-                <span className="text-xs font-extrabold px-3 py-1 bg-gray-100 rounded-full text-black">
+                <span className="text-xs font-extrabold px-3.5 py-1 glass-ios-pill rounded-full text-black border border-white/70 shadow-xs">
                   Status: {trackingSteps[currentStep - 1].title}
                 </span>
               </div>
 
               {/* Progress Stepper Bar */}
-              <div className="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-200">
+              <div className="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-black/15">
                 {trackingSteps.map((step) => {
                   const isDone = currentStep >= step.step;
                   const isCurrent = currentStep === step.step;
@@ -159,20 +159,20 @@ export default function DeliveryTrackingModal({
                       <div
                         className={`absolute -left-6 sm:-left-8 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black transition-all ${
                           isDone
-                            ? 'bg-black text-white ring-4 ring-gray-100 shadow-md'
-                            : 'bg-gray-200 text-gray-500'
+                            ? 'bg-black text-white ring-4 ring-black/10 shadow-md'
+                            : 'bg-black/10 text-gray-400'
                         }`}
                       >
                         {isDone ? <Check className="w-3.5 h-3.5" /> : step.step}
                       </div>
 
                       {/* Step Text Info */}
-                      <div className={`flex-1 -mt-1 p-3 rounded-xl transition-all ${
-                        isCurrent ? 'bg-amber-50/70 border border-amber-200' : ''
+                      <div className={`flex-1 -mt-1 p-3.5 rounded-2xl transition-all ${
+                        isCurrent ? 'glass-ios border border-white/90 shadow-sm' : ''
                       }`}>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
                           <h4 className={`text-sm font-black ${
-                            isCurrent ? 'text-black' : isDone ? 'text-gray-900' : 'text-gray-400'
+                            isCurrent ? 'text-black font-extrabold' : isDone ? 'text-gray-900' : 'text-gray-400'
                           }`}>
                             {step.title}
                           </h4>
@@ -191,7 +191,7 @@ export default function DeliveryTrackingModal({
             </div>
 
             {/* Tombol Interaktif Penguji Alur: Percepat Status Kurir */}
-            <div className="bg-gray-50 border border-gray-200 p-5 rounded-2xl space-y-3">
+            <div className="glass-ios-card border border-white/80 p-5 rounded-3xl space-y-3 shadow-xs">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="text-xs font-black uppercase text-black tracking-wider">
@@ -205,7 +205,7 @@ export default function DeliveryTrackingModal({
                 <div className="flex gap-2">
                   <button
                     onClick={handleResetStep}
-                    className="p-2 border border-gray-300 hover:border-black rounded-xl text-xs font-bold text-gray-600 hover:text-black transition-colors"
+                    className="p-2.5 glass-ios-pill border border-white/70 hover:bg-white rounded-xl text-xs font-bold text-gray-700 transition-all shadow-xs"
                     title="Ulangi simulasi dari awal"
                   >
                     <RefreshCw className="w-4 h-4" />
@@ -214,7 +214,7 @@ export default function DeliveryTrackingModal({
                   <button
                     disabled={currentStep >= 6}
                     onClick={handleNextStep}
-                    className="px-4 py-2 bg-black hover:bg-gray-800 disabled:bg-gray-300 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors shadow-md"
+                    className="px-4 py-2.5 bg-black hover:bg-neutral-800 disabled:bg-gray-300 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95"
                   >
                     <Play className="w-3.5 h-3.5 fill-white" />
                     <span>{currentStep >= 6 ? 'Paket Telah Tiba' : 'Percepat Status Pengiriman (+1 Step)'}</span>
@@ -224,7 +224,7 @@ export default function DeliveryTrackingModal({
             </div>
 
             {/* Informasi Barang & Penerima */}
-            <div className="bg-[#f9f9f9] p-4 rounded-2xl border border-gray-200 text-xs grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="glass-ios-card p-4 rounded-2xl border border-white/80 text-xs grid grid-cols-1 sm:grid-cols-2 gap-4 shadow-xs">
               <div>
                 <span className="text-gray-400 font-bold block mb-1">Tujuan Pengiriman</span>
                 <p className="font-black text-black">{order.customer?.fullName} ({order.customer?.phoneNumber})</p>
@@ -240,10 +240,10 @@ export default function DeliveryTrackingModal({
           </div>
 
           {/* Footer Close */}
-          <div className="p-4 border-t border-gray-100 bg-white flex justify-end">
+          <div className="p-4 border-t border-white/60 bg-white/40 backdrop-blur-md flex justify-end">
             <button
               onClick={onClose}
-              className="px-6 py-2.5 bg-black hover:bg-gray-800 text-white rounded-full text-xs font-bold transition-colors"
+              className="px-6 py-2.5 glass-ios-dark rounded-full text-xs font-bold transition-all shadow-md hover:shadow-lg"
             >
               Tutup Pelacakan
             </button>

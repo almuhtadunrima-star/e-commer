@@ -23,14 +23,14 @@ export default function TrendingCarousel({ onSelectStoryCategory }) {
           <button
             onClick={() => scroll('left')}
             aria-label="Scroll left"
-            className="w-10 h-10 rounded-full bg-[#f5f5f5] hover:bg-[#e5e5e5] flex items-center justify-center transition-colors text-black active:scale-95"
+            className="w-10 h-10 rounded-full glass-ios-pill hover:bg-white flex items-center justify-center transition-all text-black active:scale-95 shadow-xs"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => scroll('right')}
             aria-label="Scroll right"
-            className="w-10 h-10 rounded-full bg-[#f5f5f5] hover:bg-[#e5e5e5] flex items-center justify-center transition-colors text-black active:scale-95"
+            className="w-10 h-10 rounded-full glass-ios-pill hover:bg-white flex items-center justify-center transition-all text-black active:scale-95 shadow-xs"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -48,14 +48,14 @@ export default function TrendingCarousel({ onSelectStoryCategory }) {
             onClick={() => onSelectStoryCategory(story.category)}
             className="flex-shrink-0 w-[300px] sm:w-[420px] lg:w-[460px] group cursor-pointer"
           >
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 mb-4">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden glass-ios-card p-1.5 mb-4 group-hover:shadow-xl transition-all duration-500">
               <img
                 src={story.image}
                 alt={story.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-black text-white text-[11px] font-bold tracking-wider uppercase rounded-full">
+                <span className="px-3.5 py-1.5 glass-ios-dark text-white text-[11px] font-black tracking-wider uppercase rounded-full shadow-md">
                   {story.tag}
                 </span>
               </div>

@@ -59,15 +59,15 @@ export default function CartDrawer({
 
       {/* Slide-over Drawer */}
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md sm:max-w-lg bg-white shadow-2xl flex flex-col justify-between">
+        <div className="w-screen max-w-md sm:max-w-lg glass-ios border-l border-white/80 shadow-2xl flex flex-col justify-between">
           {/* Header */}
-          <div className="p-6 border-b border-gray-100 flex items-center justify-between">
+          <div className="p-6 border-b border-white/60 bg-white/40 backdrop-blur-md flex items-center justify-between">
             <h2 className="text-xl font-black text-black">
               Keranjang Belanja ({items.reduce((acc, item) => acc + item.quantity, 0)})
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full text-black transition-colors"
+              className="p-2 glass-ios-pill hover:bg-white/80 rounded-full text-black transition-all"
             >
               <X className="w-5 h-5" />
             </button>
@@ -76,7 +76,7 @@ export default function CartDrawer({
           {/* Body Content */}
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
             {/* Free Shipping Progress Indicator */}
-            <div className="bg-[#f5f5f5] p-4 rounded-2xl border border-gray-100">
+            <div className="glass-ios-card p-4 rounded-2xl border border-white/70 shadow-sm">
               {isFreeShipping ? (
                 <div className="flex items-center space-x-2 text-xs font-bold text-green-700">
                   <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
@@ -88,7 +88,7 @@ export default function CartDrawer({
                     <span>Target Gratis Ongkir (Min. {formatRupiah(freeShippingThreshold)})</span>
                     <span>Kurang {formatRupiah(freeShippingThreshold - subtotal)}</span>
                   </div>
-                  <div className="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-black/10 h-2.5 rounded-full overflow-hidden">
                     <div 
                       className="bg-black h-full transition-all duration-300 rounded-full"
                       style={{ width: `${Math.min(100, (subtotal / freeShippingThreshold) * 100)}%` }}
@@ -111,7 +111,7 @@ export default function CartDrawer({
               </div>
             ) : (
               /* Items list */
-              <div className="space-y-4 divide-y divide-gray-100">
+              <div className="space-y-4 divide-y divide-white/60">
                 {items.map((item) => (
                   <div key={`${item.id}-${item.selectedSize}-${item.selectedColor}`} className="pt-4 flex gap-4 text-left">
                     {/* Item Image */}
@@ -122,10 +122,10 @@ export default function CartDrawer({
                           onOpenDetail(item);
                         }
                       }}
-                      className="w-24 h-24 bg-[#f6f6f6] rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-gray-100 cursor-pointer hover:border-black transition-all relative"
+                      className="w-24 h-24 bg-white/50 backdrop-blur-md rounded-2xl p-2 flex-shrink-0 flex items-center justify-center border border-white/80 cursor-pointer hover:border-black/50 transition-all relative shadow-sm"
                       title="Lihat Detail Produk"
                     >
-                      <span className="absolute top-1.5 left-1.5 w-4 h-4 rounded bg-black text-white font-black text-[9px] flex items-center justify-center shadow">
+                      <span className="absolute top-1.5 left-1.5 w-4 h-4 rounded-md bg-black text-white font-black text-[9px] flex items-center justify-center shadow">
                         M
                       </span>
                       <img
@@ -165,7 +165,7 @@ export default function CartDrawer({
 
                       {/* Controls */}
                       <div className="flex items-center justify-between pt-2">
-                        <div className="flex items-center space-x-2 border border-gray-200 rounded-full px-2 py-0.5 bg-white">
+                        <div className="flex items-center space-x-2 border border-white/80 rounded-full px-2 py-0.5 glass-ios-pill shadow-xs">
                           <button
                             onClick={() => onUpdateQuantity(item, Math.max(1, item.quantity - 1))}
                             className="p-1 hover:text-black text-gray-500 active:scale-90"
@@ -200,7 +200,7 @@ export default function CartDrawer({
 
           {/* Footer / Summary / Proceed to Checkout Button */}
           {items.length > 0 && (
-            <div className="p-6 border-t border-gray-100 bg-white space-y-4">
+            <div className="p-6 border-t border-white/60 bg-white/50 backdrop-blur-xl space-y-4 shadow-lg">
               {/* Promo Code Input */}
               <form onSubmit={handleApplyPromo} className="flex gap-2">
                 <div className="relative flex-1">
@@ -210,12 +210,12 @@ export default function CartDrawer({
                     placeholder="Kode Kupon (e.g. DISKON10)"
                     value={promoCode}
                     onChange={(e) => setPromoCode(e.target.value)}
-                    className="w-full border border-gray-200 rounded-full pl-9 pr-3 py-2 text-xs uppercase outline-none focus:border-black font-semibold"
+                    className="w-full glass-ios-input border border-white/80 rounded-full pl-9 pr-3 py-2 text-xs uppercase outline-none focus:border-black font-semibold"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-gray-100 hover:bg-black hover:text-white rounded-full text-xs font-bold transition-colors"
+                  className="px-5 py-2 glass-ios-dark rounded-full text-xs font-bold transition-all"
                 >
                   Gunakan
                 </button>
@@ -224,7 +224,7 @@ export default function CartDrawer({
               {promoError && <p className="text-xs text-red-500 font-medium">{promoError}</p>}
 
               {/* Rincian Harga Sementara */}
-              <div className="space-y-1.5 text-xs text-gray-600 border-t border-gray-100 pt-3">
+              <div className="space-y-1.5 text-xs text-gray-600 border-t border-white/50 pt-3">
                 <div className="flex justify-between">
                   <span>Subtotal Produk</span>
                   <span className="font-bold text-black">{formatRupiah(subtotal)}</span>
@@ -241,7 +241,7 @@ export default function CartDrawer({
                     {isFreeShipping ? 'Gratis (Promo)' : 'Dihitung di checkout'}
                   </span>
                 </div>
-                <div className="flex justify-between text-base font-black text-black pt-2 border-t border-gray-200">
+                <div className="flex justify-between text-base font-black text-black pt-2 border-t border-white/60">
                   <span>Total Sementara</span>
                   <span>{formatRupiah(subtotal - discountAmount)}</span>
                 </div>
@@ -251,7 +251,7 @@ export default function CartDrawer({
               <div className="space-y-2 pt-2">
                 <button
                   onClick={handleCheckoutClick}
-                  className="w-full py-4 bg-black text-white hover:bg-gray-800 rounded-full font-bold text-sm tracking-tight transition-all active:scale-[0.99] flex items-center justify-center space-x-2 shadow-xl"
+                  className="w-full py-4 bg-black text-white hover:bg-neutral-800 rounded-full font-bold text-sm tracking-tight transition-all active:scale-[0.99] flex items-center justify-center space-x-2 shadow-xl hover:shadow-2xl"
                 >
                   <span>Lanjut ke Pengiriman & Checkout</span>
                   <ArrowRight className="w-4 h-4" />

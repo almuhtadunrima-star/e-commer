@@ -30,25 +30,25 @@ export default function HeroSection({ onShopCategory }) {
         {/* Top-Right Athlete Credit Tag */}
         {campaign.athlete && (
           <div className="absolute top-6 right-6 lg:right-12 z-20">
-            <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[11px] font-medium tracking-wide text-white/90 border border-white/10">
+            <span className="px-3.5 py-1.5 glass-ios-pill rounded-full text-[11px] font-bold tracking-wide text-white border border-white/40 shadow-sm">
               {campaign.athlete}
             </span>
           </div>
         )}
 
         {/* Carousel Navigation Arrows */}
-        <div className="absolute bottom-6 right-6 lg:right-12 z-20 flex space-x-2">
+        <div className="absolute bottom-6 right-6 lg:right-12 z-20 flex space-x-2.5">
           <button
             onClick={handlePrev}
             aria-label="Previous hero campaign"
-            className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-black hover:text-black flex items-center justify-center backdrop-blur-md transition-all text-white hover:bg-white hover:text-black"
+            className="w-11 h-11 rounded-full glass-ios-pill text-white hover:bg-white hover:text-black flex items-center justify-center transition-all border border-white/50 active:scale-95 shadow-lg"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={handleNext}
             aria-label="Next hero campaign"
-            className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-black hover:text-black flex items-center justify-center backdrop-blur-md transition-all text-white hover:bg-white hover:text-black"
+            className="w-11 h-11 rounded-full glass-ios-pill text-white hover:bg-white hover:text-black flex items-center justify-center transition-all border border-white/50 active:scale-95 shadow-lg"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -70,13 +70,13 @@ export default function HeroSection({ onShopCategory }) {
           <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={() => onShopCategory(campaign.filterTarget)}
-              className="px-6 py-3 bg-white text-black hover:bg-white/80 rounded-full font-bold text-sm tracking-tight transition-all active:scale-95 shadow-lg"
+              className="px-7 py-3.5 bg-white text-black hover:bg-white/90 rounded-full font-black text-sm tracking-tight transition-all active:scale-95 shadow-xl"
             >
               {campaign.ctaPrimary}
             </button>
             <button
               onClick={() => onShopCategory(campaign.filterTarget)}
-              className="px-6 py-3 bg-white/20 hover:bg-white/30 text-white rounded-full font-bold text-sm tracking-tight backdrop-blur-md transition-all active:scale-95 border border-white/20"
+              className="px-7 py-3.5 glass-ios-pill hover:bg-white/30 text-white rounded-full font-black text-sm tracking-tight transition-all active:scale-95 border border-white/40 shadow-lg"
             >
               {campaign.ctaSecondary}
             </button>
