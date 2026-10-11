@@ -6,17 +6,17 @@ export default function MembershipBanner({ onOpenAuth }) {
     {
       icon: Sparkles,
       title: "Member Exclusive Drops",
-      desc: "Get first access to coveted releases and custom Nike By You designs."
+      desc: "Dapatkan akses utama ke rilis sneakers paling dicari dan koleksi eksklusif MA Store."
     },
     {
       icon: Truck,
       title: "Free Shipping & Returns",
-      desc: "Enjoy free standard delivery on every order over $50 plus 60-day trial returns."
+      desc: "Nikmati gratis ongkir nasional dan kemudahan garansi retur tukar ukuran 60 hari."
     },
     {
       icon: Trophy,
-      title: "Nike App Ecosystem",
-      desc: "Connect with Nike Training Club and Nike Run Club for daily workout motivation."
+      title: "MA Store Ecosystem",
+      desc: "Bergabung bersama komunitas streetwear dan sneaker enthusiast terbesar."
     }
   ];
 
@@ -24,13 +24,13 @@ export default function MembershipBanner({ onOpenAuth }) {
     <section className="bg-[#111111] text-white py-16 px-6 lg:px-12 my-12">
       <div className="max-w-[1920px] mx-auto text-center">
         <span className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
-          Nike Membership
+          MA Store Membership
         </span>
         <h2 className="text-3xl sm:text-5xl font-black font-nike-bold tracking-tight uppercase mb-4 text-white">
-          BECOME A MEMBER
+          BECOME AN MA STORE MEMBER
         </h2>
         <p className="text-sm sm:text-base text-gray-300 max-w-xl mx-auto mb-8 font-medium">
-          Sign up for free. Join a global community of athletes and get the best of Nike delivered directly to you.
+          Daftar gratis. Bergabunglah dengan komunitas eksklusif dan dapatkan penawaran terbaik dari MA Store langsung ke Anda.
         </p>
 
         <div className="flex justify-center gap-4 mb-14">

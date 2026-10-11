@@ -33,19 +33,26 @@ export default function Navbar({
     <>
       <nav className="bg-white sticky top-0 z-40 transition-shadow border-b border-[#f0f0f0] select-none">
         <div className="max-w-[1920px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-          {/* Logo Nike & Brand Identity */}
+          {/* Logo MA Store & Brand Identity */}
           <div className="flex items-center space-x-3">
             <button 
               onClick={() => onSelectCategory("All")}
-              className="group focus:outline-none flex items-center gap-2"
-              title="Nike Official Store"
+              className="group focus:outline-none flex items-center gap-2.5 py-1"
+              title="MA Store Official Store"
             >
-              <svg 
-                className="h-12 w-16 fill-[#111111] group-hover:opacity-75 transition-opacity"
-                viewBox="0 0 24 24"
-              >
-                <path d="M21.707 5.293c-2.478 2.05-6.398 4.965-10.742 7.747-3.05 1.954-5.698 3.523-7.534 4.542-.716.398-1.472.778-2.187 1.092l-.128.055a.75.75 0 01-.989-.988c.328-.737.728-1.517 1.144-2.257 1.054-1.875 2.673-4.577 4.673-7.689 2.846-4.429 5.823-8.432 7.915-10.871a.75.75 0 011.08.026c.394.462.674.997.808 1.554.237.99-.04 2.112-.767 3.267 1.583-.984 3.738-2.217 6.137-3.414.288-.144.629-.024.773.264a.75.75 0 01-.183.672z" />
-              </svg>
+              <img 
+                src="/logo.png" 
+                alt="MA Store" 
+                className="h-10 sm:h-11 w-auto object-contain rounded-xl filter drop-shadow-sm transition-transform group-hover:scale-105" 
+              />
+              <div className="flex flex-col text-left">
+                <span className="font-black text-lg sm:text-xl tracking-tight leading-none text-black uppercase">
+                  MA STORE
+                </span>
+                <span className="text-[9px] font-extrabold tracking-widest text-gray-400 uppercase">
+                  Official Store
+                </span>
+              </div>
             </button>
           </div>
 
@@ -90,7 +97,7 @@ export default function Navbar({
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Cari sepatu, seri..."
+                  placeholder="Cari produk di MA Store..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
                   onFocus={() => setSearchFocused(true)}

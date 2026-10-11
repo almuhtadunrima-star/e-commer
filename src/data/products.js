@@ -359,7 +359,7 @@ export const paymentMethods = [
     description: "Scan QR menggunakan GoPay, OVO, DANA, BCA, Livin', ShopeePay.",
     icon: "📱",
     details: {
-      qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=00020101021226610014ID.GO.GOPAY.WWW0118936009140000000000021500000000000000005204581253033605802ID5914NIKE%20ID%20STORE6013JAKARTA%20SELAT630452C7",
+      qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=00020101021226610014ID.GO.GOPAY.WWW0118936009140000000000021500000000000000005204581253033605802ID5914MA%20STORE%20OFFICIAL6013JAKARTA%20SELAT630452C7",
       timeoutMinutes: 15
     }
   },
@@ -372,7 +372,7 @@ export const paymentMethods = [
     details: {
       accountNumber: "8801293849182390",
       bankName: "Bank Central Asia (BCA)",
-      accountName: "NIKE INDONESIA STORE"
+      accountName: "MA STORE INDONESIA"
     }
   },
   {
@@ -384,7 +384,7 @@ export const paymentMethods = [
     details: {
       accountNumber: "8910293841029381",
       bankName: "Bank Mandiri",
-      accountName: "NIKE INDONESIA STORE"
+      accountName: "MA STORE INDONESIA"
     }
   },
   {

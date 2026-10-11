@@ -1,6 +1,6 @@
-# e-commer 👟🇮🇩
+# MA Store - Official E-Commerce Platform 👟🇮🇩
 
-Modern, High-Performance, End-to-End E-Commerce Platform built with **React 18**, **Vite**, and **Tailwind CSS**.
+Modern, High-Performance, End-to-End E-Commerce Platform built with **React 18**, **Vite**, and **Tailwind CSS**. Official Brand: **MA Store**.
 
 Website toko online modern, profesional, responsive, dan usable dengan alur pembelian **8 Tahap (End-to-End User Flow)** lengkap:
 `Discover` → `Product Detail Page` → `Shopping Cart` → `Checkout` → `Delivery` → `Payment` → `Order Confirmation` → `Delivery Tracking`.

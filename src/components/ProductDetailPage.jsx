@@ -95,7 +95,7 @@ export default function ProductDetailPage({
       verified: true,
       size: "EU 43",
       variant: activeColor.name,
-      comment: "Ukuran pas banget sesuai standar panduan size Nike. Box mulus tidak penyok, dapet double box packing. Recommended seller!",
+      comment: "Ukuran pas banget sesuai standar panduan size MA Store. Box mulus tidak penyok, dapet double box packing. Recommended seller!",
       likes: 9
     },
     {

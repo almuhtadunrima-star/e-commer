@@ -5,7 +5,7 @@ export default function Footer({ onOpenTrackLookup }) {
   const footerLinks = {
     resources: [
       "Temukan Gerai Resmi",
-      "Daftar Member Nike ID",
+      "Daftar Member MA Store",
       "Diskon Mahasiswa / Pelajar",
       "Kirim Masukan & Ulasan"
     ],
@@ -18,11 +18,11 @@ export default function Footer({ onOpenTrackLookup }) {
       "Hubungi Kami di WhatsApp"
     ],
     company: [
-      "Tentang Nike Indonesia",
+      "Tentang MA Store Indonesia",
       "Berita & Rilis Sneakers",
-      "Karier di Nike",
+      "Karier di MA Store",
       "Keberlanjutan Lingkungan",
-      "Program Atlet Nasional"
+      "Program Komunitas"
     ],
     promotions: [
       "Promo Gratis Ongkir Nasional",
@@ -151,7 +151,7 @@ export default function Footer({ onOpenTrackLookup }) {
               <MapPin className="w-3.5 h-3.5 text-red-500" />
               <span>Indonesia / Bahasa Indonesia</span>
             </div>
-            <span>© 2026 Toko Resmi E-Commerce Indonesia. All Rights Reserved.</span>
+            <span>© 2026 MA Store Indonesia. All Rights Reserved.</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">

@@ -45,20 +45,18 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
             <X className="w-5 h-5" />
           </button>
 
-          {/* Nike Swoosh Logo */}
-          <div className="flex justify-center mb-4">
-            <svg className="h-10 w-16 fill-[#111111]" viewBox="0 0 24 24">
-              <path d="M21.707 5.293c-2.478 2.05-6.398 4.965-10.742 7.747-3.05 1.954-5.698 3.523-7.534 4.542-.716.398-1.472.778-2.187 1.092l-.128.055a.75.75 0 01-.989-.988c.328-.737.728-1.517 1.144-2.257 1.054-1.875 2.673-4.577 4.673-7.689 2.846-4.429 5.823-8.432 7.915-10.871a.75.75 0 011.08.026c.394.462.674.997.808 1.554.237.99-.04 2.112-.767 3.267 1.583-.984 3.738-2.217 6.137-3.414.288-.144.629-.024.773.264a.75.75 0 01-.183.672z" />
-            </svg>
+          {/* MA Store Logo */}
+          <div className="flex justify-center mb-3">
+            <img src="/logo.png" alt="MA Store" className="h-16 w-auto object-contain rounded-2xl shadow-md" />
           </div>
 
           <h3 className="text-xl sm:text-2xl font-black text-black uppercase tracking-tight mb-2">
-            {mode === 'signin' ? 'YOUR ACCOUNT FOR EVERYTHING NIKE' : 'BECOME A NIKE MEMBER'}
+            {mode === 'signin' ? 'AKUN RESMI MA STORE ANDA' : 'BERGABUNG JADI MEMBER MA STORE'}
           </h3>
           <p className="text-xs text-gray-500 mb-6">
             {mode === 'signin' 
-              ? 'Enter your email and password to access member benefits.'
-              : 'Create your Nike Member profile and get first access to the very best products, inspiration and community.'}
+              ? 'Masukkan email dan password untuk mengakses promo member eksklusif.'
+              : 'Buat profil Member MA Store untuk akses produk terfavorit dan penawaran spesial.'}
           </p>
 
           {error && (
