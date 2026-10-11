@@ -171,14 +171,22 @@ export default function ProductDetailPage({
                   className="w-full h-full object-contain filter drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Badge Status di Pojok Gambar */}
+                {/* Brand Logo "M" & Badge Status di Pojok Gambar */}
                 <div className="absolute top-5 left-5 flex flex-col gap-2">
-                  {product.badge && (
-                    <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-black text-white shadow-md">
-                      {product.badge}
+                  <div className="flex items-center gap-2">
+                    <span 
+                      className="w-9 h-9 rounded-xl bg-black text-white font-black text-base flex items-center justify-center shadow-xl border border-white/40 tracking-tighter"
+                      title="MOVEO Brand Logo"
+                    >
+                      M
                     </span>
-                  )}
-                  <span className="text-xs font-bold text-green-800 bg-green-100/90 backdrop-blur-sm px-3 py-1 rounded-full border border-green-300 shadow-sm flex items-center gap-1.5">
+                    {product.badge && (
+                      <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-black text-white shadow-md">
+                        {product.badge}
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-xs font-bold text-green-800 bg-green-100/90 backdrop-blur-sm px-3 py-1 rounded-full border border-green-300 shadow-sm flex items-center gap-1.5 w-fit">
                     <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></span>
                     Ready Stock ({product.stock} unit)
                   </span>
@@ -265,8 +273,9 @@ export default function ProductDetailPage({
               {/* Header Info */}
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-black tracking-wider uppercase text-gray-500">
-                    {product.category} • {product.gender}
+                  <span className="text-xs font-black tracking-wider uppercase text-gray-500 flex items-center gap-1.5">
+                    <span className="w-5 h-5 rounded-md bg-black text-white font-black text-[11px] flex items-center justify-center shadow-sm">M</span>
+                    <span>MOVEO • {product.category} • {product.gender}</span>
                   </span>
                   
                   {/* Rating Badge */}

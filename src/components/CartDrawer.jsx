@@ -27,16 +27,16 @@ export default function CartDrawer({
   const handleApplyPromo = (e) => {
     e.preventDefault();
     const code = promoCode.trim().toUpperCase();
-    if (code === 'DISKON10' || code === 'NIKE10') {
+    if (code === 'DISKON10' || code === 'MOVEO10' || code === 'NIKE10') {
       setDiscountPercent(10);
       setPromoSuccess('Kupon Aktif: Diskon 10% berhasil dipotong!');
       setPromoError('');
-    } else if (code === 'DISKON20' || code === 'NIKE20') {
+    } else if (code === 'DISKON20' || code === 'MOVEO20' || code === 'NIKE20') {
       setDiscountPercent(20);
       setPromoSuccess('Kupon Eksklusif: Diskon 20% berhasil dipotong!');
       setPromoError('');
     } else {
-      setPromoError('Kode kupon tidak valid. Coba gunakan "DISKON10" atau "DISKON20"');
+      setPromoError('Kode kupon tidak valid. Coba gunakan "DISKON10" atau "MOVEO20"');
       setPromoSuccess('');
     }
   };
@@ -122,9 +122,12 @@ export default function CartDrawer({
                           onOpenDetail(item);
                         }
                       }}
-                      className="w-24 h-24 bg-[#f6f6f6] rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-gray-100 cursor-pointer hover:border-black transition-all"
+                      className="w-24 h-24 bg-[#f6f6f6] rounded-xl p-2 flex-shrink-0 flex items-center justify-center border border-gray-100 cursor-pointer hover:border-black transition-all relative"
                       title="Lihat Detail Produk"
                     >
+                      <span className="absolute top-1.5 left-1.5 w-4 h-4 rounded bg-black text-white font-black text-[9px] flex items-center justify-center shadow">
+                        M
+                      </span>
                       <img
                         src={item.selectedImage || item.colors[0]?.image}
                         alt={item.name}

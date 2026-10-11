@@ -1,7 +1,7 @@
 export const products = [
   {
-    id: "nike-air-force-1-07",
-    name: "Nike Air Force 1 '07",
+    id: "moveo-air-force-1-07",
+    name: "MOVEO Air Force 1 '07",
     subtitle: "Sepatu Lifestyle Pria & Wanita",
     category: "Lifestyle",
     gender: "Unisex",
@@ -15,7 +15,7 @@ export const products = [
     description: "Ikon bola basket legendaris yang memadukan kenyamanan lapangan dengan gaya jalanan kasual. Terbuat dari kulit asli pilihan dengan bantalan Air-Sole tersembunyi yang empuk untuk kenyamanan sepanjang hari.",
     details: [
       "Material kulit premium yang tahan lama dan mudah dibersihkan",
-      "Bantalan Nike Air terenkapsulasi untuk kenyamanan melangkah ekstra ringan",
+      "Bantalan MOVEO Air terenkapsulasi untuk kenyamanan melangkah ekstra ringan",
       "Kerah low-cut berbusa lembut yang pas di pergelangan kaki",
       "Sol luar karet dengan pola pivot circle untuk cengkeraman maksimal",
       "Lubang perforasi di bagian toebox untuk sirkulasi udara optimal"
@@ -28,8 +28,8 @@ export const products = [
     sizes: ["EU 40", "EU 41", "EU 42", "EU 42.5", "EU 43", "EU 44", "EU 45"]
   },
   {
-    id: "air-jordan-1-high-og-royal",
-    name: "Air Jordan 1 High OG \"Royal\"",
+    id: "moveo-jordan-1-high-og-royal",
+    name: "MOVEO Jordan 1 High OG \"Royal\"",
     subtitle: "Sepatu Basket & Streetwear",
     category: "Jordan",
     gender: "Pria",
@@ -40,11 +40,11 @@ export const products = [
     rating: 5.0,
     reviewsCount: 890,
     badge: "Rilis Terbaru",
-    description: "Siluet legendaris Michael Jordan edisi OG 'Royal'. Menggunakan material full-grain leather dengan kombinasi warna royal blue dan deep black yang abadi di dunia kultur sneakers.",
+    description: "Siluet legendaris edisi OG 'Royal'. Menggunakan material full-grain leather dengan kombinasi warna royal blue dan deep black yang abadi di dunia kultur sneakers.",
     details: [
       "Bahan full-grain leather premium dengan finishing halus dan tahan lama",
       "Unit bantalan Air-Sole di tumit untuk absorpsi benturan",
-      "Logo Wings klasik Jordan terembos elegan pada kerah pergelangan",
+      "Logo Wings klasik terembos elegan pada kerah pergelangan",
       "Sol karet cupsole dengan alur fleksibel mendalam"
     ],
     colors: [
@@ -53,8 +53,8 @@ export const products = [
     sizes: ["EU 41", "EU 42", "EU 42.5", "EU 43", "EU 44"]
   },
   {
-    id: "air-jordan-1-retro-low-og",
-    name: "Air Jordan 1 Retro Low OG \"Howard\"",
+    id: "moveo-jordan-1-retro-low-og",
+    name: "MOVEO Jordan 1 Retro Low OG \"Howard\"",
     subtitle: "Sepatu Kasual Pria",
     category: "Jordan",
     gender: "Pria",
@@ -65,7 +65,7 @@ export const products = [
     rating: 4.8,
     reviewsCount: 312,
     badge: "Eksklusif",
-    description: "Versi potongan rendah yang santai namun tetap sarat prestise warisan Jordan. Sangat fleksibel dipadukan dengan celana pendek maupun chino.",
+    description: "Versi potongan rendah yang santai namun tetap sarat prestise warisan klasik. Sangat fleksibel dipadukan dengan celana pendek maupun chino.",
     details: [
       "Kombinasi leather dan suede nubuck lembut berkualitas tinggi",
       "Bantalan Air ringan yang nyaman dipakai seharian penuh",
@@ -77,8 +77,8 @@ export const products = [
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
   {
-    id: "nike-air-max-270",
-    name: "Nike Air Max 270",
+    id: "moveo-air-max-270",
+    name: "MOVEO Air Max 270",
     subtitle: "Sepatu Lari & Gaya Kasual",
     category: "Lifestyle",
     gender: "Pria",
@@ -89,7 +89,7 @@ export const products = [
     rating: 4.8,
     reviewsCount: 2210,
     badge: "Diskon 12%",
-    description: "Mengusung tabung udara Max Air tumit 270 derajat tertinggi yang pernah dibuat Nike. Menghadirkan pantulan empuk tak tertandingi di setiap ayunan langkah.",
+    description: "Mengusung tabung udara Max Air tumit 270 derajat tertinggi yang pernah dibuat MOVEO. Menghadirkan pantulan empuk tak tertandingi di setiap ayunan langkah.",
     details: [
       "Unit Max Air 270 berukuran besar memberikan sensasi bantalan empuk bagai melayang",
       "Upper rajut engineered mesh yang sangat lentur dan adem",
@@ -102,8 +102,8 @@ export const products = [
     sizes: ["EU 40", "EU 41", "EU 42", "EU 42.5", "EU 43", "EU 44", "EU 45"]
   },
   {
-    id: "nike-pegasus-plus-2",
-    name: "Nike Pegasus Plus 2",
+    id: "moveo-pegasus-plus-2",
+    name: "MOVEO Pegasus Plus 2",
     subtitle: "Sepatu Lari Road Running",
     category: "Running",
     gender: "Pria",
@@ -127,8 +127,8 @@ export const products = [
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44", "EU 45"]
   },
   {
-    id: "nike-pegasus-premium",
-    name: "Nike Pegasus Premium",
+    id: "moveo-pegasus-premium",
+    name: "MOVEO Pegasus Premium",
     subtitle: "Sepatu Lari Flagship",
     category: "Running",
     gender: "Unisex",
@@ -152,8 +152,8 @@ export const products = [
     sizes: ["EU 41", "EU 42", "EU 43", "EU 44"]
   },
   {
-    id: "nike-zoom-vomero-5",
-    name: "Nike Zoom Vomero 5",
+    id: "moveo-zoom-vomero-5",
+    name: "MOVEO Zoom Vomero 5",
     subtitle: "Sepatu Lari Retro Y2K",
     category: "Lifestyle",
     gender: "Unisex",
@@ -177,8 +177,8 @@ export const products = [
     sizes: ["EU 39", "EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
   {
-    id: "kobe-10-protro-blue-lagoon",
-    name: "Kobe 10 Protro \"Blue Lagoon\"",
+    id: "moveo-kobe-10-protro-blue-lagoon",
+    name: "MOVEO Kobe 10 Protro \"Blue Lagoon\"",
     subtitle: "Sepatu Basket Performa Tinggi",
     category: "Basketball",
     gender: "Pria",
@@ -189,12 +189,12 @@ export const products = [
     rating: 5.0,
     reviewsCount: 945,
     badge: "Mamba Edition",
-    description: "Didedikasikan untuk sang legenda Kobe Bryant. Dirancang khusus untuk pemain basket yang mengutamakan kecepatan reaksi instan, stabilitas potong arah, dan daya cengkeram lantai kayu indoor.",
+    description: "Didedikasikan untuk performa pemain basket yang mengutamakan kecepatan reaksi instan, stabilitas potong arah, dan daya cengkeram lantai kayu indoor.",
     details: [
       "Sistem bantalan hibrida: Zoom Air responsif + Lunarlon empuk",
       "Outsole mikro-tread tembus pandang dengan cengkeraman instan",
       "Bahan upper seamless open-mesh ultra kuat dan ringan",
-      "Logo ikonik Mamba Sheath di lidah sepatu dan sol bawah"
+      "Logo ikonik MOVEO di lidah sepatu dan sol bawah"
     ],
     colors: [
       { name: "Blue Lagoon / Volt", hex: "#00A3E0", image: "https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/481aabe3-edd9-4fcf-b6e0-fcc7201b7430/KOBE+X+EM+PROTRO.png" }
@@ -202,8 +202,8 @@ export const products = [
     sizes: ["EU 41", "EU 42", "EU 43", "EU 44", "EU 45"]
   },
   {
-    id: "nike-metcon-10",
-    name: "Nike Metcon 10",
+    id: "moveo-metcon-10",
+    name: "MOVEO Metcon 10",
     subtitle: "Sepatu Gym & Cross Training",
     category: "Training",
     gender: "Pria",
@@ -227,8 +227,8 @@ export const products = [
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
   {
-    id: "nike-free-metcon-7",
-    name: "Nike Free Metcon 7",
+    id: "moveo-free-metcon-7",
+    name: "MOVEO Free Metcon 7",
     subtitle: "Sepatu Latihan Kelincahan",
     category: "Training",
     gender: "Pria",
@@ -239,9 +239,9 @@ export const products = [
     rating: 4.8,
     reviewsCount: 934,
     badge: "Diskon 13%",
-    description: "Perpaduan kelenturan Nike Free di kaki depan untuk sprint dan burpee, dengan tumit lebar datar khas Metcon untuk stabilitas angkat beban.",
+    description: "Perpaduan kelenturan MOVEO Free di kaki depan untuk sprint dan burpee, dengan tumit lebar datar khas Metcon untuk stabilitas angkat beban.",
     details: [
-      "Teknologi alur lentur Nike Free di bagian depan untuk mobilitas agility",
+      "Teknologi alur lentur MOVEO Free di bagian depan untuk mobilitas agility",
       "Platform tumit lebar kokoh menstabilkan posisi kaki",
       "Kabel Flywire internal terintegrasi dengan tali sepatu",
       "Busa lunak di lapisan dalam untuk kenyamanan maksimal"
@@ -252,8 +252,8 @@ export const products = [
     sizes: ["EU 40", "EU 41", "EU 42", "EU 43", "EU 44"]
   },
   {
-    id: "kd19-basketball",
-    name: "Nike KD19",
+    id: "moveo-kd19-basketball",
+    name: "MOVEO KD19",
     subtitle: "Sepatu Basket All-Around",
     category: "Basketball",
     gender: "Pria",
@@ -264,7 +264,7 @@ export const products = [
     rating: 4.9,
     reviewsCount: 620,
     badge: "Diskon 20%",
-    description: "Sepatu tanda tangan Kevin Durant. Diciptakan bagi pemain dengan tembakan akurat dan langkah serbaguna di setiap jengkal lapangan.",
+    description: "Sepatu basket andalan performa tinggi. Diciptakan bagi pemain dengan tembakan akurat dan langkah serbaguna di setiap jengkal lapangan.",
     details: [
       "Unit Air Zoom Strobel dijahit langsung tepat di bawah telapak kaki",
       "Sangkar samping penopang menahan kaki saat gerakan lateral keras",
@@ -276,8 +276,8 @@ export const products = [
     sizes: ["EU 41", "EU 42", "EU 43", "EU 44"]
   },
   {
-    id: "nike-air-force-1-gtx-vibram",
-    name: "Air Force 1 GORE-TEX Vibram",
+    id: "moveo-air-force-1-gtx-vibram",
+    name: "MOVEO Air Force 1 GORE-TEX Vibram",
     subtitle: "Sepatu All-Weather Waterproof",
     category: "Lifestyle",
     gender: "Pria",
@@ -288,7 +288,7 @@ export const products = [
     rating: 4.9,
     reviewsCount: 380,
     badge: "Waterproof",
-    description: "Sepatu tangguh tahan hujan dan segala medan. Menggabungkan membran membran anti-air GORE-TEX asli dengan sol lug karet buatan pabrikan Italia Vibram.",
+    description: "Sepatu tangguh tahan hujan dan segala medan. Menggabungkan membran anti-air GORE-TEX asli dengan sol lug karet buatan pabrikan Italia Vibram.",
     details: [
       "Lapisan bootie tahan air GORE-TEX menjaga kaki tetap kering 100%",
       "Sol luar Vibram dengan gerigi tebal anti selip di jalan licin dan basah",
@@ -423,7 +423,7 @@ export const heroCampaigns = [
     athlete: "Jayden Reed, Wide Receiver"
   },
   {
-    id: "nike-hybrid-rn",
+    id: "moveo-hybrid-rn",
     title: "TRAIN EVERYTHING",
     subtitle: "Latihan tanpa batas. Dari lari jalanan hingga angkat beban di gym, dapatkan sepatu serbaguna terbaik.",
     category: "Training & Gym",
@@ -431,7 +431,7 @@ export const heroCampaigns = [
     ctaSecondary: "Eksplorasi Fitur",
     filterTarget: "Training",
     image: "https://static.nike.com/a/images/f_auto,cs_srgb/w_1920,c_limit/21a1e26a-93e0-4609-aa3b-fa72259ce075/nike-just-do-it.jpg",
-    athlete: "Inovasi Performa Nike"
+    athlete: "Inovasi Performa MOVEO"
   }
 ];
 

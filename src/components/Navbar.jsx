@@ -25,8 +25,8 @@ export default function Navbar({
   ];
 
   const popularSearches = [
-    "Air Force 1", "Air Jordan 1", "Air Max", "Vomero 5", 
-    "Pegasus 41", "Metcon 10", "Running", "Basketball"
+    "MOVEO Air Force 1", "MOVEO Jordan", "MOVEO Air Max", "MOVEO Vomero 5", 
+    "MOVEO Pegasus", "MOVEO Metcon", "Running", "Basketball"
   ];
 
   return (

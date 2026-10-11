@@ -41,19 +41,27 @@ export default function ProductCard({
           loading="lazy"
         />
 
-        {/* Stock Badge Tag */}
-        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
-          {product.badge && (
-            <span className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full tracking-wider shadow-sm ${
-              product.badge.includes('Diskon')
-                ? 'bg-red-600 text-white'
-                : product.badge === 'Terlaris'
-                ? 'bg-black text-white'
-                : 'bg-amber-500 text-white'
-            }`}>
-              {product.badge}
+        {/* MOVEO Brand Mark "M" & Stock Badge */}
+        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 items-start">
+          <div className="flex items-center gap-1.5">
+            <span 
+              className="w-6 h-6 rounded-md bg-black text-white font-black text-xs flex items-center justify-center shadow-md border border-white/40 tracking-tight"
+              title="MOVEO Brand Logo"
+            >
+              M
             </span>
-          )}
+            {product.badge && (
+              <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider shadow-sm ${
+                product.badge.includes('Diskon')
+                  ? 'bg-red-600 text-white'
+                  : product.badge === 'Terlaris'
+                  ? 'bg-black text-white'
+                  : 'bg-amber-500 text-white'
+              }`}>
+                {product.badge}
+              </span>
+            )}
+          </div>
           {product.stock <= 5 && (
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-800 border border-orange-200">
               Sisa {product.stock} pcs!
@@ -117,12 +125,16 @@ export default function ProductCard({
       {/* Product Details */}
       <div className="space-y-1 flex-1 flex flex-col justify-between">
         <div>
-          <div className="flex items-center space-x-1 text-xs text-amber-500 font-semibold mb-1">
-            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-            <span>{product.rating}</span>
-            <span className="text-gray-400 font-normal">({product.reviewsCount})</span>
-            <span className="text-gray-300">•</span>
-            <span className="text-gray-500 font-normal">Stok: {product.stock}</span>
+          <div className="flex items-center justify-between text-xs font-semibold mb-1">
+            <div className="flex items-center space-x-1 text-amber-500">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <span>{product.rating}</span>
+              <span className="text-gray-400 font-normal">({product.reviewsCount})</span>
+            </div>
+            <span className="text-[10px] font-black tracking-wider text-gray-500 uppercase flex items-center gap-1">
+              <span className="w-3.5 h-3.5 rounded bg-black text-white text-[8px] flex items-center justify-center font-black">M</span>
+              MOVEO
+            </span>
           </div>
 
           <h3 className="text-sm sm:text-base font-bold text-[#111111] group-hover:text-black line-clamp-1 leading-snug">

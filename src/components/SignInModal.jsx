@@ -109,7 +109,7 @@ export default function SignInModal({ isOpen, initialMode, onClose, onSignInSucc
             </div>
 
             <p className="text-[11px] text-gray-400 text-center py-2">
-              By logging in, you agree to Nike's <a href="#" className="underline text-gray-600">Privacy Policy</a> and <a href="#" className="underline text-gray-600">Terms of Use</a>.
+              Dengan masuk, Anda menyetujui <a href="#" className="underline text-gray-600">Kebijakan Privasi</a> dan <a href="#" className="underline text-gray-600">Ketentuan Layanan</a> MA Store.
             </p>
 
             <button
