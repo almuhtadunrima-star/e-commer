@@ -26,35 +26,42 @@ export default function ProductCard({
     setTimeout(() => setJustAdded(false), 1500);
   };
 
+  const discountPercent = product.originalPrice && product.originalPrice > product.price
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    : 0;
+
   return (
     <div 
-      className="group flex flex-col cursor-pointer text-left select-none glass-ios-card rounded-2xl overflow-hidden p-3 transition-all duration-300 relative"
+      className="group flex flex-col cursor-pointer text-left select-none glass-ios-card rounded-2xl overflow-hidden p-2.5 sm:p-3 transition-all duration-300 relative border border-slate-300/70 hover:border-slate-400"
       onClick={() => onOpenDetail(product)}
     >
       {/* Image Container */}
-      <div className="relative aspect-square w-full bg-gradient-to-b from-slate-200/60 to-slate-100/40 backdrop-blur-md rounded-xl overflow-hidden mb-3 border border-slate-300/60">
+      <div className="relative aspect-square w-full bg-gradient-to-b from-slate-200/60 to-slate-100/40 backdrop-blur-md rounded-xl overflow-hidden mb-3 border border-slate-300/60 flex items-center justify-center">
         {/* Product Image */}
         <img
           src={currentColor.image}
           alt={product.name}
-          className="w-full h-full object-contain p-4 group-hover:scale-108 transition-transform duration-300"
+          className="w-full h-full object-contain p-3 sm:p-4 group-hover:scale-108 transition-transform duration-300"
           loading="lazy"
         />
 
-        {/* MOVEO Brand Mark "M" & Stock Badge */}
-        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 items-start">
-          <div className="flex items-center gap-1.5">
+        {/* Brand & Status Badges */}
+        <div className="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1 items-start">
+          <div className="flex items-center gap-1">
             <span 
-              className="w-6 h-6 rounded-lg glass-ios-dark text-white font-black text-xs flex items-center justify-center shadow-md tracking-tight border border-white/20"
-              title="MOVEO Brand Logo"
+              className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg glass-ios-dark text-white font-black text-[10px] sm:text-xs flex items-center justify-center shadow-md tracking-tight border border-white/20"
+              title="MA Official Brand"
             >
               M
             </span>
-            {product.badge && (
+            {discountPercent > 0 && (
+              <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider shadow-sm bg-red-600 text-white">
+                -{discountPercent}%
+              </span>
+            )}
+            {product.badge && !product.badge.includes('Diskon') && (
               <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider shadow-sm ${
-                product.badge.includes('Diskon')
-                  ? 'bg-red-600 text-white'
-                  : product.badge === 'Terlaris'
+                product.badge === 'Terlaris'
                   ? 'glass-ios-dark text-white'
                   : 'bg-amber-500 text-white'
               }`}>
@@ -63,7 +70,8 @@ export default function ProductCard({
             )}
           </div>
           {product.stock <= 5 && (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full glass-ios-pill text-amber-950 border border-amber-300/80 shadow-xs">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full glass-ios-pill text-amber-950 border border-amber-300/80 shadow-xs flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
               Sisa {product.stock} pcs!
             </span>
           )}
@@ -76,23 +84,37 @@ export default function ProductCard({
             onToggleFavorite(product);
           }}
           aria-label="Tambah ke Favorit"
-          className="absolute top-3 right-3 p-2 glass-ios-pill hover:bg-white rounded-full transition-all text-black shadow-sm z-10 active:scale-90"
+          className="absolute top-2.5 right-2.5 p-2 glass-ios-pill hover:bg-white rounded-full transition-all text-black shadow-sm z-10 active:scale-90"
         >
           <Heart
-            className={`w-4 h-4 transition-colors ${
+            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${
               isFavorite ? 'fill-red-600 text-red-600' : 'text-slate-700 hover:text-black'
             }`}
           />
         </button>
 
-        {/* Quick Add Button */}
-        <div className="absolute bottom-3 right-3 z-10 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+        {/* Desktop Quick View & Add Pill Bar */}
+        <div className="absolute inset-x-2.5 bottom-2.5 z-10 hidden sm:flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          <span className="px-3 py-1.5 glass-ios-dark text-white text-[11px] font-bold rounded-full shadow-lg backdrop-blur-md border border-white/20">
+            Lihat Detail
+          </span>
           <button
             onClick={handleQuickAdd}
             title="Tambah Cepat ke Keranjang"
-            className="p-2.5 glass-ios-dark text-white hover:bg-black rounded-full shadow-lg transition-transform active:scale-90 flex items-center justify-center border border-white/20"
+            className="p-2 glass-ios-dark text-white hover:bg-black rounded-full shadow-lg transition-transform active:scale-90 flex items-center justify-center border border-white/20"
           >
             {justAdded ? <Check className="w-4 h-4 text-green-400" /> : <Plus className="w-4 h-4" />}
+          </button>
+        </div>
+
+        {/* Mobile Quick Add Button */}
+        <div className="absolute bottom-2 right-2 z-10 sm:hidden">
+          <button
+            onClick={handleQuickAdd}
+            title="Tambah Cepat ke Keranjang"
+            className="p-2 glass-ios-dark text-white hover:bg-black rounded-full shadow-md transition-transform active:scale-90 flex items-center justify-center border border-white/20"
+          >
+            {justAdded ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Plus className="w-3.5 h-3.5" />}
           </button>
         </div>
       </div>
@@ -100,7 +122,7 @@ export default function ProductCard({
       {/* Color Swatches */}
       {product.colors.length > 1 && (
         <div 
-          className="flex items-center space-x-1.5 mb-2 py-0.5"
+          className="flex items-center space-x-1.5 mb-1.5 py-0.5"
           onClick={(e) => e.stopPropagation()}
         >
           {product.colors.map((col, idx) => (
@@ -108,7 +130,7 @@ export default function ProductCard({
               key={col.name}
               onClick={() => setSelectedColorIndex(idx)}
               title={col.name}
-              className={`w-4 h-4 rounded-full border transition-all ${
+              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border transition-all ${
                 selectedColorIndex === idx
                   ? 'ring-2 ring-black border-white scale-110'
                   : 'border-slate-400 hover:border-black'
@@ -116,8 +138,8 @@ export default function ProductCard({
               style={{ backgroundColor: col.hex }}
             />
           ))}
-          <span className="text-[11px] text-slate-600 ml-1 font-bold">
-            {product.colors.length} Pilihan Warna
+          <span className="text-[10px] sm:text-[11px] text-slate-600 ml-1 font-bold truncate">
+            {currentColor.name}
           </span>
         </div>
       )}
@@ -128,31 +150,30 @@ export default function ProductCard({
           <div className="flex items-center justify-between text-xs font-semibold mb-1">
             <div className="flex items-center space-x-1 text-amber-500">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="font-bold text-slate-800">{product.rating}</span>
-              <span className="text-slate-500 font-medium">({product.reviewsCount})</span>
+              <span className="font-bold text-slate-800 text-[11px] sm:text-xs">{product.rating}</span>
+              <span className="text-slate-500 font-medium text-[10px] sm:text-[11px]">({product.reviewsCount})</span>
             </div>
-            <span className="text-[10px] font-black tracking-wider text-slate-600 uppercase flex items-center gap-1">
-              <span className="w-3.5 h-3.5 rounded bg-black text-white text-[8px] flex items-center justify-center font-black">M</span>
-              MOVEO
+            <span className="text-[10px] font-black tracking-wider text-slate-500 uppercase">
+              MA STORE
             </span>
           </div>
 
-          <h3 className="text-sm sm:text-base font-black text-slate-900 group-hover:text-black line-clamp-1 leading-snug">
+          <h3 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-black line-clamp-1 leading-snug">
             {product.name}
           </h3>
 
-          <p className="text-xs text-slate-600 font-semibold line-clamp-1">
+          <p className="text-[11px] sm:text-xs text-slate-600 font-medium line-clamp-1">
             {product.subtitle}
           </p>
         </div>
 
         {/* Pricing in Rupiah */}
-        <div className="pt-2 flex items-baseline space-x-2">
-          <span className="text-sm sm:text-base font-black text-slate-950">
+        <div className="pt-1.5 flex items-baseline space-x-2">
+          <span className="text-xs sm:text-sm md:text-base font-black text-slate-950">
             {formatRupiah(product.price)}
           </span>
           {product.originalPrice && (
-            <span className="text-xs text-slate-500 line-through font-medium">
+            <span className="text-[10px] sm:text-xs text-slate-500 line-through font-medium">
               {formatRupiah(product.originalPrice)}
             </span>
           )}

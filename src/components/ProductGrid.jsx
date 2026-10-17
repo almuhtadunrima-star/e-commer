@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import ProductCard from './ProductCard';
-import { SlidersHorizontal, ChevronDown, Check, Sparkles } from 'lucide-react';
+import { SlidersHorizontal, ChevronDown, Check, Sparkles, LayoutGrid, Grid3X3, X, RotateCcw } from 'lucide-react';
 import { formatRupiah } from '../utils/format';
 
 export default function ProductGrid({
@@ -19,8 +19,19 @@ export default function ProductGrid({
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sortBy, setSortBy] = useState("featured");
   const [showFilters, setShowFilters] = useState(true);
+  const [gridColumns, setGridColumns] = useState(4);
 
   const categories = ["All", "Hoodie", "Lifestyle", "Running", "Basketball", "Training", "Jordan"];
+
+  const hasActiveFilters = selectedSport !== "All" || selectedGender !== "All" || priceFilter !== "All" || inStockOnly;
+
+  const handleResetAllFilters = () => {
+    setSelectedSport("All");
+    setSelectedGender("All");
+    setPriceFilter("All");
+    setInStockOnly(false);
+    onSelectCategory("All");
+  };
 
   // Filter & sort logic
   const filteredProducts = useMemo(() => {
@@ -85,7 +96,7 @@ export default function ProductGrid({
           </span>
         </div>
 
-        {/* Controls: Filter Toggle & Sort */}
+        {/* Controls: Filter Toggle, Grid Switcher & Sort */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             onClick={() => setShowFilters(!showFilters)}
@@ -94,6 +105,28 @@ export default function ProductGrid({
             <SlidersHorizontal className="w-4 h-4" />
             <span>{showFilters ? 'Sembunyikan Filter' : 'Tampilkan Filter'}</span>
           </button>
+
+          {/* Grid Layout Switcher (Desktop) */}
+          <div className="hidden lg:flex items-center space-x-1 glass-ios-pill p-1 rounded-full border border-slate-300/70">
+            <button
+              onClick={() => setGridColumns(3)}
+              title="Tampilan 3 Kolom (Besar)"
+              className={`p-1.5 rounded-full transition-all ${
+                gridColumns === 3 ? 'bg-black text-white shadow-xs' : 'text-slate-600 hover:text-black'
+              }`}
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={() => setGridColumns(4)}
+              title="Tampilan 4 Kolom (Padat)"
+              className={`p-1.5 rounded-full transition-all ${
+                gridColumns === 4 ? 'bg-black text-white shadow-xs' : 'text-slate-600 hover:text-black'
+              }`}
+            >
+              <Grid3X3 className="w-3.5 h-3.5" />
+            </button>
+          </div>
 
           {/* Sort Dropdown */}
           <div className="relative">
@@ -112,6 +145,58 @@ export default function ProductGrid({
           </div>
         </div>
       </div>
+
+      {/* Active Filter Chips Row */}
+      {hasActiveFilters && (
+        <div className="flex flex-wrap items-center gap-2 pt-4 pb-2 border-b border-slate-200/80 animate-in fade-in duration-200">
+          <span className="text-xs font-bold text-slate-500 mr-1">Filter Aktif:</span>
+          {selectedSport !== "All" && (
+            <button
+              onClick={() => setSelectedSport("All")}
+              className="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold glass-ios-pill hover:bg-slate-300/80 transition-colors"
+            >
+              <span>Kategori: {selectedSport}</span>
+              <X className="w-3.5 h-3.5 ml-1 text-slate-600" />
+            </button>
+          )}
+          {selectedGender !== "All" && (
+            <button
+              onClick={() => setSelectedGender("All")}
+              className="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold glass-ios-pill hover:bg-slate-300/80 transition-colors"
+            >
+              <span>Gender: {selectedGender}</span>
+              <X className="w-3.5 h-3.5 ml-1 text-slate-600" />
+            </button>
+          )}
+          {priceFilter !== "All" && (
+            <button
+              onClick={() => setPriceFilter("All")}
+              className="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold glass-ios-pill hover:bg-slate-300/80 transition-colors"
+            >
+              <span>
+                Harga: {priceFilter === "under-1.5m" ? "< Rp 1.5 Jt" : priceFilter === "1.5m-2.5m" ? "Rp 1.5 - 2.5 Jt" : "> Rp 2.5 Jt"}
+              </span>
+              <X className="w-3.5 h-3.5 ml-1 text-slate-600" />
+            </button>
+          )}
+          {inStockOnly && (
+            <button
+              onClick={() => setInStockOnly(false)}
+              className="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold glass-ios-pill hover:bg-slate-300/80 transition-colors"
+            >
+              <span>Ready Stock Saja</span>
+              <X className="w-3.5 h-3.5 ml-1 text-slate-600" />
+            </button>
+          )}
+          <button
+            onClick={handleResetAllFilters}
+            className="inline-flex items-center space-x-1 text-xs font-bold text-red-600 hover:text-red-700 ml-2 py-1 px-2.5 rounded-full hover:bg-red-50 transition-colors"
+          >
+            <RotateCcw className="w-3 h-3 mr-0.5" />
+            <span>Reset Semua</span>
+          </button>
+        </div>
+      )}
 
       {/* Main Container with Sidebar + Product Grid */}
       <div className="flex pt-6 gap-6 lg:gap-8 w-full min-w-0">
@@ -283,7 +368,7 @@ export default function ProductGrid({
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+            <div className={`grid grid-cols-2 sm:grid-cols-2 ${gridColumns === 3 ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4'} gap-3 sm:gap-6`}>
               {filteredProducts.map((product) => (
                 <ProductCard
                   key={product.id}

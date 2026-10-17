@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Search, Heart, ShoppingBag, Menu, X, Truck } from 'lucide-react';
+import { Search, Heart, ShoppingBag, Menu, X, Truck, ArrowRight, Sparkles } from 'lucide-react';
+import { formatRupiah } from '../utils/format';
 
 export default function Navbar({
   cartCount,
@@ -10,7 +11,9 @@ export default function Navbar({
   onSelectCategory,
   searchQuery,
   onSearchChange,
-  onOpenTrackLookup
+  onOpenTrackLookup,
+  products = [],
+  onSelectProduct
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -30,6 +33,15 @@ export default function Navbar({
     "Jaket Training", "Hoodie MOVEO", "Crewneck Fleece", "MOVEO Air Force 1", "MOVEO Jordan", 
     "MOVEO Air Max", "MOVEO Pegasus", "Running", "Training"
   ];
+
+  const trimmedQuery = searchQuery.trim().toLowerCase();
+  const searchResults = trimmedQuery.length > 0 
+    ? products.filter(p => 
+        p.name.toLowerCase().includes(trimmedQuery) ||
+        p.category.toLowerCase().includes(trimmedQuery) ||
+        p.subtitle?.toLowerCase().includes(trimmedQuery)
+      ).slice(0, 4)
+    : [];
 
   return (
     <>
@@ -75,7 +87,7 @@ export default function Navbar({
           <div className="flex items-center space-x-2.5 sm:space-x-3">
             {/* Search Input Bar (Desktop) */}
             <div className="relative hidden sm:block">
-              <div className="flex items-center glass-ios-input hover:bg-white/80 transition-all rounded-full px-4 py-2 w-48 md:w-56 focus-within:w-72 focus-within:bg-white/95 focus-within:ring-2 focus-within:ring-black/20 focus-within:shadow-md">
+              <div className="flex items-center glass-ios-input hover:bg-white/80 transition-all rounded-full px-4 py-2 w-48 md:w-56 focus-within:w-80 focus-within:bg-white/95 focus-within:ring-2 focus-within:ring-black/20 focus-within:shadow-md">
                 <Search className="w-4 h-4 text-gray-500 mr-2 flex-shrink-0" />
                 <input
                   ref={searchInputRef}
@@ -89,42 +101,108 @@ export default function Navbar({
                 {searchQuery && (
                   <button 
                     onClick={() => onSearchChange("")}
-                    className="text-gray-400 hover:text-black text-xs font-bold ml-1"
+                    className="text-gray-400 hover:text-black text-xs font-bold ml-1 w-4 h-4 flex items-center justify-center rounded-full hover:bg-gray-200"
                   >
                     ×
                   </button>
                 )}
               </div>
 
-              {/* Quick Search Dropdown */}
+              {/* Quick Search & Live Results Dropdown */}
               {searchFocused && (
                 <div 
-                  className="absolute right-0 top-full mt-2 w-80 glass-ios-card rounded-2xl shadow-2xl p-5 z-50 text-left"
+                  className="absolute right-0 top-full mt-2 w-96 glass-ios-card rounded-2xl shadow-2xl p-4 z-50 text-left border border-slate-300/80"
                   onMouseDown={(e) => e.preventDefault()}
                 >
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Pencarian Populer</span>
-                    <button 
-                      onClick={() => setSearchFocused(false)}
-                      className="text-gray-400 hover:text-black text-xs font-medium"
-                    >
-                      Tutup
-                    </button>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {popularSearches.map((term) => (
-                      <button
-                        key={term}
-                        onClick={() => {
-                          onSearchChange(term);
-                          setSearchFocused(false);
-                        }}
-                        className="text-xs px-3 py-1.5 glass-ios-pill hover:bg-black hover:text-white rounded-full font-semibold transition-all"
-                      >
-                        {term}
-                      </button>
-                    ))}
-                  </div>
+                  {trimmedQuery.length > 0 ? (
+                    <div>
+                      <div className="flex justify-between items-center mb-3 pb-2 border-b border-slate-200">
+                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                          Hasil Pencarian ({searchResults.length})
+                        </span>
+                        <button 
+                          onClick={() => setSearchFocused(false)}
+                          className="text-slate-400 hover:text-black text-xs font-semibold"
+                        >
+                          Tutup
+                        </button>
+                      </div>
+
+                      {searchResults.length > 0 ? (
+                        <div className="space-y-2">
+                          {searchResults.map((product) => (
+                            <div
+                              key={product.id}
+                              onClick={() => {
+                                if (onSelectProduct) {
+                                  onSelectProduct(product);
+                                }
+                                setSearchFocused(false);
+                              }}
+                              className="flex items-center space-x-3 p-2 rounded-xl hover:bg-white/70 transition-all cursor-pointer group"
+                            >
+                              <div className="w-12 h-12 rounded-lg bg-white p-1 flex-shrink-0 flex items-center justify-center border border-slate-200 shadow-xs">
+                                <img
+                                  src={product.colors[0]?.image}
+                                  alt={product.name}
+                                  className="w-full h-full object-contain group-hover:scale-105 transition-transform"
+                                />
+                              </div>
+                              <div className="flex-1 min-w-0 text-left">
+                                <h4 className="text-xs font-bold text-slate-900 truncate group-hover:text-black">
+                                  {product.name}
+                                </h4>
+                                <div className="flex items-center space-x-1.5 mt-0.5">
+                                  <span className="text-[10px] font-black uppercase text-slate-500">
+                                    {product.category}
+                                  </span>
+                                  <span>•</span>
+                                  <span className="text-xs font-extrabold text-slate-950">
+                                    {formatRupiah(product.price)}
+                                  </span>
+                                </div>
+                              </div>
+                              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-black group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="py-4 text-center">
+                          <p className="text-xs text-slate-500 font-medium">
+                            Tidak ditemukan produk untuk "{searchQuery}"
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                          Pencarian Populer
+                        </span>
+                        <button 
+                          onClick={() => setSearchFocused(false)}
+                          className="text-slate-400 hover:text-black text-xs font-medium"
+                        >
+                          Tutup
+                        </button>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {popularSearches.map((term) => (
+                          <button
+                            key={term}
+                            onClick={() => {
+                              onSearchChange(term);
+                              setSearchFocused(false);
+                            }}
+                            className="text-xs px-3 py-1.5 glass-ios-pill hover:bg-black hover:text-white rounded-full font-semibold transition-all"
+                          >
+                            {term}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -198,17 +276,53 @@ export default function Navbar({
               </div>
 
               {/* Mobile Search */}
-              <div className="mb-6">
+              <div className="mb-5">
                 <div className="flex items-center glass-ios-input rounded-full px-4 py-2.5">
-                  <Search className="w-4 h-4 text-gray-500 mr-2" />
+                  <Search className="w-4 h-4 text-gray-500 mr-2 flex-shrink-0" />
                   <input
                     type="text"
-                    placeholder="Cari sepatu..."
+                    placeholder="Cari produk di MA Store..."
                     value={searchQuery}
                     onChange={(e) => onSearchChange(e.target.value)}
                     className="bg-transparent text-xs w-full outline-none font-semibold"
                   />
+                  {searchQuery && (
+                    <button 
+                      onClick={() => onSearchChange("")}
+                      className="text-gray-400 hover:text-black text-xs font-bold ml-1 w-4 h-4 flex items-center justify-center rounded-full hover:bg-gray-200"
+                    >
+                      ×
+                    </button>
+                  )}
                 </div>
+
+                {trimmedQuery.length > 0 && searchResults.length > 0 && (
+                  <div className="mt-3 space-y-1.5 p-2 rounded-2xl bg-white/70 border border-slate-200/80 shadow-xs">
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block px-1">
+                      Hasil Pencarian ({searchResults.length})
+                    </span>
+                    {searchResults.map((product) => (
+                      <div
+                        key={product.id}
+                        onClick={() => {
+                          if (onSelectProduct) {
+                            onSelectProduct(product);
+                          }
+                          setMobileMenuOpen(false);
+                        }}
+                        className="flex items-center space-x-2.5 p-1.5 rounded-xl hover:bg-white transition-colors cursor-pointer text-left"
+                      >
+                        <div className="w-10 h-10 rounded-lg bg-white p-1 flex-shrink-0 border border-slate-200 flex items-center justify-center">
+                          <img src={product.colors[0]?.image} alt={product.name} className="w-full h-full object-contain" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold text-slate-900 truncate">{product.name}</p>
+                          <p className="text-[10px] font-bold text-slate-600">{formatRupiah(product.price)}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Mobile Category Links */}

@@ -17,6 +17,9 @@ import MembershipBanner from './components/MembershipBanner';
 import Footer from './components/Footer';
 import SignInModal from './components/SignInModal';
 import Toast from './components/Toast';
+import TrustBar from './components/TrustBar';
+import SocialProofToast from './components/SocialProofToast';
+import VipNewsletter from './components/VipNewsletter';
 import { products } from './data/products';
 import { generateOrderId, generateResi, formatRupiah } from './utils/format';
 
@@ -353,6 +356,8 @@ export default function App() {
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
         onOpenTrackLookup={() => setIsTrackLookupOpen(true)}
+        products={products}
+        onSelectProduct={handleOpenProductDetail}
       />
 
       {/* 3. Promo Announcements Banner Ticker */}
@@ -381,7 +386,10 @@ export default function App() {
             </>
           )}
 
-          {/* 5. Discover Product: The Wall / Product Catalog Grid (Step 1) */}
+          {/* 5. Enterprise Trust Bar & Guarantees Strip */}
+          <TrustBar />
+
+          {/* 6. Discover Product: The Wall / Product Catalog Grid (Step 1) */}
           <ProductGrid
             products={products}
             activeCategory={activeCategory}
@@ -395,14 +403,17 @@ export default function App() {
         </>
       )}
 
-      {/* 6. Membership Banner */}
+      {/* 7. MA Store VIP Club & 10% First Order Coupon */}
+      <VipNewsletter />
+
+      {/* 8. Membership Banner */}
       {!user && (
         <MembershipBanner
           onOpenAuth={(mode) => setAuthModal({ isOpen: true, mode })}
         />
       )}
 
-      {/* 7. Official Footer */}
+      {/* 9. Official Footer */}
       <Footer onOpenTrackLookup={() => setIsTrackLookupOpen(true)} />
 
       {/* --- DIALOGS FOR REMAINING E-COMMERCE USER FLOW --- */}
@@ -491,6 +502,9 @@ export default function App() {
         type={toast?.type}
         onClose={() => setToast(null)}
       />
+
+      {/* Live Social Proof Activity Toast */}
+      <SocialProofToast onSelectProduct={handleOpenProductDetail} />
       </div>
     </div>
   );

@@ -27,16 +27,16 @@ export default function CartDrawer({
   const handleApplyPromo = (e) => {
     e.preventDefault();
     const code = promoCode.trim().toUpperCase();
-    if (code === 'DISKON10' || code === 'MOVEO10' || code === 'NIKE10') {
+    if (code === 'DISKON10' || code === 'MOVEO10' || code === 'NIKE10' || code === 'MAVIP10' || code === 'MASTORE10') {
       setDiscountPercent(10);
-      setPromoSuccess('Kupon Aktif: Diskon 10% berhasil dipotong!');
+      setPromoSuccess('Kupon Aktif: Diskon 10% (VIP Member) berhasil dipotong!');
       setPromoError('');
-    } else if (code === 'DISKON20' || code === 'MOVEO20' || code === 'NIKE20') {
+    } else if (code === 'DISKON20' || code === 'MOVEO20' || code === 'NIKE20' || code === 'MASTORE20') {
       setDiscountPercent(20);
       setPromoSuccess('Kupon Eksklusif: Diskon 20% berhasil dipotong!');
       setPromoError('');
     } else {
-      setPromoError('Kode kupon tidak valid. Coba gunakan "DISKON10" atau "MOVEO20"');
+      setPromoError('Kode kupon tidak valid. Gunakan "MAVIP10" atau "DISKON20"');
       setPromoSuccess('');
     }
   };

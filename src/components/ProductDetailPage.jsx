@@ -276,7 +276,7 @@ export default function ProductDetailPage({
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="text-xs font-black tracking-wider uppercase text-gray-500 flex items-center gap-1.5">
                     <span className="w-5 h-5 rounded-md glass-ios-dark text-white font-black text-[11px] flex items-center justify-center shadow-sm border border-white/20">M</span>
-                    <span>MOVEO • {product.category} • {product.gender}</span>
+                    <span>MA STORE • {product.category} • {product.gender}</span>
                   </span>
                   
                   {/* Rating Badge */}
@@ -316,6 +316,18 @@ export default function ProductDetailPage({
                     Hemat {formatRupiah(product.originalPrice - product.price)}
                   </span>
                 )}
+              </div>
+
+              {/* Estimasi Pengiriman Cepat & Stock Gerai */}
+              <div className="p-3.5 glass-ios-card rounded-2xl border border-slate-300/70 text-xs space-y-2">
+                <div className="flex items-center space-x-2 text-slate-800 font-bold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Siap Dikirim Hari Ini (Pesan sebelum 15:00 WIB)</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-slate-600 font-medium pt-1.5 border-t border-slate-200">
+                  <span>Estimasi Tiba: 1-2 hari kerja (SiCepat / JNE)</span>
+                  <span className="font-extrabold text-emerald-700">Garansi 100% Original</span>
+                </div>
               </div>
 
               {/* Pemilihan Ukuran (Size Selection) */}
