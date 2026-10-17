@@ -324,13 +324,13 @@ export default function App() {
   const totalCartItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#edf1f7] relative flex flex-col text-slate-900 selection:bg-black selection:text-white">
-      {/* iOS Liquid Glass Ambient Glow Orbs */}
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#f4f7fb] relative flex flex-col text-slate-900 selection:bg-black selection:text-white">
+      {/* iOS Liquid Glass Ambient Glow Orbs - Vibrant & High-Contrast */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden w-full h-full">
-        <div className="absolute -top-32 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-blue-300/20 rounded-full blur-[80px] sm:blur-[100px]" />
-        <div className="absolute top-1/4 -right-32 w-72 sm:w-[450px] h-72 sm:h-[450px] bg-purple-300/20 rounded-full blur-[90px] sm:blur-[120px]" />
-        <div className="absolute top-2/3 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-emerald-200/20 rounded-full blur-[80px] sm:blur-[100px]" />
-        <div className="absolute -bottom-20 right-1/4 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-sky-200/20 rounded-full blur-[90px] sm:blur-[120px]" />
+        <div className="absolute -top-24 -left-24 w-80 sm:w-[420px] h-80 sm:h-[420px] bg-gradient-to-tr from-blue-600/25 to-cyan-400/25 rounded-full blur-[90px] sm:blur-[110px]" />
+        <div className="absolute top-1/4 -right-28 w-80 sm:w-[500px] h-80 sm:h-[500px] bg-gradient-to-br from-indigo-600/25 to-purple-500/25 rounded-full blur-[100px] sm:blur-[130px]" />
+        <div className="absolute top-2/3 -left-28 w-80 sm:w-[420px] h-80 sm:h-[420px] bg-gradient-to-br from-emerald-500/25 to-teal-400/25 rounded-full blur-[90px] sm:blur-[110px]" />
+        <div className="absolute -bottom-20 right-1/4 w-80 sm:w-[520px] h-80 sm:h-[520px] bg-gradient-to-tr from-amber-500/20 to-orange-400/20 rounded-full blur-[100px] sm:blur-[130px]" />
       </div>
 
       <div className="relative z-10 flex flex-col min-h-screen w-full max-w-full overflow-x-hidden">

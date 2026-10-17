@@ -69,7 +69,7 @@ export default function SocialProofToast({ onSelectProduct }) {
             onSelectProduct(product);
           }
         }}
-        className="glass-ios border border-slate-300/80 rounded-2xl p-3 shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center space-x-3 text-left relative group backdrop-blur-xl"
+        className="glass-ios border border-white/95 rounded-2xl p-3 shadow-2xl hover:shadow-2xl transition-all cursor-pointer flex items-center space-x-3 text-left relative group backdrop-blur-2xl bg-white/95"
       >
         {/* Dismiss Button */}
         <button
@@ -79,13 +79,13 @@ export default function SocialProofToast({ onSelectProduct }) {
             setDismissed(true);
           }}
           aria-label="Tutup notifikasi"
-          className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-slate-800 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+          className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
         >
           <X className="w-3.5 h-3.5" />
         </button>
 
         {/* Thumbnail */}
-        <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-white/70 p-1 flex-shrink-0 flex items-center justify-center border border-slate-200/80 shadow-xs overflow-hidden">
+        <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-slate-100/90 p-1 flex-shrink-0 flex items-center justify-center border border-slate-200 shadow-xs overflow-hidden">
           <img 
             src={image} 
             alt={product.name}

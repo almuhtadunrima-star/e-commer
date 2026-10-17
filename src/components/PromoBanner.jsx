@@ -21,17 +21,17 @@ export default function PromoBanner({ onCategorySelect }) {
   };
 
   return (
-    <div className="bg-[#dae1ec]/85 backdrop-blur-xl text-slate-900 py-2 sm:py-2.5 px-8 sm:px-12 text-center border-b border-slate-300/70 relative flex items-center justify-center select-none shadow-xs w-full max-w-full overflow-hidden">
+    <div className="bg-slate-100/95 backdrop-blur-xl text-slate-900 py-2.5 px-8 sm:px-12 text-center border-b border-slate-200/90 relative flex items-center justify-center select-none shadow-xs w-full max-w-full overflow-hidden">
       <button 
         onClick={handlePrev}
         aria-label="Previous announcement"
-        className="absolute left-2 sm:left-4 lg:left-8 p-1 text-gray-500 hover:text-black transition-colors rounded-full hover:bg-gray-200"
+        className="absolute left-2 sm:left-4 lg:left-8 p-1 text-slate-500 hover:text-black transition-colors rounded-full hover:bg-white shadow-xs"
       >
         <ChevronLeft className="w-4 h-4" />
       </button>
 
       <div className="overflow-hidden max-w-xl mx-auto px-2">
-        <p className="text-[11px] sm:text-sm font-semibold tracking-tight transition-all duration-300 truncate">
+        <p className="text-xs sm:text-sm font-bold tracking-tight text-slate-900 transition-all duration-300 truncate">
           {promoAnnouncements[currentIndex]}
         </p>
       </div>

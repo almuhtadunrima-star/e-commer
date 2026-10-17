@@ -32,24 +32,24 @@ export default function ProductCard({
 
   return (
     <div 
-      className="group flex flex-col cursor-pointer text-left select-none glass-ios-card rounded-2xl overflow-hidden p-2.5 sm:p-3 transition-all duration-300 relative border border-slate-300/70 hover:border-slate-400"
+      className="group flex flex-col cursor-pointer text-left select-none glass-ios-card rounded-2xl sm:rounded-3xl overflow-hidden p-2.5 sm:p-3.5 transition-all duration-300 relative border border-white/95 hover:border-black/20 shadow-sm hover:shadow-xl"
       onClick={() => onOpenDetail(product)}
     >
       {/* Image Container */}
-      <div className="relative aspect-square w-full bg-gradient-to-b from-slate-200/60 to-slate-100/40 backdrop-blur-md rounded-xl overflow-hidden mb-3 border border-slate-300/60 flex items-center justify-center">
+      <div className="relative aspect-square w-full bg-gradient-to-b from-slate-100/90 to-white backdrop-blur-md rounded-2xl overflow-hidden mb-3 border border-slate-200/90 flex items-center justify-center shadow-inner group-hover:bg-white transition-colors">
         {/* Product Image */}
         <img
           src={currentColor.image}
           alt={product.name}
-          className="w-full h-full object-contain p-3 sm:p-4 group-hover:scale-108 transition-transform duration-300"
+          className="w-full h-full object-contain p-3 sm:p-4 group-hover:scale-110 transition-transform duration-300"
           loading="lazy"
         />
 
         {/* Brand & Status Badges */}
         <div className="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1 items-start">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <span 
-              className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg glass-ios-dark text-white font-black text-[10px] sm:text-xs flex items-center justify-center shadow-md tracking-tight border border-white/20"
+              className="w-6 h-6 rounded-lg bg-black text-white font-black text-xs flex items-center justify-center shadow-md tracking-tight border border-white/20"
               title="MA Official Brand"
             >
               M
@@ -149,16 +149,16 @@ export default function ProductCard({
         <div>
           <div className="flex items-center justify-between text-xs font-semibold mb-1">
             <div className="flex items-center space-x-1 text-amber-500">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="font-bold text-slate-800 text-[11px] sm:text-xs">{product.rating}</span>
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" />
+              <span className="font-extrabold text-slate-900 text-[11px] sm:text-xs">{product.rating}</span>
               <span className="text-slate-500 font-medium text-[10px] sm:text-[11px]">({product.reviewsCount})</span>
             </div>
-            <span className="text-[10px] font-black tracking-wider text-slate-500 uppercase">
+            <span className="text-[9px] font-black tracking-widest text-slate-800 uppercase bg-slate-200/80 px-2 py-0.5 rounded-md">
               MA STORE
             </span>
           </div>
 
-          <h3 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-black line-clamp-1 leading-snug">
+          <h3 className="text-xs sm:text-sm md:text-[15px] font-black text-black group-hover:text-blue-600 line-clamp-1 leading-snug transition-colors">
             {product.name}
           </h3>
 
@@ -168,12 +168,12 @@ export default function ProductCard({
         </div>
 
         {/* Pricing in Rupiah */}
-        <div className="pt-1.5 flex items-baseline space-x-2">
-          <span className="text-xs sm:text-sm md:text-base font-black text-slate-950">
+        <div className="pt-2 flex items-baseline space-x-2">
+          <span className="text-sm sm:text-base md:text-lg font-black text-black">
             {formatRupiah(product.price)}
           </span>
           {product.originalPrice && (
-            <span className="text-[10px] sm:text-xs text-slate-500 line-through font-medium">
+            <span className="text-xs text-slate-400 line-through font-semibold">
               {formatRupiah(product.originalPrice)}
             </span>
           )}
