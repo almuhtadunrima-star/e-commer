@@ -97,6 +97,7 @@ export default function DeliveryTrackingModal({
 
   const targetCity = order.customer?.cityRegion || 'Jakarta';
   const targetAddress = order.customer?.fullAddress ? `${order.customer.fullAddress}, ${targetCity}` : targetCity;
+  const googleMapsDirectionsUrl = `https://www.google.com/maps?saddr=${encodeURIComponent('Hub Logistik MA Store Jakarta Barat, Indonesia')}&daddr=${encodeURIComponent(targetAddress + ', Indonesia')}&output=embed`;
   const googleMapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(targetAddress + ', Indonesia')}&t=m&z=13&ie=UTF8&iwloc=&output=embed`;
   const googleMapsDirectUrl = `https://www.google.com/maps/dir/?api=1&origin=Jakarta+Logistics+Hub&destination=${encodeURIComponent(targetAddress + ', Indonesia')}&travelmode=driving`;
 
@@ -189,6 +190,7 @@ export default function DeliveryTrackingModal({
               isDarkMode={isDarkMode}
               googleMapsEmbedUrl={googleMapsEmbedUrl}
               googleMapsDirectUrl={googleMapsDirectUrl}
+              googleMapsDirectionsUrl={googleMapsDirectionsUrl}
               onStepChange={(newStep) => onUpdateOrderStatus(order.orderId, newStep)}
             />
 
